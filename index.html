@@ -155,6 +155,31 @@
             box-shadow: 0 0 20px #7c5c9e66;
         }
 
+        .sync-btn {
+            background: #1a3a4a;
+            border: 1px solid #4a8aaa;
+            color: #b0d5e5;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sync-btn:hover {
+            background: #2a5a6a;
+            border-color: #6aaaca;
+            box-shadow: 0 0 20px #4a8aaa55;
+        }
+
+        .sync-btn i {
+            font-size: 0.9rem;
+        }
+
         /* Фильтры */
         .filters-section {
             display: flex;
@@ -203,7 +228,7 @@
             align-items: center;
         }
 
-        /* Библиотека читов */
+        /* Библиотека */
         .section-title {
             font-size: 1.5rem;
             font-weight: 600;
@@ -1038,6 +1063,14 @@
             color: #ff7a8a;
         }
 
+        .toast-message.loading {
+            border-left-color: #facc15;
+        }
+
+        .toast-message.loading i {
+            color: #facc15;
+        }
+
         @media (max-width: 700px) {
             .launcher-container {
                 padding: 1.8rem 1.2rem;
@@ -1092,6 +1125,9 @@
             <span class="version">v3.0</span>
         </div>
         <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+            <button class="sync-btn" id="syncLibraryBtn">
+                <i class="fas fa-sync-alt"></i> Обновить библиотеку
+            </button>
             <div class="admin-toggle-wrap">
                 <button class="admin-toggle-btn" id="adminToggleBtn">
                     <i class="fas fa-shield-alt"></i> Админ-панель
@@ -1318,7 +1354,6 @@
             { name: 'Crystal PVP', author: 'Alex', mode: 'Grief' }
         ];
 
-        // ---- НОВАЯ БИБЛИОТЕКА (пустая, файлы добавляются через админку) ----
         let cheatFiles = [];
         let nextCheatId = 1;
 
@@ -1383,6 +1418,7 @@
         const reviewSubmitBtn = document.getElementById('reviewSubmitBtn');
         const reviewList = document.getElementById('reviewList');
         const configsList = document.getElementById('configsList');
+        const syncLibraryBtn = document.getElementById('syncLibraryBtn');
 
         const versionFilter = document.getElementById('versionFilter');
         const categoryFilter = document.getElementById('categoryFilter');
@@ -1419,7 +1455,7 @@
 
         loadData();
 
-        // ---- Обновить отображение пользователя ----
+        // ---- Обновить отображение ----
         function updateUserDisplay() {
             const displayName = currentUser || 'Гость';
             nickDisplay.textContent = displayName;
@@ -1557,6 +1593,9 @@
                     <div class="empty-library">
                         <i class="fas fa-box-open"></i>
                         <p>Библиотека пуста. Администратор может добавить читы через панель управления.</p>
+                        <p style="font-size:0.8rem; margin-top:0.5rem; color:#6f8aa5;">
+                            <i class="fas fa-sync-alt"></i> Нажмите «Обновить библиотеку», чтобы загрузить новые файлы
+                        </p>
                     </div>
                 `;
                 cheatCountLabel.textContent = '0 файлов';
@@ -1612,7 +1651,6 @@
                     const cheat = cheatFiles.find(c => c.id === id);
                     if (!cheat) { showToast('❌ Чит не найден.', true); return; }
                     if (cheat.fileObject) {
-                        // Скачиваем и распаковываем (имитация)
                         const url = URL.createObjectURL(cheat.fileObject);
                         const a = document.createElement('a');
                         a.href = url;
@@ -1642,6 +1680,25 @@
 
             cheatCountLabel.textContent = `${filtered.length} файлов`;
         }
+
+        // ---- СИНХРОНИЗАЦИЯ БИБЛИОТЕКИ (обновление данных) ----
+        function syncLibrary() {
+            showToast('🔄 Обновление библиотеки...', false, true);
+            loadData();
+            renderCheats();
+            renderFileList();
+            renderReviews();
+            renderConfigs();
+            renderOnlinePlayers();
+            updateAdminList();
+            setTimeout(() => {
+                showToast(`✅ Библиотека обновлена! Загружено ${cheatFiles.length} файлов.`);
+            }, 500);
+        }
+
+        syncLibraryBtn.addEventListener('click', function() {
+            syncLibrary();
+        });
 
         // ---- Фильтры ----
         versionFilter.addEventListener('change', renderCheats);
@@ -1801,6 +1858,10 @@
             cheatFileInput.value = '';
 
             showToast(`✅ Чит "${name}" добавлен!`);
+            // Автоматически синхронизируем для других вкладок
+            setTimeout(() => {
+                syncLibrary();
+            }, 300);
         });
 
         // ---- Файлы в админке ----
@@ -1835,6 +1896,10 @@
                         renderCheats();
                         renderFileList();
                         showToast('🗑️ Файл удалён.');
+                        // Автоматически синхронизируем
+                        setTimeout(() => {
+                            syncLibrary();
+                        }, 300);
                     }
                 });
             });
@@ -1878,13 +1943,15 @@
             }
         });
 
-        // ---- Тост ----
-        function showToast(message, isError = false) {
+        // ---- Тост с поддержкой загрузки ----
+        function showToast(message, isError = false, isLoading = false) {
             const toast = document.getElementById('toastMessage');
             const textSpan = document.getElementById('toastText');
             if (!toast || !textSpan) return;
             textSpan.textContent = message;
-            toast.className = 'toast-message' + (isError ? ' error' : '');
+            toast.className = 'toast-message';
+            if (isError) toast.classList.add('error');
+            if (isLoading) toast.classList.add('loading');
             toast.style.display = 'block';
             clearTimeout(toast._hideTimer);
             toast._hideTimer = setTimeout(() => {
@@ -1902,17 +1969,20 @@
         renderOnlinePlayers();
         renderFileList();
 
+        // Авто-обновление при загрузке страницы
         setTimeout(() => {
-            if (currentUser) {
-                showToast(`👋 С возвращением, ${currentUser}!`);
-            } else {
-                showToast(`👋 Добро пожаловать! Войдите в аккаунт, чтобы скачивать читы.`);
-            }
-        }, 600);
+            syncLibrary();
+        }, 500);
+
+        // Авто-обновление каждые 30 секунд
+        setInterval(() => {
+            syncLibrary();
+        }, 30000);
 
         console.log(`✅ Mrsoftuk_SAT загружен. Админы: ${admins.join(', ')}`);
         console.log(`📁 Читов: ${cheatFiles.length}, отзывов: ${reviews.length}, конфигов: ${configs.length}`);
-        console.log(`🔒 Пароли скрыты для безопасности.`);
+        console.log(`🔄 Кнопка "Обновить библиотеку" обновляет данные из localStorage`);
+        console.log(`💡 Если файлы не отображаются в другом браузере — нажмите "Обновить библиотеку"`);
     })();
 </script>
 
