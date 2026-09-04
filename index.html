@@ -180,6 +180,106 @@
             font-size: 0.9rem;
         }
 
+        /* localStorage Viewer */
+        .storage-section {
+            margin-top: 1.5rem;
+            background: #111d2a;
+            border-radius: 2.5rem;
+            padding: 1.5rem 2rem;
+            border: 1px solid #4a3a66;
+            box-shadow: 0 0 40px #4a3a6633;
+        }
+
+        .storage-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #d4bfff;
+        }
+
+        .storage-section h3 i {
+            color: #facc15;
+        }
+
+        .storage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .storage-item {
+            background: #0a121d;
+            border-radius: 1.2rem;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #25333f;
+            overflow: hidden;
+        }
+
+        .storage-item .key {
+            color: #4affb5;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.3rem;
+            word-break: break-all;
+        }
+
+        .storage-item .value {
+            color: #b0c9dd;
+            font-size: 0.8rem;
+            word-break: break-all;
+            max-height: 80px;
+            overflow-y: auto;
+            background: #0a121d;
+            padding: 0.3rem;
+            border-radius: 0.5rem;
+            border: 1px solid #1a2a3a;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .storage-item .value .empty {
+            color: #6f8aa5;
+        }
+
+        .storage-item .size {
+            color: #6f8aa5;
+            font-size: 0.7rem;
+            margin-top: 0.2rem;
+        }
+
+        .storage-refresh-btn {
+            background: #1a3a4a;
+            border: 1px solid #4a8aaa;
+            color: #b0d5e5;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .storage-refresh-btn:hover {
+            background: #2a5a6a;
+            border-color: #6aaaca;
+            box-shadow: 0 0 20px #4a8aaa55;
+        }
+
+        .storage-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+            align-items: center;
+        }
+
         /* Фильтры */
         .filters-section {
             display: flex;
@@ -1100,6 +1200,9 @@
             .instructions-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            .storage-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1196,6 +1299,25 @@
 
     <div class="cheats-grid" id="cheatsGrid">
         <!-- сюда рендерятся карточки читов -->
+    </div>
+
+    <!-- localStorage Viewer -->
+    <div class="storage-section">
+        <h3><i class="fas fa-database"></i> 💾 localStorage (хранилище браузера)</h3>
+        <div class="storage-actions">
+            <button class="storage-refresh-btn" id="refreshStorageBtn">
+                <i class="fas fa-sync-alt"></i> Обновить
+            </button>
+            <button class="storage-refresh-btn" id="clearStorageBtn" style="border-color: #8a4a5a; color: #ff8a8a;">
+                <i class="fas fa-trash-alt"></i> Очистить все данные
+            </button>
+            <span style="color: #6f8aa5; font-size: 0.8rem;">
+                Всего ключей: <span id="storageCount">0</span>
+            </span>
+        </div>
+        <div class="storage-grid" id="storageGrid">
+            <!-- сюда рендерятся данные localStorage -->
+        </div>
     </div>
 
     <!-- Инструкции -->
@@ -1450,10 +1572,92 @@
         const openSiteBtn = document.getElementById('openSiteBtn');
         const copySiteBtn = document.getElementById('copySiteBtn');
 
+        // localStorage Viewer
+        const storageGrid = document.getElementById('storageGrid');
+        const storageCount = document.getElementById('storageCount');
+        const refreshStorageBtn = document.getElementById('refreshStorageBtn');
+        const clearStorageBtn = document.getElementById('clearStorageBtn');
+
         let selectedCheatFile = null;
         let isAdminLoggedIn = false;
 
         loadData();
+
+        // ---- localStorage Viewer ----
+        function renderStorage() {
+            const keys = Object.keys(localStorage);
+            storageCount.textContent = keys.length;
+            storageGrid.innerHTML = '';
+
+            if (keys.length === 0) {
+                storageGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 1rem; color: #6f8aa5;">
+                        <i class="fas fa-database"></i> localStorage пуст
+                    </div>
+                `;
+                return;
+            }
+
+            // Сортируем ключи
+            keys.sort();
+
+            keys.forEach(key => {
+                const value = localStorage.getItem(key);
+                let displayValue = value || '(пусто)';
+                let size = value ? value.length : 0;
+                let isJSON = false;
+
+                // Пытаемся отформатировать JSON
+                try {
+                    const parsed = JSON.parse(value);
+                    displayValue = JSON.stringify(parsed, null, 2);
+                    isJSON = true;
+                } catch (e) {
+                    // Если не JSON, оставляем как есть
+                }
+
+                // Обрезаем очень длинные значения
+                if (displayValue.length > 500) {
+                    displayValue = displayValue.substring(0, 500) + '... (обрезано)';
+                }
+
+                const div = document.createElement('div');
+                div.className = 'storage-item';
+                div.innerHTML = `
+                    <span class="key"><i class="fas fa-key"></i> ${key}</span>
+                    <div class="value">${displayValue}</div>
+                    <div class="size">📏 ${size} символов</div>
+                `;
+                storageGrid.appendChild(div);
+            });
+        }
+
+        refreshStorageBtn.addEventListener('click', function() {
+            renderStorage();
+            showToast('🔄 localStorage обновлён');
+        });
+
+        clearStorageBtn.addEventListener('click', function() {
+            if (confirm('Вы уверены, что хотите очистить все данные localStorage? Это удалит все файлы, отзывы и настройки!')) {
+                localStorage.clear();
+                // Перезагружаем данные
+                cheatFiles = [];
+                reviews = [];
+                admins = ['nowSat'];
+                users = {};
+                currentUser = null;
+                configs = [];
+                saveData();
+                renderStorage();
+                renderCheats();
+                renderReviews();
+                renderConfigs();
+                renderOnlinePlayers();
+                updateAdminList();
+                updateUserDisplay();
+                showToast('🗑️ Все данные очищены!');
+            }
+        });
 
         // ---- Обновить отображение ----
         function updateUserDisplay() {
@@ -1488,6 +1692,7 @@
                 if (!users['nowSat']) users['nowSat'] = { email: 'admin@mrsoftuk.ru', password: NOWSAT_PASSWORD };
                 saveData();
                 updateUserDisplay();
+                renderStorage();
                 showToast('✅ Вход выполнен как nowSat!');
                 authPassword.value = '';
             } else {
@@ -1499,6 +1704,7 @@
             currentUser = null;
             saveData();
             updateUserDisplay();
+            renderStorage();
             showToast('👋 Вы вышли из аккаунта');
         });
 
@@ -1552,6 +1758,7 @@
             reviews.push({ user: currentUser, text: text, time: time });
             saveData();
             renderReviews();
+            renderStorage();
             reviewInput.value = '';
             showToast('✅ Отзыв добавлен!');
         });
@@ -1681,7 +1888,7 @@
             cheatCountLabel.textContent = `${filtered.length} файлов`;
         }
 
-        // ---- СИНХРОНИЗАЦИЯ БИБЛИОТЕКИ (обновление данных) ----
+        // ---- Синхронизация ----
         function syncLibrary() {
             showToast('🔄 Обновление библиотеки...', false, true);
             loadData();
@@ -1691,6 +1898,7 @@
             renderConfigs();
             renderOnlinePlayers();
             updateAdminList();
+            renderStorage();
             setTimeout(() => {
                 showToast(`✅ Библиотека обновлена! Загружено ${cheatFiles.length} файлов.`);
             }, 500);
@@ -1762,6 +1970,7 @@
             saveData();
             updateAdminList();
             renderOnlinePlayers();
+            renderStorage();
             adminNickInput.value = '';
             showToast(`✅ ${nick} стал администратором.`);
         });
@@ -1777,6 +1986,7 @@
             saveData();
             updateAdminList();
             renderOnlinePlayers();
+            renderStorage();
             adminNickInput.value = '';
             showToast(`⛔ ${nick} лишён прав.`);
         });
@@ -1847,6 +2057,7 @@
             saveData();
             renderCheats();
             renderFileList();
+            renderStorage();
 
             cheatNameInput.value = '';
             cheatVersionInput.value = '';
@@ -1858,7 +2069,6 @@
             cheatFileInput.value = '';
 
             showToast(`✅ Чит "${name}" добавлен!`);
-            // Автоматически синхронизируем для других вкладок
             setTimeout(() => {
                 syncLibrary();
             }, 300);
@@ -1895,8 +2105,8 @@
                         saveData();
                         renderCheats();
                         renderFileList();
+                        renderStorage();
                         showToast('🗑️ Файл удалён.');
-                        // Автоматически синхронизируем
                         setTimeout(() => {
                             syncLibrary();
                         }, 300);
@@ -1943,7 +2153,7 @@
             }
         });
 
-        // ---- Тост с поддержкой загрузки ----
+        // ---- Тост ----
         function showToast(message, isError = false, isLoading = false) {
             const toast = document.getElementById('toastMessage');
             const textSpan = document.getElementById('toastText');
@@ -1968,8 +2178,9 @@
         renderConfigs();
         renderOnlinePlayers();
         renderFileList();
+        renderStorage();
 
-        // Авто-обновление при загрузке страницы
+        // Авто-обновление
         setTimeout(() => {
             syncLibrary();
         }, 500);
@@ -1981,8 +2192,9 @@
 
         console.log(`✅ Mrsoftuk_SAT загружен. Админы: ${admins.join(', ')}`);
         console.log(`📁 Читов: ${cheatFiles.length}, отзывов: ${reviews.length}, конфигов: ${configs.length}`);
+        console.log(`💾 localStorage ключей: ${Object.keys(localStorage).length}`);
         console.log(`🔄 Кнопка "Обновить библиотеку" обновляет данные из localStorage`);
-        console.log(`💡 Если файлы не отображаются в другом браузере — нажмите "Обновить библиотеку"`);
+        console.log(`📋 Блок localStorage показывает все данные в хранилище браузера`);
     })();
 </script>
 
