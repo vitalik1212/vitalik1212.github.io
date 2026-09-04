@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mrsoftuk_SAT | Лаунчер nowSat</title>
+    <title>Mrsoftuk_SAT | Лаунчер читов</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -25,7 +25,7 @@
         }
 
         .launcher-container {
-            max-width: 1100px;
+            max-width: 1200px;
             width: 100%;
             background: rgba(14, 18, 28, 0.85);
             backdrop-filter: blur(16px);
@@ -155,15 +155,59 @@
             box-shadow: 0 0 20px #7c5c9e66;
         }
 
-        .admin-toggle-btn i {
-            font-size: 1rem;
+        /* Фильтры */
+        .filters-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: #0d1620;
+            border-radius: 2rem;
+            border: 1px solid #25333f;
+            align-items: center;
         }
 
-        /* Секция: библиотека читов */
+        .filters-section label {
+            color: #b0c9dd;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .filters-section select,
+        .filters-section input {
+            padding: 0.4rem 1rem;
+            border-radius: 60px;
+            border: 1px solid #3a5068;
+            background: #0e1925;
+            color: #e3e8f0;
+            font-size: 0.85rem;
+            outline: none;
+            transition: 0.2s;
+            min-width: 100px;
+        }
+
+        .filters-section select:focus,
+        .filters-section input:focus {
+            border-color: #4affb5;
+            box-shadow: 0 0 20px #4affb544;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        /* Библиотека читов */
         .section-title {
             font-size: 1.5rem;
             font-weight: 600;
-            margin: 1.8rem 0 1.2rem 0;
+            margin: 1.5rem 0 1.2rem 0;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -176,7 +220,7 @@
 
         .cheats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.8rem;
             margin-bottom: 2rem;
             min-height: 120px;
@@ -211,43 +255,77 @@
             box-shadow: 0 16px 35px -8px #00f5d433;
         }
 
+        .cheat-card .cheat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
         .cheat-icon {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #00f5d4;
-            margin-bottom: 0.6rem;
             display: inline-block;
             background: #1b2836;
-            padding: 0.5rem 0.9rem;
-            border-radius: 18px;
+            padding: 0.4rem 0.8rem;
+            border-radius: 16px;
+        }
+
+        .cheat-card .version-tag {
+            font-size: 0.7rem;
+            background: #1a2a3a;
+            padding: 0.15rem 0.7rem;
+            border-radius: 30px;
+            border: 1px solid #3a6a8a;
+            color: #8ac4e0;
         }
 
         .cheat-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 0.2rem;
+            margin: 0.5rem 0 0.2rem;
+        }
+
+        .cheat-card .category-tag {
+            font-size: 0.7rem;
+            background: #2a1a3a;
+            padding: 0.15rem 0.7rem;
+            border-radius: 30px;
+            border: 1px solid #7a4a9a;
+            color: #c8a0e0;
+            display: inline-block;
+            margin-bottom: 0.4rem;
         }
 
         .cheat-card p {
             color: #b0c9dd;
             font-size: 0.9rem;
             line-height: 1.4;
-            margin: 0.3rem 0 0.9rem;
+            margin: 0.3rem 0 0.8rem;
         }
 
-        .cheat-tag {
-            display: inline-block;
-            background: #1f2f3b;
-            padding: 0.15rem 1rem;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #b0e0d0;
-            border: 1px solid #3a5060;
+        .cheat-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.4rem 0;
         }
+
+        .cheat-tags .tag {
+            font-size: 0.65rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .tag-safe { background: #1a3a2a; border: 1px solid #4affb5; color: #4affb5; }
+        .tag-risky { background: #3a2a1a; border: 1px solid #ffaa4a; color: #ffaa4a; }
+        .tag-danger { background: #3a1a1a; border: 1px solid #ff4a4a; color: #ff4a4a; }
+        .tag-update { background: #1a2a4a; border: 1px solid #4a8aff; color: #4a8aff; }
+        .tag-pirate { background: #2a1a3a; border: 1px solid #aa4aff; color: #aa4aff; }
 
         .cheat-card .btn-load {
             display: inline-block;
-            margin-top: 0.8rem;
+            margin-top: 0.6rem;
             background: transparent;
             border: 1px solid #00f5d488;
             color: #d5f5ec;
@@ -272,6 +350,28 @@
             margin-right: 8px;
         }
 
+        .cheat-card .virus-link {
+            font-size: 0.7rem;
+            color: #6f8aa5;
+            margin-top: 0.3rem;
+            display: block;
+        }
+
+        .cheat-card .virus-link a {
+            color: #6f8aa5;
+            text-decoration: none;
+        }
+
+        .cheat-card .virus-link a:hover {
+            color: #4affb5;
+        }
+
+        .cheat-card .file-size {
+            font-size: 0.7rem;
+            color: #6f8aa5;
+            margin-top: 0.2rem;
+        }
+
         .empty-library {
             grid-column: 1 / -1;
             text-align: center;
@@ -282,16 +382,9 @@
             border: 1px dashed #2d4055;
         }
 
-        .empty-library i {
-            font-size: 3rem;
-            color: #4a5f74;
-            margin-bottom: 0.8rem;
-            display: block;
-        }
-
-        /* Авторизация nowSat */
-        .auth-section {
-            margin-top: 1.5rem;
+        /* Инструкции */
+        .instructions-section {
+            margin-top: 2rem;
             background: #111d2a;
             border-radius: 2.5rem;
             padding: 1.5rem 2rem;
@@ -299,7 +392,7 @@
             box-shadow: 0 0 40px #2d5a7a33;
         }
 
-        .auth-section h3 {
+        .instructions-section h3 {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.8rem;
@@ -309,82 +402,41 @@
             color: #7fc9ff;
         }
 
-        .auth-section h3 i {
-            color: #facc15;
-        }
-
-        .auth-form {
-            display: flex;
+        .instructions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
         }
 
-        .auth-form input {
-            padding: 0.6rem 1.2rem;
-            border-radius: 60px;
-            border: 1px solid #3a5068;
-            background: #0e1925;
-            color: #e3e8f0;
-            font-size: 0.95rem;
-            outline: none;
-            transition: 0.2s;
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .auth-form input:focus {
-            border-color: #4affb5;
-            box-shadow: 0 0 20px #4affb544;
-        }
-
-        .auth-form button {
-            background: #1a4a3a;
-            border: 1px solid #4affb5;
-            color: #d5f5ec;
-            padding: 0.6rem 1.8rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.95rem;
+        .instruction-card {
+            background: #0a121d;
+            padding: 0.8rem 1.2rem;
+            border-radius: 1.2rem;
+            border: 1px solid #25333f;
             cursor: pointer;
             transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            text-align: center;
         }
 
-        .auth-form button:hover {
-            background: #2a6a4a;
-            border-color: #6affc5;
-            box-shadow: 0 0 25px #4affb555;
+        .instruction-card:hover {
+            border-color: #4affb5;
+            transform: translateY(-2px);
         }
 
-        .auth-form button.danger {
-            background: #4a1a2a;
-            border-color: #8a4a5a;
+        .instruction-card i {
+            font-size: 1.5rem;
+            color: #4affb5;
+            display: block;
+            margin-bottom: 0.3rem;
         }
 
-        .auth-form button.danger:hover {
-            background: #6a2a3a;
-            border-color: #aa6a7a;
-        }
-
-        .auth-status {
-            margin-top: 0.5rem;
+        .instruction-card span {
             font-size: 0.85rem;
             color: #b0c9dd;
         }
 
-        .auth-status .success {
-            color: #4affb5;
-        }
-
-        .auth-status .error {
-            color: #ff6b6b;
-        }
-
-        /* Онлайн-игроки */
-        .online-section {
+        /* Конфиги */
+        .configs-section {
             margin-top: 1.5rem;
             background: #111d2a;
             border-radius: 2.5rem;
@@ -393,7 +445,7 @@
             box-shadow: 0 0 40px #4a3a6633;
         }
 
-        .online-section h3 {
+        .configs-section h3 {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.8rem;
@@ -403,43 +455,28 @@
             color: #d4bfff;
         }
 
-        .online-section h3 i {
-            color: #4affb5;
-        }
-
-        .online-list {
+        .configs-list {
             display: flex;
             flex-wrap: wrap;
             gap: 0.8rem;
         }
 
-        .online-player {
+        .config-item {
             background: #0a121d;
-            padding: 0.4rem 1.2rem;
+            padding: 0.4rem 1rem;
             border-radius: 60px;
             border: 1px solid #3a5068;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
-        .online-player .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #4affb5;
-            display: inline-block;
-            animation: pulse 2s infinite;
-        }
-
-        .online-player .admin-badge {
-            background: #4a1e6a;
-            color: #d4bfff;
-            font-size: 0.6rem;
-            padding: 0.1rem 0.5rem;
-            border-radius: 30px;
-            border: 1px solid #7c5c9e;
+        .config-item:hover {
+            border-color: #b78aff;
+            transform: scale(1.02);
         }
 
         /* Отзывы */
@@ -460,10 +497,6 @@
             align-items: center;
             gap: 10px;
             color: #7fc9ff;
-        }
-
-        .reviews-section h3 i {
-            color: #facc15;
         }
 
         .review-form {
@@ -532,20 +565,216 @@
             flex-wrap: wrap;
         }
 
-        .review-item .review-user {
-            color: #4affb5;
+        .review-item .review-user { color: #4affb5; font-weight: 600; }
+        .review-item .review-text { color: #b0c9dd; flex: 1; margin: 0 0.8rem; }
+        .review-item .review-time { color: #6f8aa5; font-size: 0.75rem; }
+
+        /* Авторизация */
+        .auth-section {
+            margin-top: 1.5rem;
+            background: #111d2a;
+            border-radius: 2.5rem;
+            padding: 1.5rem 2rem;
+            border: 1px solid #2d5a7a;
+            box-shadow: 0 0 40px #2d5a7a33;
+        }
+
+        .auth-section h3 {
+            font-size: 1.2rem;
             font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #7fc9ff;
         }
 
-        .review-item .review-text {
-            color: #b0c9dd;
+        .auth-form {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .auth-form input {
+            padding: 0.6rem 1.2rem;
+            border-radius: 60px;
+            border: 1px solid #3a5068;
+            background: #0e1925;
+            color: #e3e8f0;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.2s;
             flex: 1;
-            margin: 0 0.8rem;
+            min-width: 150px;
         }
 
-        .review-item .review-time {
-            color: #6f8aa5;
-            font-size: 0.75rem;
+        .auth-form input:focus {
+            border-color: #4affb5;
+            box-shadow: 0 0 20px #4affb544;
+        }
+
+        .auth-form button {
+            background: #1a4a3a;
+            border: 1px solid #4affb5;
+            color: #d5f5ec;
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .auth-form button:hover {
+            background: #2a6a4a;
+            border-color: #6affc5;
+            box-shadow: 0 0 25px #4affb555;
+        }
+
+        .auth-form button.danger {
+            background: #4a1a2a;
+            border-color: #8a4a5a;
+        }
+
+        .auth-form button.danger:hover {
+            background: #6a2a3a;
+            border-color: #aa6a7a;
+        }
+
+        .auth-status {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #b0c9dd;
+        }
+
+        .auth-status .success { color: #4affb5; }
+
+        /* Онлайн */
+        .online-section {
+            margin-top: 1.5rem;
+            background: #111d2a;
+            border-radius: 2.5rem;
+            padding: 1.5rem 2rem;
+            border: 1px solid #4a3a66;
+            box-shadow: 0 0 40px #4a3a6633;
+        }
+
+        .online-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #d4bfff;
+        }
+
+        .online-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .online-player {
+            background: #0a121d;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            border: 1px solid #3a5068;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .online-player .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4affb5;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        .online-player .admin-badge {
+            background: #4a1e6a;
+            color: #d4bfff;
+            font-size: 0.6rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 30px;
+            border: 1px solid #7c5c9e;
+        }
+
+        /* Сайт */
+        .site-section {
+            margin-top: 1.5rem;
+            background: #111d2a;
+            border-radius: 2.5rem;
+            padding: 1.5rem 2rem;
+            border: 1px solid #4a3a66;
+            box-shadow: 0 0 40px #4a3a6633;
+        }
+
+        .site-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #d4bfff;
+        }
+
+        .site-section .site-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .site-btn {
+            background: #3d2a55;
+            border: 1px solid #7c5c9e;
+            color: #e8daff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .site-btn:hover {
+            background: #5a3d7a;
+            border-color: #b78aff;
+            box-shadow: 0 0 25px #7c5c9e77;
+            transform: scale(1.02);
+        }
+
+        .site-btn.primary {
+            background: #1a4a3a;
+            border-color: #4affb5;
+            color: #d5f5ec;
+        }
+
+        .site-url {
+            background: #0a121d;
+            padding: 0.4rem 1rem;
+            border-radius: 60px;
+            border: 1px solid #4affb544;
+            color: #4affb5;
+            font-size: 0.8rem;
+            font-family: monospace;
+            word-break: break-all;
+            flex: 1;
+            min-width: 150px;
         }
 
         /* Админ-панель */
@@ -579,10 +808,6 @@
             color: #d4bfff;
         }
 
-        .admin-panel h2 i {
-            color: #b78aff;
-        }
-
         .admin-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -590,9 +815,7 @@
         }
 
         @media (max-width: 700px) {
-            .admin-grid {
-                grid-template-columns: 1fr;
-            }
+            .admin-grid { grid-template-columns: 1fr; }
         }
 
         .admin-card {
@@ -609,10 +832,6 @@
             align-items: center;
             gap: 10px;
             color: #b3d9f0;
-        }
-
-        .admin-card h3 i {
-            color: #facc15;
         }
 
         .admin-card .input-group {
@@ -636,14 +855,9 @@
             transition: 0.2s;
         }
 
-        .admin-card input[type="text"]:focus,
-        .admin-card input[type="number"]:focus {
+        .admin-card input:focus {
             border-color: #b78aff;
             box-shadow: 0 0 20px #7c5c9e55;
-        }
-
-        .admin-card input[type="number"] {
-            max-width: 120px;
         }
 
         .admin-card .btn-admin {
@@ -674,62 +888,6 @@
             color: #ffc8d6;
         }
 
-        .admin-card .btn-admin.danger:hover {
-            background: #6a2a3e;
-            border-color: #d46a8a;
-        }
-
-        .file-list {
-            margin-top: 0.8rem;
-            max-height: 140px;
-            overflow-y: auto;
-            background: #0a121d;
-            border-radius: 1.2rem;
-            padding: 0.6rem 0.8rem;
-            border: 1px solid #25333f;
-        }
-
-        .file-list .file-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.4rem 0.2rem;
-            border-bottom: 1px solid #1d2b36;
-            font-size: 0.9rem;
-        }
-
-        .file-list .file-item:last-child {
-            border-bottom: none;
-        }
-
-        .file-list .file-item .fname {
-            color: #c6ddee;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            word-break: break-all;
-        }
-
-        .file-list .file-item .fname i {
-            color: #b78aff;
-        }
-
-        .file-list .file-item .del-btn {
-            background: none;
-            border: none;
-            color: #b06a7a;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: 0.2s;
-            flex-shrink: 0;
-        }
-
-        .file-list .file-item .del-btn:hover {
-            color: #ff7a9a;
-            transform: scale(1.15);
-        }
-
         .file-upload-area {
             border: 2px dashed #3a5068;
             border-radius: 1.5rem;
@@ -753,30 +911,10 @@
             margin-bottom: 0.3rem;
         }
 
-        .file-upload-area p {
-            color: #8faac2;
-            font-size: 0.9rem;
-        }
-
         .file-upload-area .file-name {
             color: #b3d9f0;
             font-weight: 600;
             margin-top: 0.3rem;
-        }
-
-        .admin-status {
-            margin-top: 0.4rem;
-            font-size: 0.85rem;
-            color: #b0c9dd;
-        }
-
-        .admin-status i {
-            color: #4affb5;
-            margin-right: 6px;
-        }
-
-        .admin-status .error-text {
-            color: #ff7a8a;
         }
 
         .admin-login {
@@ -825,101 +963,10 @@
             box-shadow: 0 0 25px #7c5c9e77;
         }
 
-        .admin-login .btn-admin-login i {
-            font-size: 0.9rem;
-        }
-
         .admin-login-status {
             font-size: 0.85rem;
             color: #b0c9dd;
             margin-top: 0.3rem;
-        }
-
-        .admin-login-status i {
-            color: #4affb5;
-            margin-right: 6px;
-        }
-
-        .admin-login-status .error {
-            color: #ff7a8a;
-        }
-
-        /* Блок САЙТ */
-        .site-section {
-            margin-top: 1.5rem;
-            background: #111d2a;
-            border-radius: 2.5rem;
-            padding: 1.5rem 2rem;
-            border: 1px solid #4a3a66;
-            box-shadow: 0 0 40px #4a3a6633;
-        }
-
-        .site-section h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #d4bfff;
-        }
-
-        .site-section h3 i {
-            color: #4affb5;
-        }
-
-        .site-section .site-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .site-btn {
-            background: #3d2a55;
-            border: 1px solid #7c5c9e;
-            color: #e8daff;
-            padding: 0.5rem 1.5rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        .site-btn:hover {
-            background: #5a3d7a;
-            border-color: #b78aff;
-            box-shadow: 0 0 25px #7c5c9e77;
-            transform: scale(1.02);
-        }
-
-        .site-btn.primary {
-            background: #1a4a3a;
-            border-color: #4affb5;
-            color: #d5f5ec;
-        }
-
-        .site-btn.primary:hover {
-            background: #2a6a4a;
-            border-color: #6affc5;
-        }
-
-        .site-url {
-            background: #0a121d;
-            padding: 0.4rem 1rem;
-            border-radius: 60px;
-            border: 1px solid #4affb544;
-            color: #4affb5;
-            font-size: 0.8rem;
-            font-family: monospace;
-            word-break: break-all;
-            flex: 1;
-            min-width: 150px;
         }
 
         /* Футер */
@@ -933,11 +980,6 @@
             padding-top: 1.6rem;
             font-size: 0.9rem;
             color: #7e97ae;
-        }
-
-        .footer i {
-            color: #00f5d4;
-            margin: 0 4px;
         }
 
         .footer-links {
@@ -960,10 +1002,6 @@
         .footer-links a:hover {
             color: #00f5d4;
             text-shadow: 0 0 12px #00f5d466;
-        }
-
-        .footer-links a i {
-            font-size: 1rem;
         }
 
         /* Тост */
@@ -1005,70 +1043,40 @@
                 padding: 1.8rem 1.2rem;
                 border-radius: 2.2rem;
             }
-            .brand h1 {
-                font-size: 2rem;
-            }
-            .toast-message {
-                white-space: normal;
-                font-size: 0.9rem;
-                padding: 0.5rem 1.2rem;
-            }
-            .admin-panel {
-                padding: 1.5rem 1rem;
-            }
-            .admin-card .input-group {
+            .brand h1 { font-size: 2rem; }
+            .filters-section {
                 flex-direction: column;
+                align-items: stretch;
             }
-            .admin-card input[type="text"],
-            .admin-card input[type="number"] {
-                width: 100%;
+            .filter-group {
+                flex-direction: column;
+                align-items: stretch;
             }
-            .admin-card input[type="number"] {
-                max-width: 100%;
-            }
-            .file-upload-area {
-                padding: 0.8rem;
-            }
-            .footer-links {
-                gap: 1rem;
-                justify-content: center;
-            }
-            .auth-section,
-            .online-section,
-            .reviews-section,
-            .site-section {
-                padding: 1rem 1.2rem;
+            .filters-section select,
+            .filters-section input { width: 100%; }
+            .admin-grid { grid-template-columns: 1fr; }
+            .review-form { flex-direction: column; }
+            .site-section .site-buttons {
+                flex-direction: column;
+                align-items: stretch;
             }
             .auth-form {
                 flex-direction: column;
                 align-items: stretch;
             }
-            .review-form {
-                flex-direction: column;
-            }
-            .site-section .site-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .site-url {
-                text-align: center;
+            .instructions-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            .cheats-grid {
-                grid-template-columns: 1fr;
-            }
-            .user-badge {
-                padding: 0.3rem 1.2rem 0.3rem 1rem;
-            }
+            .cheats-grid { grid-template-columns: 1fr; }
+            .instructions-grid { grid-template-columns: 1fr; }
             .brand .version {
                 font-size: 0.7rem;
                 padding: 0.1rem 0.7rem;
             }
-            .admin-grid {
-                grid-template-columns: 1fr;
-            }
+            .admin-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1097,7 +1105,53 @@
         </div>
     </header>
 
-    <!-- Библиотека читов (общая для всех) -->
+    <!-- Авторизация -->
+    <div class="auth-section">
+        <h3><i class="fas fa-key"></i> 🔐 Вход в аккаунт</h3>
+        <div class="auth-form" id="authForm">
+            <input type="password" id="authPassword" placeholder="Введите пароль для nowSat...">
+            <button id="authLoginBtn"><i class="fas fa-sign-in-alt"></i> Войти</button>
+            <button class="danger" id="authLogoutBtn"><i class="fas fa-sign-out-alt"></i> Выйти</button>
+        </div>
+        <div class="auth-status" id="authStatus">
+            <i class="fas fa-info-circle"></i> Введите пароль для входа
+        </div>
+    </div>
+
+    <!-- Фильтры -->
+    <div class="filters-section">
+        <div class="filter-group">
+            <label><i class="fas fa-tag"></i> Версия:</label>
+            <select id="versionFilter">
+                <option value="all">Все версии</option>
+                <option value="1.21">1.21</option>
+                <option value="1.20.4">1.20.4</option>
+                <option value="1.19.4">1.19.4</option>
+                <option value="1.18.2">1.18.2</option>
+                <option value="1.16.5">1.16.5</option>
+                <option value="1.12.2">1.12.2</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label><i class="fas fa-folder"></i> Категория:</label>
+            <select id="categoryFilter">
+                <option value="all">Все</option>
+                <option value="client">Клиенты</option>
+                <option value="xray">X-Ray</option>
+                <option value="macro">Макросы</option>
+                <option value="resourcepack">Ресурс-паки</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label><i class="fas fa-search"></i> Поиск:</label>
+            <input type="text" id="searchFilter" placeholder="Название чита...">
+        </div>
+        <button class="site-btn primary" id="resetFiltersBtn" style="padding: 0.4rem 1.2rem; font-size: 0.8rem;">
+            <i class="fas fa-undo"></i> Сбросить
+        </button>
+    </div>
+
+    <!-- Библиотека читов -->
     <div class="section-title">
         <i class="fas fa-code"></i>
         <span>📂 Библиотека читов</span>
@@ -1108,24 +1162,34 @@
         <!-- сюда рендерятся карточки читов -->
     </div>
 
-    <!-- Авторизация nowSat -->
-    <div class="auth-section">
-        <h3><i class="fas fa-key"></i> 🔐 Вход в аккаунт nowSat</h3>
-        <div class="auth-form" id="authForm">
-            <input type="password" id="authPassword" placeholder="Введите пароль для nowSat...">
-            <button id="authLoginBtn"><i class="fas fa-sign-in-alt"></i> Войти</button>
-            <button class="danger" id="authLogoutBtn"><i class="fas fa-sign-out-alt"></i> Выйти</button>
-        </div>
-        <div class="auth-status" id="authStatus">
-            <i class="fas fa-info-circle"></i> Введите пароль для входа в аккаунт nowSat
+    <!-- Инструкции -->
+    <div class="instructions-section">
+        <h3><i class="fas fa-book"></i> 📖 Инструкции по установке</h3>
+        <div class="instructions-grid">
+            <div class="instruction-card" data-instr="fabric">
+                <i class="fas fa-cube"></i>
+                <span>Fabric</span>
+            </div>
+            <div class="instruction-card" data-instr="forge">
+                <i class="fas fa-cubes"></i>
+                <span>Forge</span>
+            </div>
+            <div class="instruction-card" data-instr="dll">
+                <i class="fas fa-file-code"></i>
+                <span>DLL / Клиент</span>
+            </div>
+            <div class="instruction-card" data-instr="launcher">
+                <i class="fas fa-rocket"></i>
+                <span>Лаунчер</span>
+            </div>
         </div>
     </div>
 
-    <!-- Онлайн-игроки -->
-    <div class="online-section">
-        <h3><i class="fas fa-users"></i> 👥 Игроки онлайн</h3>
-        <div class="online-list" id="onlineList">
-            <!-- сюда рендерятся игроки -->
+    <!-- Конфиги -->
+    <div class="configs-section">
+        <h3><i class="fas fa-sliders-h"></i> ⚙️ Готовые конфиги</h3>
+        <div class="configs-list" id="configsList">
+            <!-- сюда рендерятся конфиги -->
         </div>
     </div>
 
@@ -1133,7 +1197,7 @@
     <div class="reviews-section">
         <h3><i class="fas fa-star"></i> ⭐ Отзывы</h3>
         <div class="review-form">
-            <input type="text" id="reviewInput" placeholder="Напишите свой отзыв...">
+            <input type="text" id="reviewInput" placeholder="Ваш отзыв...">
             <button id="reviewSubmitBtn"><i class="fas fa-paper-plane"></i> Отправить</button>
         </div>
         <div class="review-list" id="reviewList">
@@ -1141,7 +1205,15 @@
         </div>
     </div>
 
-    <!-- Блок САЙТ -->
+    <!-- Онлайн -->
+    <div class="online-section">
+        <h3><i class="fas fa-users"></i> 👥 Игроки онлайн</h3>
+        <div class="online-list" id="onlineList">
+            <!-- сюда рендерятся игроки -->
+        </div>
+    </div>
+
+    <!-- Сайт -->
     <div class="site-section">
         <h3><i class="fas fa-globe"></i> 🌐 Официальный сайт</h3>
         <div class="site-buttons">
@@ -1154,15 +1226,13 @@
     <!-- Админ-панель -->
     <div class="admin-panel" id="adminPanel">
         <h2><i class="fas fa-crown"></i> Панель администратора</h2>
-
         <div class="admin-login" id="adminLoginArea">
             <input type="password" id="adminPasswordInput" placeholder="Введите мастер-пароль...">
             <button class="btn-admin-login" id="adminLoginBtn"><i class="fas fa-key"></i> Войти</button>
         </div>
         <div class="admin-login-status" id="adminLoginStatus">
-            <i class="fas fa-info-circle"></i> Для доступа к админ-панели введите мастер-пароль
+            <i class="fas fa-info-circle"></i> Введите мастер-пароль
         </div>
-
         <div id="adminContent" style="display: none; margin-top: 1.5rem;">
             <div class="admin-grid">
                 <div class="admin-card">
@@ -1170,42 +1240,42 @@
                     <div class="input-group">
                         <input type="text" id="adminNickInput" placeholder="Введите ник...">
                         <button class="btn-admin" id="grantAdminBtn"><i class="fas fa-gavel"></i> Выдать</button>
-                    </div>
-                    <div class="input-group">
-                        <button class="btn-admin danger" id="revokeAdminBtn"><i class="fas fa-user-slash"></i> Забрать права</button>
+                        <button class="btn-admin danger" id="revokeAdminBtn"><i class="fas fa-user-slash"></i> Забрать</button>
                     </div>
                     <div class="admin-status" id="adminStatus">
-                        <i class="fas fa-info-circle"></i> Список администраторов: <span id="adminListDisplay">nowSat</span>
+                        <i class="fas fa-info-circle"></i> Администраторы: <span id="adminListDisplay">nowSat</span>
                     </div>
                 </div>
-
                 <div class="admin-card">
-                    <h3><i class="fas fa-file-archive"></i> Загрузить ZIP-файл</h3>
+                    <h3><i class="fas fa-file-archive"></i> Добавить чит</h3>
                     <div class="input-group">
-                        <input type="text" id="zipNameInput" placeholder="Название чита...">
-                        <input type="text" id="zipTagInput" placeholder="Тег (PvP...)" style="flex:0.7; min-width:80px;">
+                        <input type="text" id="cheatNameInput" placeholder="Название...">
+                        <input type="text" id="cheatVersionInput" placeholder="Версия (1.20.4)" style="flex:0.6;">
                     </div>
                     <div class="input-group">
-                        <input type="text" id="zipDescInput" placeholder="Описание (необязательно)" style="flex:2;">
+                        <select id="cheatCategoryInput" style="flex:1; padding:0.6rem 1rem; border-radius:60px; border:1px solid #3a5068; background:#0e1925; color:#e3e8f0; outline:none;">
+                            <option value="client">Клиент</option>
+                            <option value="xray">X-Ray</option>
+                            <option value="macro">Макросы</option>
+                            <option value="resourcepack">Ресурс-паки</option>
+                        </select>
+                        <input type="text" id="cheatTagInput" placeholder="Теги (safe,risky...)" style="flex:0.8;">
                     </div>
-
-                    <div class="file-upload-area" id="zipDropArea">
+                    <div class="input-group">
+                        <input type="text" id="cheatDescInput" placeholder="Описание...">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="cheatVirusInput" placeholder="Ссылка VirusTotal">
+                    </div>
+                    <div class="file-upload-area" id="cheatDropArea">
                         <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Нажмите или перетащите ZIP-файл сюда</p>
-                        <div class="file-name" id="selectedZipName">Файл не выбран</div>
-                        <input type="file" id="zipFileInput" accept=".zip" style="display:none;">
+                        <p>Нажмите или перетащите ZIP-файл</p>
+                        <div class="file-name" id="selectedCheatName">Файл не выбран</div>
+                        <input type="file" id="cheatFileInput" accept=".zip" style="display:none;">
                     </div>
-
-                    <div class="input-group" style="margin-top: 0.5rem;">
-                        <button class="btn-admin" id="uploadZipBtn"><i class="fas fa-upload"></i> Загрузить ZIP</button>
-                    </div>
-
-                    <div class="file-list" id="fileList">
-                        <!-- файлы будут добавлены через JS -->
-                    </div>
-                    <div class="admin-status" style="margin-top: 0.5rem;">
-                        <i class="fas fa-database"></i> Всего читов: <span id="fileCount">0</span>
-                    </div>
+                    <button class="btn-admin" id="addCheatBtn" style="width:100%; justify-content:center; margin-top:0.5rem;">
+                        <i class="fas fa-plus"></i> Добавить чит
+                    </button>
                 </div>
             </div>
         </div>
@@ -1240,51 +1310,48 @@
         let admins = ['nowSat'];
         let users = {};
         let currentUser = null;
-        let cheatFiles = [];
         let reviews = [];
         let onlinePlayers = ['nowSat', 'Player1', 'Alex', 'MinerPro', 'Crafter'];
+        let configs = [
+            { name: 'Anarchy Grief', author: 'nowSat', mode: 'Anarchy' },
+            { name: 'SkyWars Auto', author: 'Player1', mode: 'Mini-games' },
+            { name: 'Crystal PVP', author: 'Alex', mode: 'Grief' }
+        ];
 
-        // ---- Загрузка сохранённых данных из localStorage ----
+        // ---- НОВАЯ БИБЛИОТЕКА (пустая, файлы добавляются через админку) ----
+        let cheatFiles = [];
+        let nextCheatId = 1;
+
+        // ---- Загрузка данных ----
         function loadData() {
             try {
                 const savedUsers = localStorage.getItem('mrsoftuk_users');
-                if (savedUsers) {
-                    users = JSON.parse(savedUsers);
-                }
+                if (savedUsers) users = JSON.parse(savedUsers);
                 const savedAdmins = localStorage.getItem('mrsoftuk_admins');
-                if (savedAdmins) {
-                    admins = JSON.parse(savedAdmins);
-                }
-                const savedCheats = localStorage.getItem('mrsoftuk_cheats');
+                if (savedAdmins) admins = JSON.parse(savedAdmins);
+                const savedCheats = localStorage.getItem('mrsoftuk_cheats_v3');
                 if (savedCheats) {
                     const parsed = JSON.parse(savedCheats);
                     cheatFiles = parsed.map(item => {
                         if (item.fileData) {
                             const binary = atob(item.fileData);
                             const array = new Uint8Array(binary.length);
-                            for (let i = 0; i < binary.length; i++) {
-                                array[i] = binary.charCodeAt(i);
-                            }
-                            const blob = new Blob([array], { type: 'application/zip' });
-                            return {
-                                ...item,
-                                fileObject: blob
-                            };
+                            for (let i = 0; i < binary.length; i++) array[i] = binary.charCodeAt(i);
+                            return { ...item, fileObject: new Blob([array], { type: 'application/zip' }) };
                         }
                         return item;
                     });
+                    if (cheatFiles.length > 0) {
+                        nextCheatId = Math.max(...cheatFiles.map(c => c.id || 0)) + 1;
+                    }
                 }
                 const savedReviews = localStorage.getItem('mrsoftuk_reviews');
-                if (savedReviews) {
-                    reviews = JSON.parse(savedReviews);
-                }
+                if (savedReviews) reviews = JSON.parse(savedReviews);
+                const savedConfigs = localStorage.getItem('mrsoftuk_configs');
+                if (savedConfigs) configs = JSON.parse(savedConfigs);
                 const savedUser = localStorage.getItem('mrsoftuk_current_user');
-                if (savedUser) {
-                    currentUser = savedUser;
-                }
-            } catch (e) {
-                console.warn('Ошибка загрузки данных:', e);
-            }
+                if (savedUser) currentUser = savedUser;
+            } catch (e) { console.warn('Ошибка загрузки:', e); }
         }
 
         function saveData() {
@@ -1295,72 +1362,59 @@
                     const { fileObject, ...rest } = item;
                     return rest;
                 });
-                localStorage.setItem('mrsoftuk_cheats', JSON.stringify(cheatsToSave));
+                localStorage.setItem('mrsoftuk_cheats_v3', JSON.stringify(cheatsToSave));
                 localStorage.setItem('mrsoftuk_reviews', JSON.stringify(reviews));
-                if (currentUser) {
-                    localStorage.setItem('mrsoftuk_current_user', currentUser);
-                } else {
-                    localStorage.removeItem('mrsoftuk_current_user');
-                }
-            } catch (e) {
-                console.warn('Ошибка сохранения данных:', e);
-            }
-        }
-
-        function saveCheatsWithFiles() {
-            try {
-                const cheatsToSave = cheatFiles.map(item => {
-                    const { fileObject, ...rest } = item;
-                    return rest;
-                });
-                localStorage.setItem('mrsoftuk_cheats', JSON.stringify(cheatsToSave));
-            } catch (e) {
-                console.warn('Ошибка сохранения файлов:', e);
-            }
+                localStorage.setItem('mrsoftuk_configs', JSON.stringify(configs));
+                if (currentUser) localStorage.setItem('mrsoftuk_current_user', currentUser);
+                else localStorage.removeItem('mrsoftuk_current_user');
+            } catch (e) { console.warn('Ошибка сохранения:', e); }
         }
 
         // ---- DOM ----
         const grid = document.getElementById('cheatsGrid');
-        const adminPanel = document.getElementById('adminPanel');
-        const adminToggleBtn = document.getElementById('adminToggleBtn');
-        const adminNickInput = document.getElementById('adminNickInput');
-        const grantAdminBtn = document.getElementById('grantAdminBtn');
-        const revokeAdminBtn = document.getElementById('revokeAdminBtn');
-        const adminListDisplay = document.getElementById('adminListDisplay');
-
-        const adminPasswordInput = document.getElementById('adminPasswordInput');
-        const adminLoginBtn = document.getElementById('adminLoginBtn');
-        const adminLoginStatus = document.getElementById('adminLoginStatus');
-        const adminContent = document.getElementById('adminContent');
-
-        const zipNameInput = document.getElementById('zipNameInput');
-        const zipTagInput = document.getElementById('zipTagInput');
-        const zipDescInput = document.getElementById('zipDescInput');
-        const zipFileInput = document.getElementById('zipFileInput');
-        const zipDropArea = document.getElementById('zipDropArea');
-        const selectedZipName = document.getElementById('selectedZipName');
-        const uploadZipBtn = document.getElementById('uploadZipBtn');
-
-        const fileListEl = document.getElementById('fileList');
-        const fileCount = document.getElementById('fileCount');
         const cheatCountLabel = document.getElementById('cheatCountLabel');
-
         const nickDisplay = document.getElementById('nickDisplay');
         const authPassword = document.getElementById('authPassword');
         const authLoginBtn = document.getElementById('authLoginBtn');
         const authLogoutBtn = document.getElementById('authLogoutBtn');
         const authStatus = document.getElementById('authStatus');
-
         const onlineList = document.getElementById('onlineList');
-
         const reviewInput = document.getElementById('reviewInput');
         const reviewSubmitBtn = document.getElementById('reviewSubmitBtn');
         const reviewList = document.getElementById('reviewList');
+        const configsList = document.getElementById('configsList');
+
+        const versionFilter = document.getElementById('versionFilter');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const searchFilter = document.getElementById('searchFilter');
+        const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+
+        const adminPanel = document.getElementById('adminPanel');
+        const adminToggleBtn = document.getElementById('adminToggleBtn');
+        const adminPasswordInput = document.getElementById('adminPasswordInput');
+        const adminLoginBtn = document.getElementById('adminLoginBtn');
+        const adminLoginStatus = document.getElementById('adminLoginStatus');
+        const adminContent = document.getElementById('adminContent');
+        const adminListDisplay = document.getElementById('adminListDisplay');
+        const adminNickInput = document.getElementById('adminNickInput');
+        const grantAdminBtn = document.getElementById('grantAdminBtn');
+        const revokeAdminBtn = document.getElementById('revokeAdminBtn');
+
+        const cheatNameInput = document.getElementById('cheatNameInput');
+        const cheatVersionInput = document.getElementById('cheatVersionInput');
+        const cheatCategoryInput = document.getElementById('cheatCategoryInput');
+        const cheatTagInput = document.getElementById('cheatTagInput');
+        const cheatDescInput = document.getElementById('cheatDescInput');
+        const cheatVirusInput = document.getElementById('cheatVirusInput');
+        const cheatFileInput = document.getElementById('cheatFileInput');
+        const cheatDropArea = document.getElementById('cheatDropArea');
+        const selectedCheatName = document.getElementById('selectedCheatName');
+        const addCheatBtn = document.getElementById('addCheatBtn');
 
         const openSiteBtn = document.getElementById('openSiteBtn');
         const copySiteBtn = document.getElementById('copySiteBtn');
 
-        let selectedFile = null;
+        let selectedCheatFile = null;
         let isAdminLoggedIn = false;
 
         loadData();
@@ -1381,17 +1435,13 @@
             renderOnlinePlayers();
         }
 
-        // ---- Авторизация nowSat ----
         function updateAuthStatus() {
             if (currentUser === 'nowSat') {
                 authStatus.innerHTML = '<i class="fas fa-check-circle success"></i> ✅ Вы вошли как <strong>nowSat</strong> (администратор)';
-                authStatus.className = 'auth-status';
             } else if (currentUser) {
                 authStatus.innerHTML = `<i class="fas fa-check-circle success"></i> ✅ Вы вошли как <strong>${currentUser}</strong>`;
-                authStatus.className = 'auth-status';
             } else {
-                authStatus.innerHTML = '<i class="fas fa-info-circle"></i> Введите пароль для входа в аккаунт nowSat';
-                authStatus.className = 'auth-status';
+                authStatus.innerHTML = '<i class="fas fa-info-circle"></i> Введите пароль для входа';
             }
         }
 
@@ -1399,15 +1449,13 @@
             const pass = authPassword.value.trim();
             if (pass === NOWSAT_PASSWORD) {
                 currentUser = 'nowSat';
-                if (!users['nowSat']) {
-                    users['nowSat'] = { email: 'admin@mrsoftuk.ru', password: NOWSAT_PASSWORD };
-                }
+                if (!users['nowSat']) users['nowSat'] = { email: 'admin@mrsoftuk.ru', password: NOWSAT_PASSWORD };
                 saveData();
                 updateUserDisplay();
                 showToast('✅ Вход выполнен как nowSat!');
                 authPassword.value = '';
             } else {
-                showToast('❌ Неверный пароль для nowSat!', true);
+                showToast('❌ Неверный пароль!', true);
             }
         });
 
@@ -1418,7 +1466,7 @@
             showToast('👋 Вы вышли из аккаунта');
         });
 
-        // ---- Онлайн-игроки ----
+        // ---- Онлайн ----
         function renderOnlinePlayers() {
             onlineList.innerHTML = '';
             if (!onlinePlayers || onlinePlayers.length === 0) {
@@ -1443,10 +1491,9 @@
         function renderReviews() {
             reviewList.innerHTML = '';
             if (!reviews || reviews.length === 0) {
-                reviewList.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem; text-align: center;">Пока нет отзывов. Будьте первым!</div>';
+                reviewList.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem; text-align: center;">Пока нет отзывов</div>';
                 return;
             }
-            // Показываем последние 10 отзывов (сначала новые)
             const sortedReviews = [...reviews].reverse();
             sortedReviews.forEach(review => {
                 const div = document.createElement('div');
@@ -1462,14 +1509,8 @@
 
         reviewSubmitBtn.addEventListener('click', function() {
             const text = reviewInput.value.trim();
-            if (!text) {
-                showToast('❌ Введите текст отзыва.', true);
-                return;
-            }
-            if (!currentUser) {
-                showToast('❌ Авторизуйтесь, чтобы оставить отзыв.', true);
-                return;
-            }
+            if (!text) { showToast('❌ Введите отзыв.', true); return; }
+            if (!currentUser) { showToast('❌ Авторизуйтесь.', true); return; }
             const now = new Date();
             const time = now.toLocaleString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
             reviews.push({ user: currentUser, text: text, time: time });
@@ -1479,121 +1520,363 @@
             showToast('✅ Отзыв добавлен!');
         });
 
-        // ---- Рендер библиотеки читов (общая для всех) ----
+        // ---- Конфиги ----
+        function renderConfigs() {
+            configsList.innerHTML = '';
+            if (!configs || configs.length === 0) {
+                configsList.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem;">Нет конфигов</div>';
+                return;
+            }
+            configs.forEach(cfg => {
+                const div = document.createElement('div');
+                div.className = 'config-item';
+                div.innerHTML = `<i class="fas fa-file-code"></i> ${cfg.name} (${cfg.author})`;
+                div.addEventListener('click', function() {
+                    showToast(`📥 Скачивание конфига "${cfg.name}" от ${cfg.author}`);
+                });
+                configsList.appendChild(div);
+            });
+        }
+
+        // ---- Рендер читов ----
         function renderCheats() {
+            const version = versionFilter.value;
+            const category = categoryFilter.value;
+            const search = searchFilter.value.toLowerCase();
+
+            let filtered = cheatFiles.filter(cheat => {
+                if (version !== 'all' && cheat.version !== version) return false;
+                if (category !== 'all' && cheat.category !== category) return false;
+                if (search && !cheat.name.toLowerCase().includes(search) && !cheat.desc.toLowerCase().includes(search)) return false;
+                return true;
+            });
+
             grid.innerHTML = '';
-            if (!cheatFiles || cheatFiles.length === 0) {
+            if (filtered.length === 0) {
                 grid.innerHTML = `
                     <div class="empty-library">
                         <i class="fas fa-box-open"></i>
-                        <p>Библиотека пуста. Администратор может загрузить ZIP-файлы через панель управления.</p>
+                        <p>Библиотека пуста. Администратор может добавить читы через панель управления.</p>
                     </div>
                 `;
                 cheatCountLabel.textContent = '0 файлов';
                 return;
             }
 
-            cheatFiles.forEach((file, index) => {
+            filtered.forEach((cheat) => {
                 const card = document.createElement('div');
                 card.className = 'cheat-card';
-                const icon = file.icon || 'fa-file-archive';
-                const tag = file.tag || 'Чит';
-                const desc = file.desc || 'Описание отсутствует';
-                const sizeStr = file.size ? `${file.size} ГБ` : '';
+                const iconMap = { client: 'fa-cubes', xray: 'fa-eye', macro: 'fa-mouse', resourcepack: 'fa-palette' };
+                const icon = iconMap[cheat.category] || 'fa-file-archive';
+                const categoryNames = { client: 'Клиент', xray: 'X-Ray', macro: 'Макросы', resourcepack: 'Ресурс-пак' };
+
+                let tagsHtml = '';
+                if (cheat.tags) {
+                    cheat.tags.forEach(t => {
+                        let cls = 'tag-safe';
+                        if (t === 'risky') cls = 'tag-risky';
+                        else if (t === 'danger') cls = 'tag-danger';
+                        else if (t === 'update') cls = 'tag-update';
+                        else if (t === 'pirate') cls = 'tag-pirate';
+                        tagsHtml += `<span class="tag ${cls}">${t}</span>`;
+                    });
+                }
+
+                const fileSize = cheat.fileSize ? `${cheat.fileSize} МБ` : '';
+
                 card.innerHTML = `
-                    <div class="cheat-icon"><i class="fas ${icon}"></i></div>
-                    <h3>${file.name} ${sizeStr ? `<span style="font-size:0.7rem; color:#7e97ae; font-weight:400;">(${sizeStr})</span>` : ''}</h3>
-                    <p>${desc}</p>
-                    <span class="cheat-tag"><i class="fas fa-tag"></i> ${tag}</span>
-                    <button class="btn-load load-cheat-btn" data-index="${index}"><i class="fas fa-arrow-circle-down"></i> Скачать ZIP</button>
+                    <div class="cheat-top">
+                        <div class="cheat-icon"><i class="fas ${icon}"></i></div>
+                        <span class="version-tag">${cheat.version || '1.20.4'}</span>
+                    </div>
+                    <h3>${cheat.name}</h3>
+                    <span class="category-tag">${categoryNames[cheat.category] || cheat.category}</span>
+                    <p>${cheat.desc || 'Описание отсутствует'}</p>
+                    <div class="cheat-tags">${tagsHtml}</div>
+                    ${fileSize ? `<div class="file-size"><i class="fas fa-hdd"></i> ${fileSize}</div>` : ''}
+                    <button class="btn-load load-cheat-btn" data-id="${cheat.id}">
+                        <i class="fas fa-arrow-circle-down"></i> Скачать и распаковать
+                    </button>
+                    ${cheat.virusLink ? `<div class="virus-link"><a href="${cheat.virusLink}" target="_blank"><i class="fas fa-shield-alt"></i> Проверить на VirusTotal</a></div>` : ''}
                 `;
                 grid.appendChild(card);
             });
 
             document.querySelectorAll('.load-cheat-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
+                btn.addEventListener('click', function() {
                     if (!currentUser) {
-                        showToast('❌ Для скачивания необходимо авторизоваться!', true);
+                        showToast('❌ Авторизуйтесь для скачивания!', true);
                         return;
                     }
-                    const idx = parseInt(this.getAttribute('data-index'));
-                    if (!isNaN(idx) && idx >= 0 && idx < cheatFiles.length) {
-                        const cheat = cheatFiles[idx];
-                        if (cheat.fileObject) {
-                            const url = URL.createObjectURL(cheat.fileObject);
-                            const a = document.createElement('a');
-                            a.href = url;
-                            a.download = cheat.fileName || cheat.name + '.zip';
-                            document.body.appendChild(a);
-                            a.click();
-                            document.body.removeChild(a);
-                            URL.revokeObjectURL(url);
-                            showToast(`📦 Скачивание "${cheat.fileName || cheat.name + '.zip'}" (${cheat.size || '?'} ГБ) начато!`);
-                        } else {
-                            showToast(`📦 Скачивание "${cheat.fileName || cheat.name + '.zip'}" (${cheat.size || '?'} ГБ) для ${currentUser}...`);
-                            const fakeZip = new Blob(['Это демонстрационный ZIP-файл для чита ' + cheat.name], { type: 'application/zip' });
-                            const url = URL.createObjectURL(fakeZip);
-                            const a = document.createElement('a');
-                            a.href = url;
-                            a.download = cheat.fileName || cheat.name + '.zip';
-                            document.body.appendChild(a);
-                            a.click();
-                            document.body.removeChild(a);
-                            URL.revokeObjectURL(url);
-                            setTimeout(() => {
-                                showToast(`✅ Файл "${cheat.fileName || cheat.name + '.zip'}" успешно загружен!`);
-                            }, 1000);
-                        }
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const cheat = cheatFiles.find(c => c.id === id);
+                    if (!cheat) { showToast('❌ Чит не найден.', true); return; }
+                    if (cheat.fileObject) {
+                        // Скачиваем и распаковываем (имитация)
+                        const url = URL.createObjectURL(cheat.fileObject);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = cheat.fileName || cheat.name + '.zip';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                        showToast(`📦 Скачивание и распаковка "${cheat.fileName || cheat.name + '.zip'}" начата!`);
+                        setTimeout(() => {
+                            showToast(`✅ Файл "${cheat.fileName || cheat.name + '.zip'}" успешно распакован!`);
+                        }, 2000);
                     } else {
-                        showToast('❌ Ошибка загрузки файла.', true);
+                        const fakeZip = new Blob(['Демо-версия чита ' + cheat.name], { type: 'application/zip' });
+                        const url = URL.createObjectURL(fakeZip);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = cheat.fileName || cheat.name + '.zip';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                        showToast(`📦 Демо-версия "${cheat.name}" скачана и распакована!`);
                     }
                 });
             });
 
-            cheatCountLabel.textContent = `${cheatFiles.length} файлов`;
+            cheatCountLabel.textContent = `${filtered.length} файлов`;
         }
 
-        // ---- Обновить список файлов в админке ----
-        function renderFileList() {
-            fileListEl.innerHTML = '';
-            if (!cheatFiles || cheatFiles.length === 0) {
-                fileListEl.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem; text-align: center;">ZIP-файлов пока нет</div>';
-                fileCount.textContent = '0';
+        // ---- Фильтры ----
+        versionFilter.addEventListener('change', renderCheats);
+        categoryFilter.addEventListener('change', renderCheats);
+        searchFilter.addEventListener('input', renderCheats);
+        resetFiltersBtn.addEventListener('click', function() {
+            versionFilter.value = 'all';
+            categoryFilter.value = 'all';
+            searchFilter.value = '';
+            renderCheats();
+        });
+
+        // ---- Инструкции ----
+        document.querySelectorAll('.instruction-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const type = this.getAttribute('data-instr');
+                const texts = {
+                    fabric: '1. Скачайте Fabric Installer\n2. Выберите версию Minecraft\n3. Установите Fabric\n4. Поместите чит в папку mods',
+                    forge: '1. Скачайте Forge для нужной версии\n2. Установите Forge\n3. Поместите чит в папку mods',
+                    dll: '1. Скачайте DLL-файл\n2. Запустите лаунчер\n3. Используйте инжектор для внедрения',
+                    launcher: '1. Скачайте клиент\n2. Распакуйте архив\n3. Запустите .exe файл'
+                };
+                showToast(`📖 ${texts[type] || 'Инструкция будет добавлена'}`);
+            });
+        });
+
+        // ---- Админ-панель ----
+        adminToggleBtn.addEventListener('click', function() {
+            const isActive = adminPanel.classList.toggle('active');
+            this.innerHTML = isActive ?
+                '<i class="fas fa-shield-alt"></i> Скрыть админку' :
+                '<i class="fas fa-shield-alt"></i> Админ-панель';
+            if (!isActive) {
+                isAdminLoggedIn = false;
+                adminContent.style.display = 'none';
+                document.getElementById('adminLoginArea').style.display = 'flex';
+                adminLoginStatus.innerHTML = '<i class="fas fa-info-circle"></i> Введите мастер-пароль';
+                adminPasswordInput.value = '';
+            }
+        });
+
+        adminLoginBtn.addEventListener('click', function() {
+            if (adminPasswordInput.value.trim() === MASTER_PASSWORD) {
+                isAdminLoggedIn = true;
+                adminContent.style.display = 'block';
+                document.getElementById('adminLoginArea').style.display = 'none';
+                adminLoginStatus.innerHTML = '<i class="fas fa-check-circle"></i> Вы вошли как администратор';
+                showToast('✅ Доступ к админ-панели получен!');
+            } else {
+                showToast('❌ Неверный мастер-пароль!', true);
+            }
+        });
+
+        grantAdminBtn.addEventListener('click', function() {
+            if (!isAdminLoggedIn) { showToast('❌ Войдите в админку.', true); return; }
+            const nick = adminNickInput.value.trim();
+            if (!nick) { showToast('❌ Введите ник.', true); return; }
+            if (!users[nick] && nick !== 'nowSat') { showToast(`❌ ${nick} не зарегистрирован.`, true); return; }
+            if (admins.includes(nick)) { showToast(`ℹ️ ${nick} уже админ.`); return; }
+            admins.push(nick);
+            saveData();
+            updateAdminList();
+            renderOnlinePlayers();
+            adminNickInput.value = '';
+            showToast(`✅ ${nick} стал администратором.`);
+        });
+
+        revokeAdminBtn.addEventListener('click', function() {
+            if (!isAdminLoggedIn) { showToast('❌ Войдите в админку.', true); return; }
+            const nick = adminNickInput.value.trim();
+            if (!nick) { showToast('❌ Введите ник.', true); return; }
+            if (nick === 'nowSat') { showToast('❌ Нельзя убрать nowSat.', true); return; }
+            const idx = admins.indexOf(nick);
+            if (idx === -1) { showToast(`❌ ${nick} не админ.`, true); return; }
+            admins.splice(idx, 1);
+            saveData();
+            updateAdminList();
+            renderOnlinePlayers();
+            adminNickInput.value = '';
+            showToast(`⛔ ${nick} лишён прав.`);
+        });
+
+        function updateAdminList() {
+            adminListDisplay.textContent = admins.join(', ') || 'нет';
+        }
+
+        // ---- Добавление чита ----
+        cheatDropArea.addEventListener('click', function() {
+            if (!isAdminLoggedIn) { showToast('❌ Войдите в админку.', true); return; }
+            cheatFileInput.click();
+        });
+
+        cheatFileInput.addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+                const file = this.files[0];
+                if (file.type === 'application/zip' || file.name.endsWith('.zip')) {
+                    selectedCheatFile = file;
+                    const sizeMB = (file.size / 1024 / 1024).toFixed(2);
+                    selectedCheatName.textContent = `📄 ${file.name} (${sizeMB} МБ)`;
+                    showToast(`✅ Выбран ZIP: ${file.name}`);
+                } else {
+                    showToast('❌ Выберите ZIP-файл.', true);
+                    selectedCheatFile = null;
+                    selectedCheatName.textContent = 'Файл не выбран';
+                    this.value = '';
+                }
+            }
+        });
+
+        addCheatBtn.addEventListener('click', function() {
+            if (!isAdminLoggedIn) { showToast('❌ Войдите в админку.', true); return; }
+            const name = cheatNameInput.value.trim();
+            if (!name) { showToast('❌ Введите название.', true); return; }
+            const version = cheatVersionInput.value.trim() || '1.20.4';
+            const category = cheatCategoryInput.value;
+            const tags = cheatTagInput.value.trim() ? cheatTagInput.value.trim().split(',').map(t => t.trim()) : ['safe'];
+            const desc = cheatDescInput.value.trim() || 'Описание отсутствует';
+            const virusLink = cheatVirusInput.value.trim() || '';
+
+            if (!selectedCheatFile) {
+                showToast('❌ Выберите ZIP-файл.', true);
                 return;
             }
-            cheatFiles.forEach((file, index) => {
+
+            const fileSizeGB = selectedCheatFile.size / (1024 * 1024 * 1024);
+            if (fileSizeGB > 5) {
+                showToast(`❌ Файл ${fileSizeGB.toFixed(2)} ГБ > 5 ГБ!`, true);
+                return;
+            }
+
+            const fileSizeMB = (selectedCheatFile.size / 1024 / 1024).toFixed(2);
+
+            cheatFiles.push({
+                id: nextCheatId++,
+                name: name,
+                version: version,
+                category: category,
+                desc: desc,
+                tags: tags,
+                virusLink: virusLink,
+                fileName: selectedCheatFile.name,
+                fileSize: fileSizeMB,
+                fileObject: selectedCheatFile
+            });
+
+            saveData();
+            renderCheats();
+            renderFileList();
+
+            cheatNameInput.value = '';
+            cheatVersionInput.value = '';
+            cheatTagInput.value = '';
+            cheatDescInput.value = '';
+            cheatVirusInput.value = '';
+            selectedCheatFile = null;
+            selectedCheatName.textContent = 'Файл не выбран';
+            cheatFileInput.value = '';
+
+            showToast(`✅ Чит "${name}" добавлен!`);
+        });
+
+        // ---- Файлы в админке ----
+        function renderFileList() {
+            const fileListEl = document.getElementById('fileList');
+            if (!fileListEl) return;
+            fileListEl.innerHTML = '';
+            if (!cheatFiles || cheatFiles.length === 0) {
+                fileListEl.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem;">Нет файлов</div>';
+                return;
+            }
+            cheatFiles.forEach((file) => {
                 const div = document.createElement('div');
                 div.className = 'file-item';
-                const icon = file.icon || 'fa-file-archive';
-                const sizeStr = file.size ? `${file.size} ГБ` : '';
-                const fileName = file.fileName || 'file.zip';
+                div.style.cssText = 'display:flex; justify-content:space-between; padding:0.3rem 0; border-bottom:1px solid #1d2b36;';
                 div.innerHTML = `
-                    <span class="fname"><i class="fas ${icon}"></i> ${file.name} ${sizeStr} · ${fileName} ${file.tag ? '· '+file.tag : ''}</span>
-                    <button class="del-btn" data-index="${index}"><i class="fas fa-trash-alt"></i></button>
+                    <span>${file.name} (${file.version}) ${file.fileSize ? file.fileSize + ' МБ' : ''}</span>
+                    <button class="del-btn" data-id="${file.id}" style="background:none; border:none; color:#b06a7a; cursor:pointer;">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
                 `;
                 fileListEl.appendChild(div);
             });
-
             document.querySelectorAll('.file-item .del-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    if (!isAdminLoggedIn) {
-                        showToast('❌ Требуется вход в админку.', true);
-                        return;
-                    }
-                    const idx = parseInt(this.getAttribute('data-index'));
-                    if (!isNaN(idx) && idx >= 0 && idx < cheatFiles.length) {
-                        const removed = cheatFiles.splice(idx, 1)[0];
-                        renderFileList();
+                    if (!isAdminLoggedIn) { showToast('❌ Войдите в админку.', true); return; }
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const idx = cheatFiles.findIndex(c => c.id === id);
+                    if (idx !== -1) {
+                        cheatFiles.splice(idx, 1);
+                        saveData();
                         renderCheats();
-                        saveCheatsWithFiles();
-                        showToast(`🗑️ Файл "${removed.fileName || removed.name}" удалён.`);
+                        renderFileList();
+                        showToast('🗑️ Файл удалён.');
                     }
                 });
             });
-
-            fileCount.textContent = cheatFiles.length;
         }
+
+        // ---- Сайт ----
+        function openSite() {
+            window.open(SITE_URL, '_blank');
+            showToast(`🌐 Открываем сайт: ${SITE_URL}`);
+        }
+
+        openSiteBtn.addEventListener('click', function(e) { e.preventDefault(); openSite(); });
+        copySiteBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            navigator.clipboard.writeText(SITE_URL).then(() => {
+                showToast('📋 Ссылка скопирована!');
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = SITE_URL;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('📋 Ссылка скопирована!');
+            });
+        });
+
+        // ---- Остальные ссылки ----
+        document.querySelectorAll('#discordLink, #youtubeLink, #supportLink').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                showToast(`🔗 Переход на ${this.innerText.trim()}`);
+            });
+        });
+
+        document.getElementById('userBadge').addEventListener('click', function() {
+            if (currentUser) {
+                showToast(`🆔 ${currentUser}${admins.includes(currentUser) ? ' (админ)' : ''}`);
+            } else {
+                showToast('👤 Вы не авторизованы.');
+            }
+        });
 
         // ---- Тост ----
         function showToast(message, isError = false) {
@@ -1610,280 +1893,26 @@
             }, 4500);
         }
 
-        // ---- Обновить список админов ----
-        function updateAdminList() {
-            adminListDisplay.textContent = admins.join(', ') || 'нет';
-            saveData();
-        }
-
-        // ---- Админ-панель ----
-        let adminVisible = false;
-        adminToggleBtn.addEventListener('click', function() {
-            adminVisible = !adminVisible;
-            adminPanel.classList.toggle('active', adminVisible);
-            this.innerHTML = adminVisible ?
-                '<i class="fas fa-shield-alt"></i> Скрыть админку' :
-                '<i class="fas fa-shield-alt"></i> Админ-панель';
-            if (!adminVisible) {
-                isAdminLoggedIn = false;
-                adminContent.style.display = 'none';
-                document.getElementById('adminLoginArea').style.display = 'flex';
-                adminLoginStatus.innerHTML = '<i class="fas fa-info-circle"></i> Для доступа к админ-панели введите мастер-пароль';
-                adminLoginStatus.className = 'admin-login-status';
-                adminPasswordInput.value = '';
-            }
-        });
-
-        // ---- Вход в админку ----
-        adminLoginBtn.addEventListener('click', function() {
-            const pass = adminPasswordInput.value.trim();
-            if (pass === MASTER_PASSWORD) {
-                isAdminLoggedIn = true;
-                adminContent.style.display = 'block';
-                document.getElementById('adminLoginArea').style.display = 'none';
-                adminLoginStatus.innerHTML = '<i class="fas fa-check-circle"></i> Вы вошли как администратор';
-                adminLoginStatus.className = 'admin-login-status';
-                showToast('✅ Доступ к админ-панели получен!');
-            } else {
-                adminLoginStatus.innerHTML = '<i class="fas fa-times-circle error"></i> Неверный мастер-пароль!';
-                adminLoginStatus.className = 'admin-login-status';
-                showToast('❌ Неверный мастер-пароль!', true);
-            }
-        });
-
-        // ---- Выдать админку ----
-        grantAdminBtn.addEventListener('click', function() {
-            if (!isAdminLoggedIn) {
-                showToast('❌ Требуется вход в админку.', true);
-                return;
-            }
-            const nick = adminNickInput.value.trim();
-            if (!nick) {
-                showToast('❌ Введите ник для выдачи прав.', true);
-                return;
-            }
-            if (!users[nick] && nick !== 'nowSat') {
-                showToast(`❌ Пользователь "${nick}" не зарегистрирован.`, true);
-                return;
-            }
-            if (admins.includes(nick)) {
-                showToast(`ℹ️ ${nick} уже в списке администраторов.`);
-                return;
-            }
-            admins.push(nick);
-            updateAdminList();
-            renderOnlinePlayers();
-            adminNickInput.value = '';
-            showToast(`✅ Права администратора выданы пользователю "${nick}".`);
-        });
-
-        // ---- Забрать админку ----
-        revokeAdminBtn.addEventListener('click', function() {
-            if (!isAdminLoggedIn) {
-                showToast('❌ Требуется вход в админку.', true);
-                return;
-            }
-            const nick = adminNickInput.value.trim();
-            if (!nick) {
-                showToast('❌ Введите ник для лишения прав.', true);
-                return;
-            }
-            if (nick === 'nowSat') {
-                showToast('❌ Нельзя забрать права у nowSat.', true);
-                return;
-            }
-            const idx = admins.indexOf(nick);
-            if (idx === -1) {
-                showToast(`❌ ${nick} не является администратором.`, true);
-                return;
-            }
-            admins.splice(idx, 1);
-            updateAdminList();
-            renderOnlinePlayers();
-            adminNickInput.value = '';
-            showToast(`⛔ Пользователь "${nick}" лишён прав администратора.`);
-        });
-
-        // ---- Работа с выбором ZIP-файла ----
-        zipDropArea.addEventListener('click', function() {
-            if (!isAdminLoggedIn) {
-                showToast('❌ Требуется вход в админку.', true);
-                return;
-            }
-            zipFileInput.click();
-        });
-
-        zipFileInput.addEventListener('change', function(e) {
-            if (!isAdminLoggedIn) return;
-            if (this.files && this.files.length > 0) {
-                const file = this.files[0];
-                if (file.type === 'application/zip' || file.name.endsWith('.zip')) {
-                    selectedFile = file;
-                    selectedZipName.textContent = `📄 ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} МБ)`;
-                    showToast(`✅ Выбран ZIP-файл: ${file.name}`);
-                } else {
-                    showToast('❌ Пожалуйста, выберите ZIP-файл.', true);
-                    selectedFile = null;
-                    selectedZipName.textContent = 'Файл не выбран';
-                    this.value = '';
-                }
-            }
-        });
-
-        zipDropArea.addEventListener('dragover', function(e) {
-            e.preventDefault();
-            if (!isAdminLoggedIn) return;
-            this.style.borderColor = '#b78aff';
-            this.style.background = '#121e2c';
-        });
-
-        zipDropArea.addEventListener('dragleave', function(e) {
-            e.preventDefault();
-            this.style.borderColor = '#3a5068';
-            this.style.background = '#0a121d';
-        });
-
-        zipDropArea.addEventListener('drop', function(e) {
-            e.preventDefault();
-            this.style.borderColor = '#3a5068';
-            this.style.background = '#0a121d';
-            if (!isAdminLoggedIn) {
-                showToast('❌ Требуется вход в админку.', true);
-                return;
-            }
-            const files = e.dataTransfer.files;
-            if (files && files.length > 0) {
-                const file = files[0];
-                if (file.type === 'application/zip' || file.name.endsWith('.zip')) {
-                    selectedFile = file;
-                    selectedZipName.textContent = `📄 ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} МБ)`;
-                    zipFileInput.files = files;
-                    showToast(`✅ Выбран ZIP-файл: ${file.name}`);
-                } else {
-                    showToast('❌ Пожалуйста, перетащите ZIP-файл.', true);
-                    selectedFile = null;
-                    selectedZipName.textContent = 'Файл не выбран';
-                }
-            }
-        });
-
-        // ---- Загрузка ZIP-файла в библиотеку ----
-        uploadZipBtn.addEventListener('click', function() {
-            if (!isAdminLoggedIn) {
-                showToast('❌ Требуется вход в админку.', true);
-                return;
-            }
-            const name = zipNameInput.value.trim();
-            if (!name) {
-                showToast('❌ Введите название чита.', true);
-                return;
-            }
-
-            if (!selectedFile) {
-                showToast('❌ Выберите ZIP-файл для загрузки.', true);
-                return;
-            }
-
-            const fileSizeGB = selectedFile.size / (1024 * 1024 * 1024);
-            if (fileSizeGB > 5) {
-                showToast(`❌ Размер файла (${fileSizeGB.toFixed(2)} ГБ) превышает лимит в 5 ГБ!`, true);
-                return;
-            }
-
-            const tag = zipTagInput.value.trim() || 'Чит';
-            const desc = zipDescInput.value.trim() || 'Описание отсутствует';
-
-            const icons = ['fa-file-archive', 'fa-box', 'fa-cube', 'fa-puzzle-piece', 'fa-cogs', 'fa-tools', 'fa-download', 'fa-archive'];
-            const icon = icons[Math.floor(Math.random() * icons.length)];
-
-            cheatFiles.push({
-                name: name,
-                desc: desc,
-                tag: tag,
-                icon: icon,
-                size: parseFloat(fileSizeGB.toFixed(2)),
-                fileName: selectedFile.name,
-                fileObject: selectedFile
-            });
-
-            renderFileList();
-            renderCheats();
-            saveCheatsWithFiles();
-
-            zipNameInput.value = '';
-            zipTagInput.value = '';
-            zipDescInput.value = '';
-            selectedFile = null;
-            selectedZipName.textContent = 'Файл не выбран';
-            zipFileInput.value = '';
-
-            showToast(`📦 ZIP-файл "${name}" успешно загружен! Размер: ${fileSizeGB.toFixed(2)} ГБ`);
-        });
-
-        // ---- Сайт ----
-        function openSite() {
-            window.open(SITE_URL, '_blank');
-            showToast(`🌐 Открываем сайт: ${SITE_URL}`);
-        }
-
-        openSiteBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            openSite();
-        });
-
-        copySiteBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            navigator.clipboard.writeText(SITE_URL).then(() => {
-                showToast(`📋 Ссылка скопирована в буфер обмена!`, false);
-            }).catch(() => {
-                const textarea = document.createElement('textarea');
-                textarea.value = SITE_URL;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                showToast(`📋 Ссылка скопирована!`, false);
-            });
-        });
-
-        // ---- Остальные ссылки ----
-        document.querySelectorAll('#discordLink, #youtubeLink, #supportLink').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const text = this.innerText.trim() || 'ссылка';
-                showToast(`🔗 Переход на ${text} (демо-режим)`);
-            });
-        });
-
-        document.getElementById('userBadge').addEventListener('click', function() {
-            if (currentUser) {
-                showToast(`🆔 Текущий профиль: ${currentUser}${admins.includes(currentUser) ? ' (администратор)' : ''}`);
-            } else {
-                showToast(`👤 Вы не авторизованы. Войдите как nowSat!`);
-            }
-        });
-
         // ---- Инициализация ----
         updateUserDisplay();
         updateAdminList();
         renderCheats();
-        renderFileList();
         renderReviews();
+        renderConfigs();
         renderOnlinePlayers();
+        renderFileList();
 
         setTimeout(() => {
             if (currentUser) {
                 showToast(`👋 С возвращением, ${currentUser}!`);
             } else {
-                showToast(`👋 Добро пожаловать! Войдите как nowSat, чтобы получить доступ ко всем читам.`);
+                showToast(`👋 Добро пожаловать! Войдите в аккаунт, чтобы скачивать читы.`);
             }
         }, 600);
 
-        console.log(`✅ Mrsoftuk_SAT лаунчер загружен. Админы: ${admins.join(', ')}. Мастер-пароль: ${MASTER_PASSWORD}`);
-        console.log(`🔑 Пароль для nowSat: ${NOWSAT_PASSWORD}`);
-        console.log(`📁 Файлов в библиотеке: ${cheatFiles.length}`);
-        console.log(`📝 Отзывов: ${reviews.length}`);
-        console.log(`🌐 Ссылка на сайт: ${SITE_URL}`);
+        console.log(`✅ Mrsoftuk_SAT загружен. Админы: ${admins.join(', ')}`);
+        console.log(`📁 Читов: ${cheatFiles.length}, отзывов: ${reviews.length}, конфигов: ${configs.length}`);
+        console.log(`🔒 Пароли скрыты для безопасности.`);
     })();
 </script>
 
