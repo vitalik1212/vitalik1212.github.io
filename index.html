@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mrsoftuk_SAT | Лаунчер nowSat</title>
+    <title>Mrsoftuk_SAT | Лаунчер nowSat + Змейка</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -772,7 +772,7 @@
             }
         }
 
-        /* Стили для блока с сайтом */
+        /* Блок САЙТ */
         .site-section {
             margin-top: 2rem;
             background: #111d2a;
@@ -793,7 +793,7 @@
         }
 
         .site-section h3 i {
-            color: #ff6b6b;
+            color: #4affb5;
         }
 
         .site-section .site-buttons {
@@ -827,33 +827,22 @@
         }
 
         .site-btn.primary {
-            background: #4a1e6a;
-            border-color: #9a6aff;
-            color: #f0e8ff;
+            background: #1a4a3a;
+            border-color: #4affb5;
+            color: #d5f5ec;
         }
 
         .site-btn.primary:hover {
-            background: #6a2a8a;
-            border-color: #b78aff;
-        }
-
-        .site-btn.danger {
-            background: #4a1e2e;
-            border-color: #a04a6a;
-            color: #ffc8d6;
-        }
-
-        .site-btn.danger:hover {
-            background: #6a2a3e;
-            border-color: #d46a8a;
+            background: #2a6a4a;
+            border-color: #6affc5;
         }
 
         .site-url {
             background: #0a121d;
             padding: 0.5rem 1.2rem;
             border-radius: 60px;
-            border: 1px solid #3a5068;
-            color: #b3d9f0;
+            border: 1px solid #4affb544;
+            color: #4affb5;
             font-size: 0.85rem;
             font-family: monospace;
             word-break: break-all;
@@ -866,14 +855,9 @@
             padding: 0.8rem 1.2rem;
             background: #0a121d;
             border-radius: 1.2rem;
-            border-left: 3px solid #ff6b6b;
+            border-left: 3px solid #4affb5;
             font-size: 0.9rem;
             color: #b0c9dd;
-        }
-
-        .site-info .error-text {
-            color: #ff6b6b;
-            font-weight: 600;
         }
 
         .site-info .success-text {
@@ -883,6 +867,145 @@
 
         .site-info i {
             margin-right: 8px;
+        }
+
+        /* === ЗМЕЙКА === */
+        .snake-section {
+            margin-top: 2rem;
+            background: #111d2a;
+            border-radius: 2.5rem;
+            padding: 1.5rem 2rem;
+            border: 1px solid #2d5a7a;
+            box-shadow: 0 0 40px #2d5a7a33;
+        }
+
+        .snake-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #7fc9ff;
+        }
+
+        .snake-section h3 i {
+            color: #facc15;
+        }
+
+        .snake-game-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        #snakeCanvas {
+            background: #0a121d;
+            border-radius: 1.2rem;
+            border: 2px solid #2d5a7a;
+            box-shadow: 0 0 30px #2d5a7a33;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .snake-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .snake-controls button {
+            background: #1a3a4a;
+            border: 1px solid #4a8aaa;
+            color: #d5f0ff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .snake-controls button:hover {
+            background: #2a5a6a;
+            border-color: #6aaaca;
+            box-shadow: 0 0 25px #4a8aaa55;
+        }
+
+        .snake-controls button.danger {
+            background: #4a1a2a;
+            border-color: #8a4a5a;
+        }
+
+        .snake-controls button.danger:hover {
+            background: #6a2a3a;
+            border-color: #aa6a7a;
+        }
+
+        .snake-score {
+            font-size: 1.1rem;
+            color: #b0c9dd;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .snake-score span {
+            color: #facc15;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .snake-mobile-controls {
+            display: none;
+            grid-template-columns: repeat(3, 60px);
+            grid-template-rows: repeat(3, 60px);
+            gap: 4px;
+            margin-top: 0.5rem;
+        }
+
+        .snake-mobile-controls button {
+            background: #1a2a3a;
+            border: 1px solid #4a6a7a;
+            color: #b0d5e5;
+            font-size: 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .snake-mobile-controls button:hover {
+            background: #2a4a5a;
+            border-color: #6a8aaa;
+        }
+
+        .snake-mobile-controls .empty {
+            background: transparent;
+            border: none;
+            cursor: default;
+        }
+
+        .snake-mobile-controls .empty:hover {
+            background: transparent;
+        }
+
+        @media (max-width: 600px) {
+            .snake-mobile-controls {
+                display: grid;
+            }
+            #snakeCanvas {
+                width: 100%;
+                max-width: 340px;
+            }
         }
 
         /* Футер */
@@ -1015,6 +1138,16 @@
             }
             .site-url {
                 text-align: center;
+            }
+            .snake-section {
+                padding: 1rem 1.2rem;
+            }
+            .snake-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .snake-controls button {
+                justify-content: center;
             }
         }
 
@@ -1173,24 +1306,49 @@
         </div>
     </div>
 
-    <!-- Блок САЙТ с объяснением -->
+    <!-- Блок САЙТ -->
     <div class="site-section">
         <h3><i class="fas fa-globe"></i> 🌐 Официальный сайт Mrsoftuk_SAT</h3>
         <div class="site-buttons">
-            <span class="site-url">https://mrsoftu.ru/dcaw/cdg.cu</span>
-            <button class="site-btn primary" id="openSiteBtn1"><i class="fas fa-external-link-alt"></i> Открыть</button>
+            <span class="site-url">https://vitalik1212.github.io/</span>
+            <button class="site-btn primary" id="openSiteBtn"><i class="fas fa-external-link-alt"></i> Открыть</button>
             <button class="site-btn" id="copySiteBtn"><i class="fas fa-copy"></i> Копировать</button>
         </div>
-        <div class="site-info" id="siteInfo">
-            <i class="fas fa-info-circle"></i>
-            <span>🔍 <span class="error-text">DNS_PROBE_FINISHED_NXDOMAIN</span> — это значит, что домен <strong>mrsoftu.ru</strong> не зарегистрирован или не настроен.</span>
-            <br>
+        <div class="site-info">
+            <i class="fas fa-check-circle success-text"></i>
+            <span class="success-text">✅ Ссылка обновлена!</span>
             <span style="display: block; margin-top: 6px;">
-                <i class="fas fa-lightbulb"></i>
-                <strong>Решение:</strong> Замените ссылку на реальный домен. 
-                Измените <span style="color: #ff6b6b; font-family: monospace;">'https://mrsoftu.ru/dcaw/cdg.cu'</span> 
-                на свой рабочий URL в коде (строка с <span style="color: #4affb5; font-family: monospace;">SITE_URL</span>).
+                <i class="fas fa-arrow-right"></i>
+                Теперь сайт открывается по адресу: <strong style="color: #4affb5;">https://vitalik1212.github.io/</strong>
             </span>
+        </div>
+    </div>
+
+    <!-- === МИНИ-ИГРА ЗМЕЙКА === -->
+    <div class="snake-section">
+        <h3><i class="fas fa-gamepad"></i> 🐍 Змейка</h3>
+        <div class="snake-game-wrapper">
+            <canvas id="snakeCanvas" width="400" height="400"></canvas>
+            <div class="snake-controls">
+                <div class="snake-score">
+                    <i class="fas fa-star"></i> Счёт: <span id="snakeScore">0</span>
+                </div>
+                <button id="snakeStartBtn"><i class="fas fa-play"></i> Старт</button>
+                <button id="snakePauseBtn"><i class="fas fa-pause"></i> Пауза</button>
+                <button class="danger" id="snakeResetBtn"><i class="fas fa-redo"></i> Сброс</button>
+            </div>
+            <!-- Мобильные кнопки -->
+            <div class="snake-mobile-controls" id="snakeMobileControls">
+                <button class="empty"></button>
+                <button data-dir="up"><i class="fas fa-arrow-up"></i></button>
+                <button class="empty"></button>
+                <button data-dir="left"><i class="fas fa-arrow-left"></i></button>
+                <button class="empty"></button>
+                <button data-dir="right"><i class="fas fa-arrow-right"></i></button>
+                <button class="empty"></button>
+                <button data-dir="down"><i class="fas fa-arrow-down"></i></button>
+                <button class="empty"></button>
+            </div>
         </div>
     </div>
 
@@ -1216,15 +1374,295 @@
 <script>
     (function() {
         // ====== НАСТРОЙКА САЙТА ======
-        // ⚠️ ИЗМЕНИТЕ ЭТУ ССЫЛКУ НА СВОЙ РАБОЧИЙ ДОМЕН!
-        const SITE_URL = 'https://mrsoftu.ru/dcaw/cdg.cu';
-        // =================================
-
+        const SITE_URL = 'https://vitalik1212.github.io/';
         const MASTER_PASSWORD = 'admin123';
         let admins = ['nowSat'];
         let users = {};
         let currentUser = null;
         let cheatFiles = [];
+
+        // ---- ЗМЕЙКА ----
+        const canvas = document.getElementById('snakeCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('snakeScore');
+
+        const GRID_SIZE = 20;
+        const TILE_COUNT = 20;
+        const TILE_SIZE = canvas.width / TILE_COUNT;
+
+        let snake = [];
+        let food = {};
+        let direction = { dx: 1, dy: 0 };
+        let nextDirection = { dx: 1, dy: 0 };
+        let score = 0;
+        let gameRunning = false;
+        let gamePaused = false;
+        let gameLoop = null;
+        let speed = 150;
+
+        function initGame() {
+            snake = [
+                { x: 10, y: 10 },
+                { x: 9, y: 10 },
+                { x: 8, y: 10 }
+            ];
+            direction = { dx: 1, dy: 0 };
+            nextDirection = { dx: 1, dy: 0 };
+            score = 0;
+            scoreDisplay.textContent = '0';
+            spawnFood();
+            gameRunning = true;
+            gamePaused = false;
+        }
+
+        function spawnFood() {
+            let newFood;
+            let isOnSnake;
+            do {
+                newFood = {
+                    x: Math.floor(Math.random() * TILE_COUNT),
+                    y: Math.floor(Math.random() * TILE_COUNT)
+                };
+                isOnSnake = snake.some(seg => seg.x === newFood.x && seg.y === newFood.y);
+            } while (isOnSnake);
+            food = newFood;
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Рисуем сетку (фон)
+            ctx.fillStyle = '#0a121d';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#1a2a3a';
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i <= TILE_COUNT; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * TILE_SIZE, 0);
+                ctx.lineTo(i * TILE_SIZE, canvas.height);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, i * TILE_SIZE);
+                ctx.lineTo(canvas.width, i * TILE_SIZE);
+                ctx.stroke();
+            }
+
+            // Змейка
+            snake.forEach((seg, index) => {
+                const isHead = index === 0;
+                const gradient = ctx.createRadialGradient(
+                    seg.x * TILE_SIZE + TILE_SIZE/2,
+                    seg.y * TILE_SIZE + TILE_SIZE/2,
+                    2,
+                    seg.x * TILE_SIZE + TILE_SIZE/2,
+                    seg.y * TILE_SIZE + TILE_SIZE/2,
+                    TILE_SIZE/2
+                );
+                if (isHead) {
+                    gradient.addColorStop(0, '#4affb5');
+                    gradient.addColorStop(1, '#00c8a0');
+                } else {
+                    const ratio = 1 - (index / snake.length) * 0.6;
+                    gradient.addColorStop(0, `rgba(0, 255, 200, ${ratio})`);
+                    gradient.addColorStop(1, `rgba(0, 180, 140, ${ratio * 0.8})`);
+                }
+                ctx.fillStyle = gradient;
+                ctx.shadowColor = isHead ? '#4affb5' : 'transparent';
+                ctx.shadowBlur = isHead ? 20 : 0;
+                ctx.beginPath();
+                ctx.roundRect(seg.x * TILE_SIZE + 1, seg.y * TILE_SIZE + 1, TILE_SIZE - 2, TILE_SIZE - 2, 4);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            });
+
+            // Еда
+            ctx.shadowColor = '#facc15';
+            ctx.shadowBlur = 25;
+            ctx.fillStyle = '#facc15';
+            ctx.beginPath();
+            ctx.arc(food.x * TILE_SIZE + TILE_SIZE/2, food.y * TILE_SIZE + TILE_SIZE/2, TILE_SIZE/2 - 2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+            ctx.fillStyle = '#ffdd44';
+            ctx.beginPath();
+            ctx.arc(food.x * TILE_SIZE + TILE_SIZE/2 - 2, food.y * TILE_SIZE + TILE_SIZE/2 - 4, 4, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // roundRect polyfill for canvas
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+                if (r > w/2) r = w/2;
+                if (r > h/2) r = h/2;
+                this.moveTo(x + r, y);
+                this.arcTo(x + w, y, x + w, y + h, r);
+                this.arcTo(x + w, y + h, x, y + h, r);
+                this.arcTo(x, y + h, x, y, r);
+                this.arcTo(x, y, x + w, y, r);
+                return this;
+            };
+        }
+
+        function update() {
+            if (!gameRunning || gamePaused) return;
+
+            // Обновляем направление
+            direction = { ...nextDirection };
+
+            const head = { ...snake[0] };
+            head.x += direction.dx;
+            head.y += direction.dy;
+
+            // Проверка столкновения со стенами
+            if (head.x < 0 || head.x >= TILE_COUNT || head.y < 0 || head.y >= TILE_COUNT) {
+                gameOver();
+                return;
+            }
+
+            // Проверка столкновения с собой
+            const hitSelf = snake.some((seg, index) => index > 0 && seg.x === head.x && seg.y === head.y);
+            if (hitSelf) {
+                gameOver();
+                return;
+            }
+
+            snake.unshift(head);
+
+            // Проверка еды
+            if (head.x === food.x && head.y === food.y) {
+                score++;
+                scoreDisplay.textContent = score;
+                spawnFood();
+                // Увеличиваем скорость
+                if (speed > 60) {
+                    speed -= 2;
+                    resetLoop();
+                }
+            } else {
+                snake.pop();
+            }
+
+            draw();
+        }
+
+        function resetLoop() {
+            if (gameLoop) {
+                clearInterval(gameLoop);
+                gameLoop = null;
+            }
+            if (gameRunning && !gamePaused) {
+                gameLoop = setInterval(update, speed);
+            }
+        }
+
+        function gameOver() {
+            gameRunning = false;
+            if (gameLoop) {
+                clearInterval(gameLoop);
+                gameLoop = null;
+            }
+            showToast(`💀 Игра окончена! Счёт: ${score}`);
+            // Рисуем сообщение на канвасе
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+            ctx.fillRect(0, canvas.height/2 - 40, canvas.width, 80);
+            ctx.fillStyle = '#ff6b6b';
+            ctx.font = 'bold 28px Poppins, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('💀 ИГРА ОКОНЧЕНА', canvas.width/2, canvas.height/2 - 10);
+            ctx.fillStyle = '#b0c9dd';
+            ctx.font = '16px Poppins, sans-serif';
+            ctx.fillText(`Счёт: ${score}`, canvas.width/2, canvas.height/2 + 30);
+        }
+
+        function startGame() {
+            if (gameLoop) {
+                clearInterval(gameLoop);
+                gameLoop = null;
+            }
+            initGame();
+            speed = 150;
+            draw();
+            gameLoop = setInterval(update, speed);
+            showToast('🐍 Игра началась!');
+        }
+
+        function pauseGame() {
+            if (!gameRunning) return;
+            gamePaused = !gamePaused;
+            if (gamePaused) {
+                showToast('⏸️ Пауза');
+                if (gameLoop) {
+                    clearInterval(gameLoop);
+                    gameLoop = null;
+                }
+            } else {
+                showToast('▶️ Продолжаем');
+                gameLoop = setInterval(update, speed);
+            }
+        }
+
+        function resetGame() {
+            if (gameLoop) {
+                clearInterval(gameLoop);
+                gameLoop = null;
+            }
+            gameRunning = false;
+            gamePaused = false;
+            speed = 150;
+            snake = [];
+            score = 0;
+            scoreDisplay.textContent = '0';
+            ctx.fillStyle = '#0a121d';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#4a6a7a';
+            ctx.font = '20px Poppins, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Нажмите "Старт"', canvas.width/2, canvas.height/2);
+            showToast('🔄 Игра сброшена');
+        }
+
+        // Управление клавишами
+        document.addEventListener('keydown', function(e) {
+            if (!gameRunning) return;
+            const key = e.key;
+            e.preventDefault();
+            if (key === 'ArrowUp' && direction.dy !== 1) {
+                nextDirection = { dx: 0, dy: -1 };
+            } else if (key === 'ArrowDown' && direction.dy !== -1) {
+                nextDirection = { dx: 0, dy: 1 };
+            } else if (key === 'ArrowLeft' && direction.dx !== 1) {
+                nextDirection = { dx: -1, dy: 0 };
+            } else if (key === 'ArrowRight' && direction.dx !== -1) {
+                nextDirection = { dx: 1, dy: 0 };
+            }
+        });
+
+        // Мобильные кнопки
+        document.querySelectorAll('#snakeMobileControls button[data-dir]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (!gameRunning) return;
+                const dir = this.getAttribute('data-dir');
+                if (dir === 'up' && direction.dy !== 1) {
+                    nextDirection = { dx: 0, dy: -1 };
+                } else if (dir === 'down' && direction.dy !== -1) {
+                    nextDirection = { dx: 0, dy: 1 };
+                } else if (dir === 'left' && direction.dx !== 1) {
+                    nextDirection = { dx: -1, dy: 0 };
+                } else if (dir === 'right' && direction.dx !== -1) {
+                    nextDirection = { dx: 1, dy: 0 };
+                }
+            });
+        });
+
+        // Кнопки управления игрой
+        document.getElementById('snakeStartBtn').addEventListener('click', startGame);
+        document.getElementById('snakePauseBtn').addEventListener('click', pauseGame);
+        document.getElementById('snakeResetBtn').addEventListener('click', resetGame);
+
+        // Начальная отрисовка
+        resetGame();
 
         // ---- Загрузка сохранённых данных из localStorage ----
         function loadData() {
@@ -1265,7 +1703,6 @@
             }
         }
 
-        // ---- Сохранение данных в localStorage ----
         function saveData() {
             try {
                 localStorage.setItem('mrsoftuk_users', JSON.stringify(users));
@@ -1332,15 +1769,12 @@
         const nickDisplay = document.getElementById('nickDisplay');
         const footerNick = document.getElementById('footerNick');
 
-        // Кнопки сайта
-        const openSiteBtn1 = document.getElementById('openSiteBtn1');
+        const openSiteBtn = document.getElementById('openSiteBtn');
         const copySiteBtn = document.getElementById('copySiteBtn');
-        const siteInfo = document.getElementById('siteInfo');
 
         let selectedFile = null;
         let isAdminLoggedIn = false;
 
-        // ---- Загрузка данных при старте ----
         loadData();
 
         // ---- Обновить отображение пользователя ----
@@ -1358,7 +1792,7 @@
             }
         }
 
-        // ---- Рендер библиотеки читов ----
+        // ---- Рендер библиотеки читов (доступна всем) ----
         function renderCheats() {
             grid.innerHTML = '';
             if (cheatFiles.length === 0) {
@@ -1763,48 +2197,20 @@
 
         // ====== ФУНКЦИИ ДЛЯ РАБОТЫ С САЙТОМ ======
         function openSite() {
-            // Пробуем открыть в новой вкладке
-            const newWindow = window.open(SITE_URL, '_blank');
-            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-                // Если блокируется попап-блокером
-                showToast(`⚠️ Браузер заблокировал открытие. Скопируйте ссылку вручную: ${SITE_URL}`, true);
-                // Дополнительно копируем в буфер обмена
-                navigator.clipboard.writeText(SITE_URL).then(() => {
-                    showToast(`📋 Ссылка скопирована в буфер обмена!`, false);
-                }).catch(() => {
-                    // Если clipboard не работает, показываем ссылку
-                    showToast(`🌐 Перейдите по ссылке: ${SITE_URL}`, false);
-                });
-            } else {
-                showToast(`🌐 Открываем сайт...`);
-                // Через 2 секунды проверяем, загрузилась ли страница
-                setTimeout(() => {
-                    try {
-                        // Пытаемся проверить, загрузилась ли страница
-                        if (newWindow.location.href) {
-                            // Страница загрузилась
-                        }
-                    } catch (e) {
-                        // Если ошибка, значит страница в другом домене — всё работает
-                        showToast(`✅ Сайт открывается в новой вкладке. Если страница не загружается — проверьте подключение.`, false);
-                    }
-                }, 2000);
-            }
+            window.open(SITE_URL, '_blank');
+            showToast(`🌐 Открываем сайт: ${SITE_URL}`);
         }
 
-        // ---- Кнопка "Открыть" ----
-        openSiteBtn1.addEventListener('click', function(e) {
+        openSiteBtn.addEventListener('click', function(e) {
             e.preventDefault();
             openSite();
         });
 
-        // ---- Кнопка "Копировать" ----
         copySiteBtn.addEventListener('click', function(e) {
             e.preventDefault();
             navigator.clipboard.writeText(SITE_URL).then(() => {
                 showToast(`📋 Ссылка скопирована в буфер обмена!`, false);
             }).catch(() => {
-                // Fallback
                 const textarea = document.createElement('textarea');
                 textarea.value = SITE_URL;
                 document.body.appendChild(textarea);
@@ -1850,8 +2256,7 @@
         console.log(`👥 Зарегистрировано пользователей: ${Object.keys(users).length}`);
         console.log(`📁 Файлов в библиотеке: ${cheatFiles.length}`);
         console.log(`🌐 Ссылка на сайт: ${SITE_URL}`);
-        console.log(`⚠️ ПРИЧИНА ОШИБКИ DNS_PROBE_FINISHED_NXDOMAIN: домен ${new URL(SITE_URL).hostname} не зарегистрирован или не настроен.`);
-        console.log(`💡 РЕШЕНИЕ: замените SITE_URL на свой рабочий домен в коде.`);
+        console.log(`🐍 Игра Змейка активна! Управление стрелками на клавиатуре.`);
     })();
 </script>
 
