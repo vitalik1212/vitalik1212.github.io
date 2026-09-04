@@ -513,7 +513,7 @@
         }
 
         .review-list {
-            max-height: 150px;
+            max-height: 200px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -1235,14 +1235,14 @@
         // ====== НАСТРОЙКИ ======
         const SITE_URL = 'https://vitalik1212.github.io/';
         const MASTER_PASSWORD = 'admin123';
-        const NOWSAT_PASSWORD = 'nowsat2024'; // Пароль для nowSat
+        const NOWSAT_PASSWORD = 'nowsat2024';
 
         let admins = ['nowSat'];
         let users = {};
         let currentUser = null;
         let cheatFiles = [];
         let reviews = [];
-        let onlinePlayers = ['nowSat', 'Player1', 'Alex', 'MinerPro', 'Crafter']; // демо-список
+        let onlinePlayers = ['nowSat', 'Player1', 'Alex', 'MinerPro', 'Crafter'];
 
         // ---- Загрузка сохранённых данных из localStorage ----
         function loadData() {
@@ -1421,6 +1421,10 @@
         // ---- Онлайн-игроки ----
         function renderOnlinePlayers() {
             onlineList.innerHTML = '';
+            if (!onlinePlayers || onlinePlayers.length === 0) {
+                onlineList.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem;">Нет игроков онлайн</div>';
+                return;
+            }
             onlinePlayers.forEach(player => {
                 const div = document.createElement('div');
                 div.className = 'online-player';
@@ -1438,17 +1442,19 @@
         // ---- Отзывы ----
         function renderReviews() {
             reviewList.innerHTML = '';
-            if (reviews.length === 0) {
+            if (!reviews || reviews.length === 0) {
                 reviewList.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem; text-align: center;">Пока нет отзывов. Будьте первым!</div>';
                 return;
             }
-            reviews.slice().reverse().forEach(review => {
+            // Показываем последние 10 отзывов (сначала новые)
+            const sortedReviews = [...reviews].reverse();
+            sortedReviews.forEach(review => {
                 const div = document.createElement('div');
                 div.className = 'review-item';
                 div.innerHTML = `
-                    <span class="review-user">${review.user}</span>
-                    <span class="review-text">${review.text}</span>
-                    <span class="review-time">${review.time}</span>
+                    <span class="review-user">${review.user || 'Гость'}</span>
+                    <span class="review-text">${review.text || ''}</span>
+                    <span class="review-time">${review.time || ''}</span>
                 `;
                 reviewList.appendChild(div);
             });
@@ -1476,7 +1482,7 @@
         // ---- Рендер библиотеки читов (общая для всех) ----
         function renderCheats() {
             grid.innerHTML = '';
-            if (cheatFiles.length === 0) {
+            if (!cheatFiles || cheatFiles.length === 0) {
                 grid.innerHTML = `
                     <div class="empty-library">
                         <i class="fas fa-box-open"></i>
@@ -1551,7 +1557,7 @@
         // ---- Обновить список файлов в админке ----
         function renderFileList() {
             fileListEl.innerHTML = '';
-            if (cheatFiles.length === 0) {
+            if (!cheatFiles || cheatFiles.length === 0) {
                 fileListEl.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem; text-align: center;">ZIP-файлов пока нет</div>';
                 fileCount.textContent = '0';
                 return;
@@ -1876,6 +1882,7 @@
         console.log(`✅ Mrsoftuk_SAT лаунчер загружен. Админы: ${admins.join(', ')}. Мастер-пароль: ${MASTER_PASSWORD}`);
         console.log(`🔑 Пароль для nowSat: ${NOWSAT_PASSWORD}`);
         console.log(`📁 Файлов в библиотеке: ${cheatFiles.length}`);
+        console.log(`📝 Отзывов: ${reviews.length}`);
         console.log(`🌐 Ссылка на сайт: ${SITE_URL}`);
     })();
 </script>
