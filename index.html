@@ -3,2625 +3,720 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mrsoftuk_SAT | Лаунчер читов</title>
+    <title>CatLavan RP · Промокоды</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
         }
 
         body {
-            background: #0b0d15;
-            color: #e3e8f0;
+            background: linear-gradient(145deg, #0b0e14 0%, #1a1f2b 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 2rem 1rem;
-            background-image: radial-gradient(circle at 20% 30%, #1a1f2e 0%, #0b0d15 80%);
+            padding: 20px;
         }
 
-        .launcher-container {
-            max-width: 1200px;
+        .glass-card {
+            max-width: 1000px;
             width: 100%;
-            background: rgba(14, 18, 28, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 3.5rem;
-            padding: 2.5rem 2.8rem;
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(0, 255, 200, 0.25);
-            border: 1px solid rgba(0, 255, 200, 0.15);
-            transition: all 0.25s;
+            background: rgba(20, 25, 36, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 215, 150, 0.15);
+            border-radius: 48px;
+            padding: 30px 35px 40px;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 215, 150, 0.05);
+            transition: all 0.2s ease;
         }
 
-        .launcher-header {
+        /* шапка */
+        .header {
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2.2rem;
-            padding-bottom: 1.2rem;
-            border-bottom: 1px solid rgba(0, 255, 200, 0.2);
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid rgba(255, 215, 150, 0.1);
+            padding-bottom: 20px;
+            margin-bottom: 28px;
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .brand i {
-            font-size: 2.8rem;
-            color: #00f5d4;
-            text-shadow: 0 0 25px #00f5d4aa, 0 0 70px #00f5d466;
-        }
-
-        .brand h1 {
-            font-size: 2.6rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #b3f0e8, #00f5d4, #4affb5);
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f9d976, #f39c6d);
             -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: transparent;
             letter-spacing: -0.5px;
-            text-shadow: 0 0 40px #00f5d444;
         }
 
-        .brand .version {
+        .logo span {
             font-size: 0.9rem;
-            background: #1f2937;
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            color: #b3e5d4;
-            border: 1px solid #00f5d466;
-            font-weight: 500;
-            margin-left: 6px;
+            color: #aab3c9;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 4px 14px;
+            border-radius: 40px;
+            border: 1px solid #2d3548;
+            margin-left: 8px;
+            -webkit-text-fill-color: #b7c0d6;
         }
 
-        .user-badge {
-            background: #19232f;
-            padding: 0.5rem 1.8rem 0.5rem 1.5rem;
+        .tg-link {
+            background: #1f2a3a;
+            padding: 8px 18px;
             border-radius: 60px;
             display: flex;
             align-items: center;
             gap: 12px;
-            border: 1px solid #2d4055;
-            box-shadow: 0 0 20px rgba(0, 245, 212, 0.15);
-            cursor: pointer;
+            border: 1px solid #3d475e;
             transition: 0.2s;
+            text-decoration: none;
+            color: #d1d9ed;
+            font-weight: 500;
+            font-size: 0.95rem;
         }
 
-        .user-badge:hover {
-            border-color: #00f5d488;
+        .tg-link i {
+            color: #3fa3e0;
+            font-size: 1.4rem;
         }
 
-        .user-badge i {
-            color: #facc15;
-            font-size: 1.3rem;
+        .tg-link:hover {
+            background: #2a354a;
+            border-color: #f3b37e;
+            color: white;
         }
 
-        .user-badge .nick {
-            font-weight: 700;
+        .owner-tag {
+            margin-top: 6px;
+            font-size: 0.8rem;
+            color: #8691aa;
+            background: #161d29;
+            padding: 4px 14px;
+            border-radius: 40px;
+            display: inline-block;
+            border: 1px solid #2b3447;
+        }
+
+        .owner-tag i {
+            color: #f3b37e;
+            margin-right: 6px;
+        }
+
+        /* Донат-баннер */
+        .donate-banner {
+            margin: 12px 0 18px 0;
+            background: linear-gradient(135deg, rgba(243, 179, 126, 0.12), rgba(243, 179, 126, 0.03));
+            border: 1px solid rgba(243, 179, 126, 0.2);
+            border-radius: 60px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px 20px;
+            backdrop-filter: blur(6px);
+        }
+
+        .donate-banner i {
+            color: #f3b37e;
             font-size: 1.2rem;
-            color: #c6f0e0;
-            text-shadow: 0 0 18px #00f5d466;
+        }
+
+        .donate-banner span {
+            color: #d1d9ed;
+            font-weight: 500;
+            font-size: 1rem;
             letter-spacing: 0.3px;
         }
 
-        .user-badge .status {
-            background: #4affb5;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 20px #4affb5aa;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.2); }
-            100% { opacity: 0.5; transform: scale(0.9); }
-        }
-
-        .admin-toggle-wrap {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .admin-toggle-btn {
-            background: #2a1f3a;
-            border: 1px solid #7c5c9e;
-            color: #d4bfff;
-            padding: 0.4rem 1.2rem;
+        .donate-banner .highlight {
+            color: #fad9b0;
+            font-weight: 700;
+            background: rgba(243, 179, 126, 0.15);
+            padding: 4px 16px;
             border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
+            border: 1px solid rgba(243, 179, 126, 0.15);
+        }
+
+        .donate-banner a {
+            color: #f3b37e;
+            text-decoration: none;
+            font-weight: 700;
             transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            border-bottom: 1px dashed rgba(243, 179, 126, 0.3);
         }
 
-        .admin-toggle-btn:hover {
-            background: #3d2a55;
-            border-color: #b78aff;
-            box-shadow: 0 0 20px #7c5c9e66;
+        .donate-banner a:hover {
+            color: #fad9b0;
+            border-bottom-color: #fad9b0;
         }
 
-        .sync-btn {
-            background: #1a3a4a;
-            border: 1px solid #4a8aaa;
-            color: #b0d5e5;
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        /* сетка: две колонки */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.3fr 0.9fr;
+            gap: 30px;
+            margin-top: 10px;
         }
 
-        .sync-btn:hover {
-            background: #2a5a6a;
-            border-color: #6aaaca;
-            box-shadow: 0 0 20px #4a8aaa55;
+        @media (max-width: 760px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .glass-card {
+                padding: 20px;
+            }
+            .donate-banner {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
         }
 
-        /* Фильтры */
-        .filters-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem 1.5rem;
-            background: #0d1620;
-            border-radius: 2rem;
-            border: 1px solid #25333f;
-            align-items: center;
+        /* блок промокодов */
+        .promo-section {
+            background: rgba(12, 16, 24, 0.5);
+            border-radius: 28px;
+            padding: 22px 20px 18px;
+            border: 1px solid rgba(255, 215, 150, 0.08);
         }
 
-        .filters-section label {
-            color: #b0c9dd;
-            font-size: 0.85rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .filters-section select,
-        .filters-section input {
-            padding: 0.4rem 1rem;
-            border-radius: 60px;
-            border: 1px solid #3a5068;
-            background: #0e1925;
-            color: #e3e8f0;
-            font-size: 0.85rem;
-            outline: none;
-            transition: 0.2s;
-            min-width: 100px;
-        }
-
-        .filters-section select:focus,
-        .filters-section input:focus {
-            border-color: #4affb5;
-            box-shadow: 0 0 20px #4affb544;
-        }
-
-        .filter-group {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        /* Библиотека */
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 1.5rem 0 1.2rem 0;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #e8edf5;
+            letter-spacing: 0.3px;
+            margin-bottom: 16px;
         }
 
         .section-title i {
-            color: #00f5d4;
-            font-size: 1.8rem;
-        }
-
-        .cheats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
-            margin-bottom: 2rem;
-            min-height: 120px;
-        }
-
-        .cheat-card {
-            background: #101a24;
-            border-radius: 2rem;
-            padding: 1.6rem 1.3rem;
-            border: 1px solid #25323e;
-            transition: all 0.25s;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cheat-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #00f5d4, #4affb5, #00f5d4);
-            opacity: 0.6;
-        }
-
-        .cheat-card:hover {
-            transform: translateY(-6px);
-            border-color: #00f5d488;
-            box-shadow: 0 16px 35px -8px #00f5d433;
-        }
-
-        .cheat-card .cheat-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .cheat-icon {
-            font-size: 2rem;
-            color: #00f5d4;
-            display: inline-block;
-            background: #1b2836;
-            padding: 0.4rem 0.8rem;
-            border-radius: 16px;
-        }
-
-        .cheat-card .version-tag {
-            font-size: 0.7rem;
-            background: #1a2a3a;
-            padding: 0.15rem 0.7rem;
-            border-radius: 30px;
-            border: 1px solid #3a6a8a;
-            color: #8ac4e0;
-        }
-
-        .cheat-card h3 {
+            color: #f3b37e;
             font-size: 1.3rem;
-            font-weight: 600;
-            margin: 0.5rem 0 0.2rem;
         }
 
-        .cheat-card .category-tag {
-            font-size: 0.7rem;
-            background: #2a1a3a;
-            padding: 0.15rem 0.7rem;
-            border-radius: 30px;
-            border: 1px solid #7a4a9a;
-            color: #c8a0e0;
-            display: inline-block;
-            margin-bottom: 0.4rem;
-        }
-
-        .cheat-card p {
-            color: #b0c9dd;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            margin: 0.3rem 0 0.8rem;
-        }
-
-        .cheat-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin: 0.4rem 0;
-        }
-
-        .cheat-tags .tag {
-            font-size: 0.65rem;
-            padding: 0.1rem 0.6rem;
-            border-radius: 30px;
-            font-weight: 600;
-        }
-
-        .tag-safe {
-            background: #1a3a2a;
-            border: 1px solid #4affb5;
-            color: #4affb5;
-        }
-        .tag-risky {
-            background: #3a2a1a;
-            border: 1px solid #ffaa4a;
-            color: #ffaa4a;
-        }
-        .tag-danger {
-            background: #3a1a1a;
-            border: 1px solid #ff4a4a;
-            color: #ff4a4a;
-        }
-        .tag-update {
-            background: #1a2a4a;
-            border: 1px solid #4a8aff;
-            color: #4a8aff;
-        }
-        .tag-pirate {
-            background: #2a1a3a;
-            border: 1px solid #aa4aff;
-            color: #aa4aff;
-        }
-
-        .cheat-card .btn-load {
-            display: inline-block;
-            margin-top: 0.6rem;
-            background: transparent;
-            border: 1px solid #00f5d488;
-            color: #d5f5ec;
-            padding: 0.4rem 1.2rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: 0.2s;
-            cursor: pointer;
-            width: 100%;
-            text-align: center;
-        }
-
-        .cheat-card .btn-load:hover {
-            background: #00f5d4;
-            color: #0b0d15;
-            border-color: #00f5d4;
-            box-shadow: 0 0 28px #00f5d466;
-        }
-
-        .cheat-card .btn-load i {
-            margin-right: 8px;
-        }
-
-        .cheat-card .virus-link {
-            font-size: 0.7rem;
-            color: #6f8aa5;
-            margin-top: 0.3rem;
-            display: block;
-        }
-
-        .cheat-card .virus-link a {
-            color: #6f8aa5;
-            text-decoration: none;
-        }
-
-        .cheat-card .virus-link a:hover {
-            color: #4affb5;
-        }
-
-        .cheat-card .file-size {
-            font-size: 0.7rem;
-            color: #6f8aa5;
-            margin-top: 0.2rem;
-        }
-
-        .empty-library {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 2.5rem 1rem;
-            color: #7e97ae;
-            background: #0d1620;
-            border-radius: 2.5rem;
-            border: 1px dashed #2d4055;
-        }
-
-        /* Авторизация */
-        .auth-section {
-            margin-top: 1.5rem;
-            background: #111d2a;
-            border-radius: 2.5rem;
-            padding: 1.5rem 2rem;
-            border: 1px solid #2d5a7a;
-            box-shadow: 0 0 40px #2d5a7a33;
-        }
-
-        .auth-section h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #7fc9ff;
-        }
-
-        .auth-form {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .auth-form input {
-            padding: 0.6rem 1.2rem;
-            border-radius: 60px;
-            border: 1px solid #3a5068;
-            background: #0e1925;
-            color: #e3e8f0;
-            font-size: 0.95rem;
-            outline: none;
-            transition: 0.2s;
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .auth-form input:focus {
-            border-color: #4affb5;
-            box-shadow: 0 0 20px #4affb544;
-        }
-
-        .auth-form button {
-            background: #1a4a3a;
-            border: 1px solid #4affb5;
-            color: #d5f5ec;
-            padding: 0.6rem 1.8rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .auth-form button:hover {
-            background: #2a6a4a;
-            border-color: #6affc5;
-            box-shadow: 0 0 25px #4affb555;
-        }
-
-        .auth-form button.danger {
-            background: #4a1a2a;
-            border-color: #8a4a5a;
-        }
-
-        .auth-form button.danger:hover {
-            background: #6a2a3a;
-            border-color: #aa6a7a;
-        }
-
-        .auth-status {
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-            color: #b0c9dd;
-        }
-
-        .auth-status .success {
-            color: #4affb5;
-        }
-
-        /* ЗМЕЙКА */
-        .snake-section {
-            margin-top: 1.5rem;
-            background: #111d2a;
-            border-radius: 2.5rem;
-            padding: 1.5rem 2rem;
-            border: 1px solid #2d5a7a;
-            box-shadow: 0 0 40px #2d5a7a33;
-        }
-
-        .snake-section h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #7fc9ff;
-        }
-
-        .snake-section h3 i {
-            color: #facc15;
-        }
-
-        .snake-game-wrapper {
+        .promo-list {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        #snakeCanvas {
-            background: #0a121d;
-            border-radius: 1.2rem;
-            border: 2px solid #2d5a7a;
-            box-shadow: 0 0 30px #2d5a7a33;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .snake-controls {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .snake-controls button {
-            background: #1a3a4a;
-            border: 1px solid #4a8aaa;
-            color: #d5f0ff;
-            padding: 0.5rem 1.5rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .snake-controls button:hover {
-            background: #2a5a6a;
-            border-color: #6aaaca;
-            box-shadow: 0 0 25px #4a8aaa55;
-        }
-
-        .snake-controls button.danger {
-            background: #4a1a2a;
-            border-color: #8a4a5a;
-        }
-
-        .snake-controls button.danger:hover {
-            background: #6a2a3a;
-            border-color: #aa6a7a;
-        }
-
-        .snake-score {
-            font-size: 1.1rem;
-            color: #b0c9dd;
-            display: flex;
-            align-items: center;
             gap: 12px;
+            max-height: 340px;
+            overflow-y: auto;
+            padding-right: 4px;
         }
 
-        .snake-score span {
-            color: #facc15;
-            font-weight: 700;
-            font-size: 1.3rem;
+        .promo-list::-webkit-scrollbar {
+            width: 4px;
         }
 
-        .snake-mobile-controls {
-            display: none;
-            grid-template-columns: repeat(3, 60px);
-            grid-template-rows: repeat(3, 60px);
-            gap: 4px;
-            margin-top: 0.5rem;
+        .promo-list::-webkit-scrollbar-track {
+            background: #1f2636;
+            border-radius: 10px;
         }
 
-        .snake-mobile-controls button {
-            background: #1a2a3a;
-            border: 1px solid #4a6a7a;
-            color: #b0d5e5;
-            font-size: 1.5rem;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: 0.2s;
+        .promo-list::-webkit-scrollbar-thumb {
+            background: #f3b37e;
+            border-radius: 10px;
+        }
+
+        .promo-item {
+            background: #141b28;
+            padding: 14px 18px;
+            border-radius: 20px;
+            border-left: 4px solid #f3b37e;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+            color: #d3dcee;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: 0.1s ease;
+            word-break: break-word;
         }
 
-        .snake-mobile-controls button:hover {
-            background: #2a4a5a;
-            border-color: #6a8aaa;
-        }
-
-        .snake-mobile-controls .empty {
-            background: transparent;
-            border: none;
-            cursor: default;
-        }
-
-        .snake-mobile-controls .empty:hover {
-            background: transparent;
-        }
-
-        @media (max-width: 600px) {
-            .snake-mobile-controls {
-                display: grid;
-            }
-            #snakeCanvas {
-                width: 100%;
-                max-width: 340px;
-            }
-        }
-
-        /* Инструкции */
-        .instructions-section {
-            margin-top: 1.5rem;
-            background: #111d2a;
-            border-radius: 2.5rem;
-            padding: 1.5rem 2rem;
-            border: 1px solid #2d5a7a;
-            box-shadow: 0 0 40px #2d5a7a33;
-        }
-
-        .instructions-section h3 {
-            font-size: 1.2rem;
+        .promo-item .code {
+            background: #232d3f;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-family: 'Courier New', monospace;
             font-weight: 600;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #7fc9ff;
+            color: #fad9b0;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
         }
 
-        .instructions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+        .promo-item .date {
+            font-size: 0.7rem;
+            color: #7e8aa8;
+            background: #1d2537;
+            padding: 3px 12px;
+            border-radius: 40px;
         }
 
-        .instruction-card {
-            background: #0a121d;
-            padding: 0.8rem 1.2rem;
-            border-radius: 1.2rem;
-            border: 1px solid #25333f;
-            cursor: pointer;
-            transition: 0.2s;
+        .empty-promo {
+            color: #66708a;
             text-align: center;
+            padding: 30px 0;
+            font-style: italic;
+            background: #10161f;
+            border-radius: 30px;
         }
 
-        .instruction-card:hover {
-            border-color: #4affb5;
-            transform: translateY(-2px);
+        /* админ панель */
+        .admin-panel {
+            background: rgba(12, 16, 24, 0.5);
+            border-radius: 28px;
+            padding: 22px 20px 18px;
+            border: 1px solid rgba(255, 215, 150, 0.08);
         }
 
-        .instruction-card i {
-            font-size: 1.5rem;
-            color: #4affb5;
-            display: block;
-            margin-bottom: 0.3rem;
+        .admin-panel .section-title i {
+            color: #6c8cff;
         }
 
-        .instruction-card span {
-            font-size: 0.85rem;
-            color: #b0c9dd;
-        }
-
-        /* Конфиги */
-        .configs-section {
-            margin-top: 1.5rem;
-            background: #111d2a;
-            border-radius: 2.5rem;
-            padding: 1.5rem 2rem;
-            border: 1px solid #4a3a66;
-            box-shadow: 0 0 40px #4a3a6633;
-        }
-
-        .configs-section h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
+        .admin-form {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #d4bfff;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 4px;
         }
 
-        .configs-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .config-item {
-            background: #0a121d;
-            padding: 0.4rem 1rem;
-            border-radius: 60px;
-            border: 1px solid #3a5068;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .config-item:hover {
-            border-color: #b78aff;
-            transform: scale(1.02);
-        }
-
-        /* Отзывы */
-        .reviews-section {
-            margin-top: 1.5rem;
-            background: #111d2a;
-            border-radius: 2.5rem;
-            padding: 1.5rem 2rem;
-            border: 1px solid #2d5a3a;
-            box-shadow: 0 0 40px #2d5a3a33;
-        }
-
-        .reviews-section h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #7fc9ff;
-        }
-
-        .review-form {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.8rem;
-        }
-
-        .review-form input {
-            flex: 2;
-            min-width: 150px;
-            padding: 0.6rem 1.2rem;
-            border-radius: 60px;
-            border: 1px solid #3a5068;
-            background: #0e1925;
-            color: #e3e8f0;
+        .admin-form input {
+            background: #1a2232;
+            border: 1px solid #2b354b;
+            border-radius: 40px;
+            padding: 12px 18px;
+            color: #eff3fc;
             font-size: 0.95rem;
             outline: none;
             transition: 0.2s;
         }
 
-        .review-form input:focus {
-            border-color: #4affb5;
-            box-shadow: 0 0 20px #4affb544;
+        .admin-form input:focus {
+            border-color: #f3b37e;
+            background: #1f283c;
+            box-shadow: 0 0 0 3px rgba(243, 179, 126, 0.15);
         }
 
-        .review-form button {
-            background: #1a4a3a;
-            border: 1px solid #4affb5;
-            color: #d5f5ec;
-            padding: 0.6rem 1.8rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: 0.2s;
+        .admin-form input::placeholder {
+            color: #5d6b87;
+            font-weight: 300;
+        }
+
+        .admin-form .password-row {
             display: flex;
-            align-items: center;
             gap: 8px;
         }
 
-        .review-form button:hover {
-            background: #2a6a4a;
-            border-color: #6affc5;
-            box-shadow: 0 0 25px #4affb555;
-        }
-
-        .review-list {
-            max-height: 200px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .review-item {
-            background: #0a121d;
-            padding: 0.5rem 1rem;
-            border-radius: 1rem;
-            border-left: 3px solid #4affb5;
-            font-size: 0.9rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .review-item .review-user {
-            color: #4affb5;
-            font-weight: 600;
-        }
-        .review-item .review-text {
-            color: #b0c9dd;
+        .admin-form .password-row input {
             flex: 1;
-            margin: 0 0.8rem;
-        }
-        .review-item .review-time {
-            color: #6f8aa5;
-            font-size: 0.75rem;
         }
 
-        /* Онлайн */
-        .online-section {
-            margin-top: 1.5rem;
-            background: #111d2a;
-            border-radius: 2.5rem;
-            padding: 1.5rem 2rem;
-            border: 1px solid #4a3a66;
-            box-shadow: 0 0 40px #4a3a6633;
-        }
-
-        .online-section h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #d4bfff;
-        }
-
-        .online-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .online-player {
-            background: #0a121d;
-            padding: 0.4rem 1.2rem;
+        .btn {
+            background: #2f3b55;
+            border: none;
             border-radius: 60px;
-            border: 1px solid #3a5068;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-        }
-
-        .online-player .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #4affb5;
-            display: inline-block;
-            animation: pulse 2s infinite;
-        }
-
-        .online-player .admin-badge {
-            background: #4a1e6a;
-            color: #d4bfff;
-            font-size: 0.6rem;
-            padding: 0.1rem 0.5rem;
-            border-radius: 30px;
-            border: 1px solid #7c5c9e;
-        }
-
-        /* Сайт */
-        .site-section {
-            margin-top: 1.5rem;
-            background: #111d2a;
-            border-radius: 2.5rem;
-            padding: 1.5rem 2rem;
-            border: 1px solid #4a3a66;
-            box-shadow: 0 0 40px #4a3a6633;
-        }
-
-        .site-section h3 {
-            font-size: 1.2rem;
+            padding: 12px 20px;
             font-weight: 600;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #d4bfff;
-        }
-
-        .site-section .site-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .site-btn {
-            background: #3d2a55;
-            border: 1px solid #7c5c9e;
-            color: #e8daff;
-            padding: 0.5rem 1.5rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            color: #eef3fc;
             cursor: pointer;
             transition: 0.2s;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            text-decoration: none;
+            font-size: 0.95rem;
+            border: 1px solid #3e4b67;
         }
 
-        .site-btn:hover {
-            background: #5a3d7a;
-            border-color: #b78aff;
-            box-shadow: 0 0 25px #7c5c9e77;
-            transform: scale(1.02);
-        }
-
-        .site-btn.primary {
-            background: #1a4a3a;
-            border-color: #4affb5;
-            color: #d5f5ec;
-        }
-
-        .site-url {
-            background: #0a121d;
-            padding: 0.4rem 1rem;
-            border-radius: 60px;
-            border: 1px solid #4affb544;
-            color: #4affb5;
-            font-size: 0.8rem;
-            font-family: monospace;
-            word-break: break-all;
-            flex: 1;
-            min-width: 150px;
-        }
-
-        /* Админ-панель */
-        .admin-panel {
-            display: none;
-            margin-top: 2rem;
-            background: #111d2a;
-            border-radius: 2.5rem;
-            padding: 2rem 2rem 1.8rem;
-            border: 1px solid #4a3a66;
-            box-shadow: 0 0 40px #4a3a6633;
-            animation: fadeSlide 0.3s ease;
-        }
-
-        .admin-panel.active {
-            display: block;
-        }
-
-        @keyframes fadeSlide {
-            from {
-                opacity: 0;
-                transform: translateY(-12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .admin-panel h2 {
-            font-size: 1.8rem;
+        .btn-primary {
+            background: #c67e4e;
+            border-color: #d6935f;
+            color: #0e131e;
             font-weight: 700;
-            margin-bottom: 1.2rem;
+            box-shadow: 0 4px 12px rgba(198, 126, 78, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: #d68f5a;
+            transform: scale(0.97);
+            border-color: #e6a873;
+        }
+
+        .btn-secondary {
+            background: #2a3449;
+            border-color: #3d4a64;
+        }
+
+        .btn-secondary:hover {
+            background: #36435e;
+        }
+
+        .admin-status {
+            font-size: 0.75rem;
+            color: #96a2c0;
+            margin-top: 6px;
+            padding: 6px 12px;
+            background: #101624;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        /* форма жалобы (для игроков) */
+        .report-section {
+            margin-top: 28px;
+            border-top: 1px solid rgba(255, 215, 150, 0.08);
+            padding-top: 24px;
+        }
+
+        .report-section .section-title i {
+            color: #f08a8a;
+        }
+
+        .report-form {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             gap: 12px;
-            color: #d4bfff;
+            background: #0f1622;
+            padding: 12px 16px 16px;
+            border-radius: 40px;
+            border: 1px solid #273040;
         }
 
-        .admin-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        @media (max-width: 700px) {
-            .admin-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .admin-card {
-            background: #0f1824;
-            border-radius: 1.8rem;
-            padding: 1.5rem 1.8rem;
-            border: 1px solid #2d3d52;
-        }
-
-        .admin-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #b3d9f0;
-        }
-
-        .admin-card .input-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .admin-card input[type="text"],
-        .admin-card input[type="number"] {
-            flex: 1;
-            min-width: 100px;
-            padding: 0.6rem 1rem;
-            border-radius: 60px;
-            border: 1px solid #3a5068;
-            background: #0e1925;
-            color: #e3e8f0;
-            font-size: 0.95rem;
+        .report-form textarea {
+            flex: 2 1 200px;
+            background: #1a2232;
+            border: 1px solid #2f3a52;
+            border-radius: 30px;
+            padding: 10px 16px;
+            color: #e3eaf5;
+            resize: vertical;
+            min-height: 48px;
+            font-size: 0.9rem;
             outline: none;
             transition: 0.2s;
         }
 
-        .admin-card input:focus {
-            border-color: #b78aff;
-            box-shadow: 0 0 20px #7c5c9e55;
+        .report-form textarea:focus {
+            border-color: #f3b37e;
+            box-shadow: 0 0 0 3px rgba(243, 179, 126, 0.1);
         }
 
-        .admin-card .btn-admin {
-            background: #3d2a55;
-            border: none;
-            padding: 0.5rem 1.6rem;
-            border-radius: 60px;
-            font-weight: 600;
-            color: #e8daff;
-            cursor: pointer;
-            transition: 0.2s;
-            border: 1px solid #7c5c9e;
+        .report-form textarea::placeholder {
+            color: #55607d;
+        }
+
+        .report-form .btn {
+            flex: 0 0 auto;
+            background: #c24f4f;
+            border-color: #b34a4a;
+            color: white;
+            padding: 10px 24px;
+        }
+
+        .report-form .btn:hover {
+            background: #d45a5a;
+        }
+
+        .report-hint {
+            width: 100%;
+            font-size: 0.75rem;
+            color: #96a2c0;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 2px;
         }
 
-        .admin-card .btn-admin:hover {
-            background: #5a3d7a;
-            border-color: #b78aff;
-            box-shadow: 0 0 25px #7c5c9e77;
+        .report-hint i {
+            color: #d98c8c;
         }
 
-        .admin-card .btn-admin.danger {
-            background: #4a1e2e;
-            border-color: #a04a6a;
-            color: #ffc8d6;
-        }
-
-        .file-upload-area {
-            border: 2px dashed #3a5068;
-            border-radius: 1.5rem;
-            padding: 1.2rem;
+        .footer-note {
+            margin-top: 24px;
+            font-size: 0.8rem;
+            color: #596582;
             text-align: center;
-            margin: 0.6rem 0;
-            cursor: pointer;
-            transition: 0.3s;
-            background: #0a121d;
-        }
-
-        .file-upload-area:hover {
-            border-color: #b78aff;
-            background: #121e2c;
-        }
-
-        .file-upload-area i {
-            font-size: 2rem;
-            color: #7c5c9e;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-
-        .file-upload-area .file-name {
-            color: #b3d9f0;
-            font-weight: 600;
-            margin-top: 0.3rem;
-        }
-
-        .admin-login {
+            border-top: 1px solid #202837;
+            padding-top: 20px;
             display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-top: 0.5rem;
+            justify-content: center;
             flex-wrap: wrap;
+            gap: 15px 25px;
         }
 
-        .admin-login input {
-            flex: 1;
-            min-width: 150px;
-            padding: 0.5rem 1.2rem;
-            border-radius: 60px;
-            border: 1px solid #4a3a66;
-            background: #0e1925;
-            color: #e3e8f0;
-            font-size: 0.9rem;
-            outline: none;
-        }
-
-        .admin-login input:focus {
-            border-color: #b78aff;
-            box-shadow: 0 0 20px #7c5c9e55;
-        }
-
-        .admin-login .btn-admin-login {
-            background: #4a3a66;
-            border: none;
-            padding: 0.5rem 1.8rem;
-            border-radius: 60px;
-            font-weight: 600;
-            color: #e8daff;
-            cursor: pointer;
-            transition: 0.2s;
-            border: 1px solid #7c5c9e;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .admin-login .btn-admin-login:hover {
-            background: #5a3d7a;
-            border-color: #b78aff;
-            box-shadow: 0 0 25px #7c5c9e77;
-        }
-
-        .admin-login-status {
-            font-size: 0.85rem;
-            color: #b0c9dd;
-            margin-top: 0.3rem;
-        }
-
-        /* Футер */
-        .footer {
-            margin-top: 2.2rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #1f2d3b;
-            padding-top: 1.6rem;
-            font-size: 0.9rem;
-            color: #7e97ae;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #b4d0e5;
+        .footer-note a {
+            color: #b7c4e0;
             text-decoration: none;
-            transition: 0.2s;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            border-bottom: 1px dashed #38445e;
         }
 
-        .footer-links a:hover {
-            color: #00f5d4;
-            text-shadow: 0 0 12px #00f5d466;
+        .footer-note a:hover {
+            color: #f3b37e;
+            border-bottom-color: #f3b37e;
         }
 
-        /* Тост */
-        .toast-message {
-            display: none;
-            background: #1d2a36;
-            color: #b3ffe6;
-            padding: 0.6rem 1.8rem;
-            border-radius: 60px;
-            border-left: 4px solid #00f5d4;
-            font-weight: 500;
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2000;
-            max-width: 90%;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(4px);
-            font-size: 1rem;
-            white-space: nowrap;
-        }
-
-        .toast-message i {
-            margin-right: 10px;
-            color: #4affb5;
-        }
-
-        .toast-message.error {
-            border-left-color: #ff7a8a;
-        }
-
-        .toast-message.error i {
-            color: #ff7a8a;
-        }
-
-        .toast-message.loading {
-            border-left-color: #facc15;
-        }
-
-        .toast-message.loading i {
-            color: #facc15;
-        }
-
-        @media (max-width: 700px) {
-            .launcher-container {
-                padding: 1.8rem 1.2rem;
-                border-radius: 2.2rem;
-            }
-            .brand h1 {
-                font-size: 2rem;
-            }
-            .filters-section {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .filter-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .filters-section select,
-            .filters-section input {
-                width: 100%;
-            }
-            .admin-grid {
-                grid-template-columns: 1fr;
-            }
-            .review-form {
-                flex-direction: column;
-            }
-            .site-section .site-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .auth-form {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .instructions-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .snake-controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .snake-controls button {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .cheats-grid {
-                grid-template-columns: 1fr;
-            }
-            .instructions-grid {
-                grid-template-columns: 1fr;
-            }
-            .brand .version {
-                font-size: 0.7rem;
-                padding: 0.1rem 0.7rem;
-            }
-            .admin-grid {
-                grid-template-columns: 1fr;
-            }
-            .snake-mobile-controls {
-                grid-template-columns: repeat(3, 50px);
-                grid-template-rows: repeat(3, 50px);
-            }
+        /* скрываем пароль */
+        .hidden-pass {
+            -webkit-text-security: disc;
         }
     </style>
 </head>
 <body>
+    <div class="glass-card">
 
-    <div class="launcher-container">
-
-        <!-- Шапка -->
-        <header class="launcher-header">
-            <div class="brand">
-                <i class="fas fa-dragon"></i>
-                <h1>Mrsoftuk_SAT</h1>
-                <span class="version">v3.0</span>
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <h1><i class="fas fa-paw" style="color: #f3b37e; margin-right: 6px;"></i>CatLavan RP</h1>
+                <span><i class="far fa-gem"></i> промокоды</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                <button class="sync-btn" id="syncLibraryBtn">
-                    <i class="fas fa-sync-alt"></i> Обновить
-                </button>
-                <div class="admin-toggle-wrap">
-                    <button class="admin-toggle-btn" id="adminToggleBtn">
-                        <i class="fas fa-shield-alt"></i> Админ-панель
-                    </button>
+            <a href="https://t.me/catlavanrpp" target="_blank" class="tg-link">
+                <i class="fab fa-telegram-plane"></i> 
+                <span>канал</span>
+                <i class="fas fa-arrow-right" style="font-size: 0.8rem; opacity: 0.7;"></i>
+            </a>
+        </div>
+
+        <!-- Владелец -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <div class="owner-tag">
+                <i class="fas fa-crown"></i> владелец <a href="https://t.me/meowlik_bober" target="_blank" style="color: #f3b37e; text-decoration: none; font-weight: 600;">@meowlik_bober</a>
+            </div>
+            <div style="font-size: 0.75rem; color: #5c6a86;">
+                <i class="fas fa-shield-alt"></i> админ-панель
+            </div>
+        </div>
+
+        <!-- Донат-баннер -->
+        <div class="donate-banner">
+            <i class="fas fa-gem"></i>
+            <span>Добро пожаловать! Для покупки доната пишите сюда:</span>
+            <a href="https://t.me/meowlik_bober" target="_blank" class="highlight">
+                <i class="fab fa-telegram-plane"></i> @meowlik_bober
+            </a>
+            <i class="fas fa-arrow-right" style="color: #f3b37e; opacity: 0.6; font-size: 0.9rem;"></i>
+        </div>
+
+        <!-- Основная сетка -->
+        <div class="grid-2">
+            <!-- Левая колонка: промокоды -->
+            <div class="promo-section">
+                <div class="section-title">
+                    <i class="fas fa-ticket-alt"></i> Активные промокоды
                 </div>
-                <div class="user-badge" id="userBadge">
-                    <i class="fas fa-user-astronaut"></i>
-                    <span class="nick" id="nickDisplay">Гость</span>
-                    <span class="status" style="background: #facc15;"></span>
+                <div id="promoContainer" class="promo-list">
+                    <!-- Список будет рендериться через JS -->
+                    <div class="empty-promo"><i class="fas fa-hourglass-half"></i>  пока нет промокодов</div>
                 </div>
             </div>
-        </header>
 
-        <!-- Авторизация -->
-        <div class="auth-section">
-            <h3><i class="fas fa-key"></i> 🔐 Вход в аккаунт</h3>
-            <div class="auth-form" id="authForm">
-                <input type="text" id="authLoginInput" placeholder="Логин...">
-                <input type="password" id="authPassword" placeholder="Пароль...">
-                <button id="authLoginBtn"><i class="fas fa-sign-in-alt"></i> Войти</button>
-                <button id="authRegisterBtn"><i class="fas fa-user-plus"></i> Регистрация</button>
-                <button class="danger" id="authLogoutBtn"><i class="fas fa-sign-out-alt"></i> Выйти</button>
-            </div>
-            <div class="auth-status" id="authStatus">
-                <i class="fas fa-info-circle"></i> Введите логин и пароль
-            </div>
-        </div>
-
-        <!-- Фильтры -->
-        <div class="filters-section">
-            <div class="filter-group">
-                <label><i class="fas fa-tag"></i> Версия:</label>
-                <select id="versionFilter">
-                    <option value="all">Все версии</option>
-                    <option value="1.21">1.21</option>
-                    <option value="1.20.4">1.20.4</option>
-                    <option value="1.19.4">1.19.4</option>
-                    <option value="1.18.2">1.18.2</option>
-                    <option value="1.16.5">1.16.5</option>
-                    <option value="1.12.2">1.12.2</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label><i class="fas fa-folder"></i> Категория:</label>
-                <select id="categoryFilter">
-                    <option value="all">Все</option>
-                    <option value="client">Клиенты</option>
-                    <option value="xray">X-Ray</option>
-                    <option value="macro">Макросы</option>
-                    <option value="resourcepack">Ресурс-паки</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label><i class="fas fa-search"></i> Поиск:</label>
-                <input type="text" id="searchFilter" placeholder="Название чита...">
-            </div>
-            <button class="site-btn primary" id="resetFiltersBtn" style="padding: 0.4rem 1.2rem; font-size: 0.8rem;">
-                <i class="fas fa-undo"></i> Сбросить
-            </button>
-        </div>
-
-        <!-- Библиотека читов -->
-        <div class="section-title">
-            <i class="fas fa-code"></i>
-            <span>📂 Библиотека читов</span>
-            <span style="font-size: 0.9rem; font-weight: 400; color: #7e97ae; margin-left: auto;" id="cheatCountLabel">0 файлов</span>
-        </div>
-
-        <div class="cheats-grid" id="cheatsGrid">
-            <!-- сюда рендерятся карточки читов -->
-        </div>
-
-        <!-- ЗМЕЙКА -->
-        <div class="snake-section">
-            <h3><i class="fas fa-gamepad"></i> 🐍 Змейка</h3>
-            <div class="snake-game-wrapper">
-                <canvas id="snakeCanvas" width="400" height="400"></canvas>
-                <div class="snake-controls">
-                    <div class="snake-score">
-                        <i class="fas fa-star"></i> Счёт: <span id="snakeScore">0</span>
+            <!-- Правая колонка: админ-панель -->
+            <div class="admin-panel">
+                <div class="section-title">
+                    <i class="fas fa-lock"></i> Админ-панель
+                </div>
+                <div class="admin-form">
+                    <input type="password" id="adminPassword" placeholder="пароль" value="cat123" class="hidden-pass">
+                    <div class="password-row">
+                        <input type="text" id="promoInput" placeholder="Новый промокод (например, CAT300)">
+                        <button class="btn btn-primary" id="addPromoBtn"><i class="fas fa-plus"></i> добавить</button>
                     </div>
-                    <button id="snakeStartBtn"><i class="fas fa-play"></i> Старт</button>
-                    <button id="snakePauseBtn"><i class="fas fa-pause"></i> Пауза</button>
-                    <button class="danger" id="snakeResetBtn"><i class="fas fa-redo"></i> Сброс</button>
-                </div>
-                <div class="snake-mobile-controls" id="snakeMobileControls">
-                    <button class="empty"></button>
-                    <button data-dir="up"><i class="fas fa-arrow-up"></i></button>
-                    <button class="empty"></button>
-                    <button data-dir="left"><i class="fas fa-arrow-left"></i></button>
-                    <button class="empty"></button>
-                    <button data-dir="right"><i class="fas fa-arrow-right"></i></button>
-                    <button class="empty"></button>
-                    <button data-dir="down"><i class="fas fa-arrow-down"></i></button>
-                    <button class="empty"></button>
+                    <button class="btn btn-secondary" id="resetPromoBtn" style="width: 100%;"><i class="fas fa-undo-alt"></i> сбросить все (только админ)</button>
+                    <div id="adminMessage" class="admin-status"><i class="fas fa-info-circle"></i> введите пароль и промокод</div>
                 </div>
             </div>
         </div>
 
-        <!-- Инструкции -->
-        <div class="instructions-section">
-            <h3><i class="fas fa-book"></i> 📖 Инструкции по установке</h3>
-            <div class="instructions-grid">
-                <div class="instruction-card" data-instr="fabric">
-                    <i class="fas fa-cube"></i>
-                    <span>Fabric</span>
-                </div>
-                <div class="instruction-card" data-instr="forge">
-                    <i class="fas fa-cubes"></i>
-                    <span>Forge</span>
-                </div>
-                <div class="instruction-card" data-instr="dll">
-                    <i class="fas fa-file-code"></i>
-                    <span>DLL / Клиент</span>
-                </div>
-                <div class="instruction-card" data-instr="launcher">
-                    <i class="fas fa-rocket"></i>
-                    <span>Лаунчер</span>
+        <!-- Форма для игроков (жалобы) -->
+        <div class="report-section">
+            <div class="section-title">
+                <i class="fas fa-flag"></i> Пожаловаться
+                <span style="font-size: 0.7rem; font-weight: 400; color: #7d8aa8; margin-left: 8px;">
+                    <i class="fas fa-chevron-right"></i> если вы хотите пожаловаться — напишите в Telegram
+                </span>
+            </div>
+            <div class="report-form">
+                <textarea id="reportText" placeholder="Опишите ситуацию... (только для отправки владельцу)"></textarea>
+                <button class="btn" id="reportBtn"><i class="fab fa-telegram-plane"></i> отправить жалобу</button>
+                <div class="report-hint">
+                    <i class="fas fa-exclamation-triangle"></i> 
+                    <span>жалоба уходит владельцу <a href="https://t.me/meowlik_bober" target="_blank" style="color: #e6b47c;">@meowlik_bober</a></span>
                 </div>
             </div>
+            <div id="reportStatus" style="margin-top: 8px; font-size: 0.8rem; color: #7f8baa; text-align: right; padding-right: 8px;"></div>
         </div>
 
-        <!-- Конфиги -->
-        <div class="configs-section">
-            <h3><i class="fas fa-sliders-h"></i> ⚙️ Готовые конфиги</h3>
-            <div class="configs-list" id="configsList">
-                <!-- сюда рендерятся конфиги -->
-            </div>
+        <!-- Нижняя часть: ссылки -->
+        <div class="footer-note">
+            <span><i class="fas fa-user-tie"></i> владелец: <a href="https://t.me/meowlik_bober" target="_blank">@meowlik_bober</a></span>
+            <span><i class="fas fa-link"></i> <a href="https://t.me/catlavanrpp" target="_blank">t.me/catlavanrpp</a></span>
+            <span><i class="fas fa-shield"></i> админ-панель защищена паролем</span>
         </div>
-
-        <!-- Отзывы -->
-        <div class="reviews-section">
-            <h3><i class="fas fa-star"></i> ⭐ Отзывы</h3>
-            <div class="review-form">
-                <input type="text" id="reviewInput" placeholder="Ваш отзыв...">
-                <button id="reviewSubmitBtn"><i class="fas fa-paper-plane"></i> Отправить</button>
-            </div>
-            <div class="review-list" id="reviewList">
-                <!-- сюда рендерятся отзывы -->
-            </div>
-        </div>
-
-        <!-- Онлайн -->
-        <div class="online-section">
-            <h3><i class="fas fa-users"></i> 👥 Игроки онлайн</h3>
-            <div class="online-list" id="onlineList">
-                <!-- сюда рендерятся игроки -->
-            </div>
-        </div>
-
-        <!-- Сайт -->
-        <div class="site-section">
-            <h3><i class="fas fa-globe"></i> 🌐 Официальный сайт</h3>
-            <div class="site-buttons">
-                <span class="site-url">https://vitalik1212.github.io/</span>
-                <button class="site-btn primary" id="openSiteBtn"><i class="fas fa-external-link-alt"></i> Открыть</button>
-                <button class="site-btn" id="copySiteBtn"><i class="fas fa-copy"></i> Копировать</button>
-            </div>
-        </div>
-
-        <!-- Админ-панель -->
-        <div class="admin-panel" id="adminPanel">
-            <h2><i class="fas fa-crown"></i> Панель администратора</h2>
-            <div class="admin-login" id="adminLoginArea">
-                <input type="password" id="adminPasswordInput" placeholder="Введите мастер-пароль...">
-                <button class="btn-admin-login" id="adminLoginBtn"><i class="fas fa-key"></i> Войти</button>
-            </div>
-            <div class="admin-login-status" id="adminLoginStatus">
-                <i class="fas fa-info-circle"></i> Введите мастер-пароль
-            </div>
-            <div id="adminContent" style="display: none; margin-top: 1.5rem;">
-                <div class="admin-grid">
-                    <div class="admin-card">
-                        <h3><i class="fas fa-user-plus"></i> Выдать админку</h3>
-                        <div class="input-group">
-                            <input type="text" id="adminNickInput" placeholder="Введите ник...">
-                            <button class="btn-admin" id="grantAdminBtn"><i class="fas fa-gavel"></i> Выдать</button>
-                            <button class="btn-admin danger" id="revokeAdminBtn"><i class="fas fa-user-slash"></i> Забрать</button>
-                        </div>
-                        <div class="admin-status" id="adminStatus">
-                            <i class="fas fa-info-circle"></i> Администраторы: <span id="adminListDisplay">nowSat</span>
-                        </div>
-                    </div>
-                    <div class="admin-card">
-                        <h3><i class="fas fa-file-archive"></i> Добавить чит</h3>
-                        <div class="input-group">
-                            <input type="text" id="cheatNameInput" placeholder="Название...">
-                            <input type="text" id="cheatVersionInput" placeholder="Версия (1.20.4)" style="flex:0.6;">
-                        </div>
-                        <div class="input-group">
-                            <select id="cheatCategoryInput" style="flex:1; padding:0.6rem 1rem; border-radius:60px; border:1px solid #3a5068; background:#0e1925; color:#e3e8f0; outline:none;">
-                                <option value="client">Клиент</option>
-                                <option value="xray">X-Ray</option>
-                                <option value="macro">Макросы</option>
-                                <option value="resourcepack">Ресурс-паки</option>
-                            </select>
-                            <input type="text" id="cheatTagInput" placeholder="Теги (safe,risky...)" style="flex:0.8;">
-                        </div>
-                        <div class="input-group">
-                            <input type="text" id="cheatDescInput" placeholder="Описание...">
-                        </div>
-                        <div class="input-group">
-                            <input type="text" id="cheatVirusInput" placeholder="Ссылка VirusTotal">
-                        </div>
-                        <div class="file-upload-area" id="cheatDropArea">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Нажмите или перетащите ZIP-файл</p>
-                            <div class="file-name" id="selectedCheatName">Файл не выбран</div>
-                            <input type="file" id="cheatFileInput" accept=".zip" style="display:none;">
-                        </div>
-                        <button class="btn-admin" id="addCheatBtn" style="width:100%; justify-content:center; margin-top:0.5rem;">
-                            <i class="fas fa-plus"></i> Добавить чит
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Футер -->
-        <footer class="footer">
-            <div>
-                <i class="fas fa-crown"></i> Mrsoftuk_SAT · Лаунчер nowSat
-            </div>
-            <div class="footer-links">
-                <a href="#" id="discordLink"><i class="fab fa-discord"></i> Discord</a>
-                <a href="#" id="youtubeLink"><i class="fab fa-youtube"></i> YouTube</a>
-                <a href="#" id="supportLink"><i class="fas fa-envelope"></i> Поддержка</a>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Тост -->
-    <div id="toastMessage" class="toast-message">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastText">Готово</span>
     </div>
 
     <script>
         (function() {
-            // ====== НАСТРОЙКИ ======
-            const SITE_URL = 'https://vitalik1212.github.io/';
-            const MASTER_PASSWORD = 'admin123';
-            const DEFAULT_USER = 'nowSat';
-            const DEFAULT_PASSWORD = 'nowsat2024';
+            // --- Данные ---
+            // хранилище промокодов (массив объектов { code, date })
+            let promoCodes = [];
 
-            let admins = ['nowSat'];
-            let users = {};
-            let currentUser = null;
-            let reviews = [];
-            let onlinePlayers = ['nowSat', 'Player1', 'Alex', 'MinerPro', 'Crafter'];
-            let configs = [
-                { name: 'Anarchy Grief', author: 'nowSat', mode: 'Anarchy' },
-                { name: 'SkyWars Auto', author: 'Player1', mode: 'Mini-games' },
-                { name: 'Crystal PVP', author: 'Alex', mode: 'Grief' }
-            ];
+            // Пароль (по умолчанию 'cat123', можно изменить)
+            const ADMIN_PASSWORD = 'cat123';
 
-            // ---- НАЧАЛЬНАЯ БИБЛИОТЕКА (файлы, которые есть на сайте у всех) ----
-            let cheatFiles = [];
-            let nextCheatId = 1;
+            // DOM элементы
+            const promoContainer = document.getElementById('promoContainer');
+            const promoInput = document.getElementById('promoInput');
+            const addBtn = document.getElementById('addPromoBtn');
+            const resetBtn = document.getElementById('resetPromoBtn');
+            const adminMessage = document.getElementById('adminMessage');
+            const adminPassInput = document.getElementById('adminPassword');
+            const reportText = document.getElementById('reportText');
+            const reportBtn = document.getElementById('reportBtn');
+            const reportStatus = document.getElementById('reportStatus');
 
-            // ---- Загрузка данных ----
-            function loadData() {
-                try {
-                    // Загружаем пользователей
-                    const savedUsers = localStorage.getItem('mrsoftuk_users');
-                    if (savedUsers) {
-                        users = JSON.parse(savedUsers);
-                    } else {
-                        // Создаём пользователя nowSat по умолчанию
-                        users = {};
-                        users[DEFAULT_USER] = { password: DEFAULT_PASSWORD, email: 'admin@mrsoftuk.ru' };
-                        localStorage.setItem('mrsoftuk_users', JSON.stringify(users));
-                    }
-
-                    // Загружаем админов
-                    const savedAdmins = localStorage.getItem('mrsoftuk_admins');
-                    if (savedAdmins) {
-                        admins = JSON.parse(savedAdmins);
-                    } else {
-                        admins = ['nowSat'];
-                        localStorage.setItem('mrsoftuk_admins', JSON.stringify(admins));
-                    }
-
-                    // Загружаем читы
-                    const savedCheats = localStorage.getItem('mrsoftuk_cheats_v3');
-                    if (savedCheats) {
-                        const parsed = JSON.parse(savedCheats);
-                        cheatFiles = parsed.map(item => {
-                            if (item.fileData) {
-                                const binary = atob(item.fileData);
-                                const array = new Uint8Array(binary.length);
-                                for (let i = 0; i < binary.length; i++) array[i] = binary.charCodeAt(i);
-                                return { ...item, fileObject: new Blob([array], { type: 'application/zip' }) };
-                            }
-                            return item;
-                        });
-                        if (cheatFiles.length > 0) {
-                            nextCheatId = Math.max(...cheatFiles.map(c => c.id || 0)) + 1;
-                        }
-                    } else {
-                        // Если читов нет — создаём демо-читы, чтобы библиотека не была пустой
-                        cheatFiles = [{
-                            id: nextCheatId++,
-                            name: 'Wurst Client',
-                            version: '1.20.4',
-                            category: 'client',
-                            desc: 'Популярный клиент для анархии и PvP',
-                            tags: ['safe', 'pirate'],
-                            virusLink: 'https://www.virustotal.com/gui/url/example',
-                            fileName: 'wurst-1.20.4.zip',
-                            fileSize: '4.2',
-                            fileObject: null
-                        }, {
-                            id: nextCheatId++,
-                            name: 'Meteor Client',
-                            version: '1.19.4',
-                            category: 'client',
-                            desc: 'Быстрый клиент с хорошим кд',
-                            tags: ['safe', 'update'],
-                            virusLink: 'https://www.virustotal.com/gui/url/example2',
-                            fileName: 'meteor-1.19.4.zip',
-                            fileSize: '3.8',
-                            fileObject: null
-                        }, {
-                            id: nextCheatId++,
-                            name: 'X-Ray Ultimate',
-                            version: '1.16.5',
-                            category: 'xray',
-                            desc: 'Ресурс-пак для поиска руд',
-                            tags: ['safe', 'pirate'],
-                            virusLink: 'https://www.virustotal.com/gui/url/example3',
-                            fileName: 'xray-1.16.5.zip',
-                            fileSize: '1.2',
-                            fileObject: null
-                        }];
-                        localStorage.setItem('mrsoftuk_cheats_v3', JSON.stringify(cheatFiles.map(({
-                            fileObject,
-                            ...rest
-                        }) => rest)));
-                    }
-
-                    // Загружаем отзывы
-                    const savedReviews = localStorage.getItem('mrsoftuk_reviews');
-                    if (savedReviews) {
-                        reviews = JSON.parse(savedReviews);
-                    } else {
-                        reviews = [];
-                        localStorage.setItem('mrsoftuk_reviews', JSON.stringify(reviews));
-                    }
-
-                    // Загружаем конфиги
-                    const savedConfigs = localStorage.getItem('mrsoftuk_configs');
-                    if (savedConfigs) {
-                        configs = JSON.parse(savedConfigs);
-                    } else {
-                        configs = [
-                            { name: 'Anarchy Grief', author: 'nowSat', mode: 'Anarchy' },
-                            { name: 'SkyWars Auto', author: 'Player1', mode: 'Mini-games' }
-                        ];
-                        localStorage.setItem('mrsoftuk_configs', JSON.stringify(configs));
-                    }
-
-                    // Загружаем текущего пользователя
-                    const savedUser = localStorage.getItem('mrsoftuk_current_user');
-                    if (savedUser) {
-                        currentUser = savedUser;
-                    }
-                } catch (e) {
-                    console.warn('Ошибка загрузки:', e);
-                    // Создаём пользователя по умолчанию при ошибке
-                    users = {};
-                    users[DEFAULT_USER] = { password: DEFAULT_PASSWORD, email: 'admin@mrsoftuk.ru' };
-                    localStorage.setItem('mrsoftuk_users', JSON.stringify(users));
-                    admins = ['nowSat'];
-                    localStorage.setItem('mrsoftuk_admins', JSON.stringify(admins));
+            // --- вспомогательные ---
+            function renderPromoCodes() {
+                if (!promoContainer) return;
+                if (promoCodes.length === 0) {
+                    promoContainer.innerHTML = `<div class="empty-promo"><i class="fas fa-hourglass-half"></i>  пока нет промокодов</div>`;
+                    return;
                 }
-            }
-
-            function saveData() {
-                try {
-                    localStorage.setItem('mrsoftuk_users', JSON.stringify(users));
-                    localStorage.setItem('mrsoftuk_admins', JSON.stringify(admins));
-                    const cheatsToSave = cheatFiles.map(item => {
-                        const { fileObject, ...rest } = item;
-                        return rest;
-                    });
-                    localStorage.setItem('mrsoftuk_cheats_v3', JSON.stringify(cheatsToSave));
-                    localStorage.setItem('mrsoftuk_reviews', JSON.stringify(reviews));
-                    localStorage.setItem('mrsoftuk_configs', JSON.stringify(configs));
-                    if (currentUser) localStorage.setItem('mrsoftuk_current_user', currentUser);
-                    else localStorage.removeItem('mrsoftuk_current_user');
-                } catch (e) {
-                    console.warn('Ошибка сохранения:', e);
-                }
-            }
-
-            // ---- DOM ----
-            const grid = document.getElementById('cheatsGrid');
-            const cheatCountLabel = document.getElementById('cheatCountLabel');
-            const nickDisplay = document.getElementById('nickDisplay');
-            const authLoginInput = document.getElementById('authLoginInput');
-            const authPassword = document.getElementById('authPassword');
-            const authLoginBtn = document.getElementById('authLoginBtn');
-            const authRegisterBtn = document.getElementById('authRegisterBtn');
-            const authLogoutBtn = document.getElementById('authLogoutBtn');
-            const authStatus = document.getElementById('authStatus');
-            const onlineList = document.getElementById('onlineList');
-            const reviewInput = document.getElementById('reviewInput');
-            const reviewSubmitBtn = document.getElementById('reviewSubmitBtn');
-            const reviewList = document.getElementById('reviewList');
-            const configsList = document.getElementById('configsList');
-            const syncLibraryBtn = document.getElementById('syncLibraryBtn');
-
-            const versionFilter = document.getElementById('versionFilter');
-            const categoryFilter = document.getElementById('categoryFilter');
-            const searchFilter = document.getElementById('searchFilter');
-            const resetFiltersBtn = document.getElementById('resetFiltersBtn');
-
-            const adminPanel = document.getElementById('adminPanel');
-            const adminToggleBtn = document.getElementById('adminToggleBtn');
-            const adminPasswordInput = document.getElementById('adminPasswordInput');
-            const adminLoginBtn = document.getElementById('adminLoginBtn');
-            const adminLoginStatus = document.getElementById('adminLoginStatus');
-            const adminContent = document.getElementById('adminContent');
-            const adminListDisplay = document.getElementById('adminListDisplay');
-            const adminNickInput = document.getElementById('adminNickInput');
-            const grantAdminBtn = document.getElementById('grantAdminBtn');
-            const revokeAdminBtn = document.getElementById('revokeAdminBtn');
-
-            const cheatNameInput = document.getElementById('cheatNameInput');
-            const cheatVersionInput = document.getElementById('cheatVersionInput');
-            const cheatCategoryInput = document.getElementById('cheatCategoryInput');
-            const cheatTagInput = document.getElementById('cheatTagInput');
-            const cheatDescInput = document.getElementById('cheatDescInput');
-            const cheatVirusInput = document.getElementById('cheatVirusInput');
-            const cheatFileInput = document.getElementById('cheatFileInput');
-            const cheatDropArea = document.getElementById('cheatDropArea');
-            const selectedCheatName = document.getElementById('selectedCheatName');
-            const addCheatBtn = document.getElementById('addCheatBtn');
-
-            const openSiteBtn = document.getElementById('openSiteBtn');
-            const copySiteBtn = document.getElementById('copySiteBtn');
-
-            // Змейка
-            const canvas = document.getElementById('snakeCanvas');
-            const ctx = canvas.getContext('2d');
-            const scoreDisplay = document.getElementById('snakeScore');
-
-            let selectedCheatFile = null;
-            let isAdminLoggedIn = false;
-
-            // ---- ЗМЕЙКА ----
-            const GRID_SIZE = 20;
-            const TILE_COUNT = 20;
-            const TILE_SIZE = canvas.width / TILE_COUNT;
-
-            let snake = [];
-            let food = {};
-            let direction = { dx: 1, dy: 0 };
-            let nextDirection = { dx: 1, dy: 0 };
-            let score = 0;
-            let gameRunning = false;
-            let gamePaused = false;
-            let gameLoop = null;
-            let speed = 150;
-
-            function initGame() {
-                snake = [
-                    { x: 10, y: 10 },
-                    { x: 9, y: 10 },
-                    { x: 8, y: 10 }
-                ];
-                direction = { dx: 1, dy: 0 };
-                nextDirection = { dx: 1, dy: 0 };
-                score = 0;
-                scoreDisplay.textContent = '0';
-                spawnFood();
-                gameRunning = true;
-                gamePaused = false;
-            }
-
-            function spawnFood() {
-                let newFood;
-                let isOnSnake;
-                do {
-                    newFood = {
-                        x: Math.floor(Math.random() * TILE_COUNT),
-                        y: Math.floor(Math.random() * TILE_COUNT)
-                    };
-                    isOnSnake = snake.some(seg => seg.x === newFood.x && seg.y === newFood.y);
-                } while (isOnSnake);
-                food = newFood;
-            }
-
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#0a121d';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                // Сетка
-                ctx.strokeStyle = '#1a2a3a';
-                ctx.lineWidth = 0.5;
-                for (let i = 0; i <= TILE_COUNT; i++) {
-                    ctx.beginPath();
-                    ctx.moveTo(i * TILE_SIZE, 0);
-                    ctx.lineTo(i * TILE_SIZE, canvas.height);
-                    ctx.stroke();
-                    ctx.beginPath();
-                    ctx.moveTo(0, i * TILE_SIZE);
-                    ctx.lineTo(canvas.width, i * TILE_SIZE);
-                    ctx.stroke();
-                }
-
-                // Змейка
-                snake.forEach((seg, index) => {
-                    const isHead = index === 0;
-                    const gradient = ctx.createRadialGradient(
-                        seg.x * TILE_SIZE + TILE_SIZE / 2,
-                        seg.y * TILE_SIZE + TILE_SIZE / 2,
-                        2,
-                        seg.x * TILE_SIZE + TILE_SIZE / 2,
-                        seg.y * TILE_SIZE + TILE_SIZE / 2,
-                        TILE_SIZE / 2
-                    );
-                    if (isHead) {
-                        gradient.addColorStop(0, '#4affb5');
-                        gradient.addColorStop(1, '#00c8a0');
-                    } else {
-                        const ratio = 1 - (index / snake.length) * 0.6;
-                        gradient.addColorStop(0, `rgba(0, 255, 200, ${ratio})`);
-                        gradient.addColorStop(1, `rgba(0, 180, 140, ${ratio * 0.8})`);
-                    }
-                    ctx.fillStyle = gradient;
-                    ctx.shadowColor = isHead ? '#4affb5' : 'transparent';
-                    ctx.shadowBlur = isHead ? 20 : 0;
-                    ctx.beginPath();
-                    ctx.roundRect(seg.x * TILE_SIZE + 1, seg.y * TILE_SIZE + 1, TILE_SIZE - 2, TILE_SIZE - 2, 4);
-                    ctx.fill();
-                    ctx.shadowBlur = 0;
+                // сортировка по дате (новые сверху)
+                const sorted = [...promoCodes].sort((a, b) => new Date(b.date) - new Date(a.date));
+                let html = '';
+                sorted.forEach(item => {
+                    const dateObj = new Date(item.date);
+                    const dateStr = dateObj.toLocaleDateString('ru-RU', { day: '2-digit', month: 'short' });
+                    html += `
+                        <div class="promo-item">
+                            <span class="code">${escapeHtml(item.code)}</span>
+                            <span class="date"><i class="far fa-calendar-alt"></i> ${dateStr}</span>
+                        </div>
+                    `;
                 });
-
-                // Еда
-                ctx.shadowColor = '#facc15';
-                ctx.shadowBlur = 25;
-                ctx.fillStyle = '#facc15';
-                ctx.beginPath();
-                ctx.arc(food.x * TILE_SIZE + TILE_SIZE / 2, food.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE / 2 - 2, 0, Math.PI *
-                    2);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-                ctx.fillStyle = '#ffdd44';
-                ctx.beginPath();
-                ctx.arc(food.x * TILE_SIZE + TILE_SIZE / 2 - 2, food.y * TILE_SIZE + TILE_SIZE / 2 - 4, 4, 0, Math.PI * 2);
-                ctx.fill();
+                promoContainer.innerHTML = html;
             }
 
-            if (!CanvasRenderingContext2D.prototype.roundRect) {
-                CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
-                    if (r > w / 2) r = w / 2;
-                    if (r > h / 2) r = h / 2;
-                    this.moveTo(x + r, y);
-                    this.arcTo(x + w, y, x + w, y + h, r);
-                    this.arcTo(x + w, y + h, x, y + h, r);
-                    this.arcTo(x, y + h, x, y, r);
-                    this.arcTo(x, y, x + w, y, r);
-                    return this;
+            // простой escape для XSS (безопасность)
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            // --- операции с промокодами ---
+            function addPromoCode(code) {
+                if (!code || code.trim() === '') {
+                    adminMessage.innerHTML = '<i class="fas fa-exclamation-circle" style="color:#f08a8a;"></i> поле промокода пустое';
+                    return false;
+                }
+                // проверка пароля
+                const enteredPass = adminPassInput.value.trim();
+                if (enteredPass !== ADMIN_PASSWORD) {
+                    adminMessage.innerHTML = '<i class="fas fa-times-circle" style="color:#f08a8a;"></i> неверный пароль!';
+                    return false;
+                }
+
+                const newCode = {
+                    code: code.trim(),
+                    date: new Date().toISOString()
                 };
+                promoCodes.push(newCode);
+                renderPromoCodes();
+                adminMessage.innerHTML = `<i class="fas fa-check-circle" style="color:#8bc34a;"></i> промокод "${escapeHtml(code.trim())}" добавлен!`;
+                promoInput.value = '';
+                return true;
             }
 
-            function update() {
-                if (!gameRunning || gamePaused) return;
-                direction = { ...nextDirection };
-                const head = { ...snake[0] };
-                head.x += direction.dx;
-                head.y += direction.dy;
-
-                if (head.x < 0 || head.x >= TILE_COUNT || head.y < 0 || head.y >= TILE_COUNT) {
-                    gameOver();
-                    return;
+            function resetAllCodes() {
+                const enteredPass = adminPassInput.value.trim();
+                if (enteredPass !== ADMIN_PASSWORD) {
+                    adminMessage.innerHTML = '<i class="fas fa-times-circle" style="color:#f08a8a;"></i> неверный пароль! сброс отменён';
+                    return false;
                 }
-
-                const hitSelf = snake.some((seg, index) => index > 0 && seg.x === head.x && seg.y === head.y);
-                if (hitSelf) {
-                    gameOver();
-                    return;
+                if (promoCodes.length === 0) {
+                    adminMessage.innerHTML = '<i class="fas fa-info-circle"></i> список уже пуст';
+                    return false;
                 }
-
-                snake.unshift(head);
-
-                if (head.x === food.x && head.y === food.y) {
-                    score++;
-                    scoreDisplay.textContent = score;
-                    spawnFood();
-                    if (speed > 60) {
-                        speed -= 2;
-                        resetLoop();
-                    }
-                } else {
-                    snake.pop();
-                }
-
-                draw();
+                promoCodes = [];
+                renderPromoCodes();
+                adminMessage.innerHTML = '<i class="fas fa-check-circle" style="color:#8bc34a;"></i> все промокоды удалены';
+                return true;
             }
 
-            function resetLoop() {
-                if (gameLoop) {
-                    clearInterval(gameLoop);
-                    gameLoop = null;
-                }
-                if (gameRunning && !gamePaused) {
-                    gameLoop = setInterval(update, speed);
-                }
-            }
-
-            function gameOver() {
-                gameRunning = false;
-                if (gameLoop) {
-                    clearInterval(gameLoop);
-                    gameLoop = null;
-                }
-                showToast(`💀 Игра окончена! Счёт: ${score}`);
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
-                ctx.fillRect(0, canvas.height / 2 - 40, canvas.width, 80);
-                ctx.fillStyle = '#ff6b6b';
-                ctx.font = 'bold 28px Poppins, sans-serif';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText('💀 ИГРА ОКОНЧЕНА', canvas.width / 2, canvas.height / 2 - 10);
-                ctx.fillStyle = '#b0c9dd';
-                ctx.font = '16px Poppins, sans-serif';
-                ctx.fillText(`Счёт: ${score}`, canvas.width / 2, canvas.height / 2 + 30);
-            }
-
-            function startGame() {
-                if (gameLoop) {
-                    clearInterval(gameLoop);
-                    gameLoop = null;
-                }
-                initGame();
-                speed = 150;
-                draw();
-                gameLoop = setInterval(update, speed);
-                showToast('🐍 Игра началась!');
-            }
-
-            function pauseGame() {
-                if (!gameRunning) return;
-                gamePaused = !gamePaused;
-                if (gamePaused) {
-                    showToast('⏸️ Пауза');
-                    if (gameLoop) {
-                        clearInterval(gameLoop);
-                        gameLoop = null;
-                    }
-                } else {
-                    showToast('▶️ Продолжаем');
-                    gameLoop = setInterval(update, speed);
-                }
-            }
-
-            function resetGame() {
-                if (gameLoop) {
-                    clearInterval(gameLoop);
-                    gameLoop = null;
-                }
-                gameRunning = false;
-                gamePaused = false;
-                speed = 150;
-                snake = [];
-                score = 0;
-                scoreDisplay.textContent = '0';
-                ctx.fillStyle = '#0a121d';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#4a6a7a';
-                ctx.font = '20px Poppins, sans-serif';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText('Нажмите "Старт"', canvas.width / 2, canvas.height / 2);
-                showToast('🔄 Игра сброшена');
-            }
-
-            document.addEventListener('keydown', function(e) {
-                if (!gameRunning) return;
-                const key = e.key;
+            // --- обработчики ---
+            addBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                if (key === 'ArrowUp' && direction.dy !== 1) {
-                    nextDirection = { dx: 0, dy: -1 };
-                } else if (key === 'ArrowDown' && direction.dy !== -1) {
-                    nextDirection = { dx: 0, dy: 1 };
-                } else if (key === 'ArrowLeft' && direction.dx !== 1) {
-                    nextDirection = { dx: -1, dy: 0 };
-                } else if (key === 'ArrowRight' && direction.dx !== -1) {
-                    nextDirection = { dx: 1, dy: 0 };
-                }
+                const code = promoInput.value.trim();
+                addPromoCode(code);
             });
 
-            document.querySelectorAll('#snakeMobileControls button[data-dir]').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    if (!gameRunning) return;
-                    const dir = this.getAttribute('data-dir');
-                    if (dir === 'up' && direction.dy !== 1) {
-                        nextDirection = { dx: 0, dy: -1 };
-                    } else if (dir === 'down' && direction.dy !== -1) {
-                        nextDirection = { dx: 0, dy: 1 };
-                    } else if (dir === 'left' && direction.dx !== 1) {
-                        nextDirection = { dx: -1, dy: 0 };
-                    } else if (dir === 'right' && direction.dx !== -1) {
-                        nextDirection = { dx: 1, dy: 0 };
-                    }
-                });
-            });
-
-            document.getElementById('snakeStartBtn').addEventListener('click', startGame);
-            document.getElementById('snakePauseBtn').addEventListener('click', pauseGame);
-            document.getElementById('snakeResetBtn').addEventListener('click', resetGame);
-
-            resetGame();
-
-            // ---- Загрузка данных ----
-            loadData();
-
-            // ---- Обновить отображение ----
-            function updateUserDisplay() {
-                const displayName = currentUser || 'Гость';
-                nickDisplay.textContent = displayName;
-                const statusDot = document.querySelector('.user-badge .status');
-                if (currentUser) {
-                    statusDot.style.background = '#4affb5';
-                    statusDot.style.boxShadow = '0 0 20px #4affb5aa';
-                } else {
-                    statusDot.style.background = '#facc15';
-                    statusDot.style.boxShadow = '0 0 20px #facc1566';
-                }
-                updateAuthStatus();
-                renderOnlinePlayers();
-            }
-
-            function updateAuthStatus() {
-                if (currentUser === 'nowSat') {
-                    authStatus.innerHTML = '<i class="fas fa-check-circle success"></i> ✅ Вы вошли как <strong>nowSat</strong> (администратор)';
-                } else if (currentUser) {
-                    authStatus.innerHTML = `<i class="fas fa-check-circle success"></i> ✅ Вы вошли как <strong>${currentUser}</strong>`;
-                } else {
-                    authStatus.innerHTML = '<i class="fas fa-info-circle"></i> Введите логин и пароль';
-                }
-            }
-
-            // ---- Авторизация ----
-            authLoginBtn.addEventListener('click', function() {
-                const login = authLoginInput.value.trim();
-                const pass = authPassword.value.trim();
-
-                if (!login || !pass) {
-                    showToast('❌ Введите логин и пароль.', true);
-                    return;
-                }
-
-                if (users[login] && users[login].password === pass) {
-                    currentUser = login;
-                    saveData();
-                    updateUserDisplay();
-                    showToast(`✅ Добро пожаловать, ${login}!`);
-                    authLoginInput.value = '';
-                    authPassword.value = '';
-                } else {
-                    showToast('❌ Неверный логин или пароль!', true);
-                }
-            });
-
-            authRegisterBtn.addEventListener('click', function() {
-                const login = authLoginInput.value.trim();
-                const pass = authPassword.value.trim();
-
-                if (!login || !pass) {
-                    showToast('❌ Введите логин и пароль.', true);
-                    return;
-                }
-
-                if (login.length < 3) {
-                    showToast('❌ Логин должен быть минимум 3 символа.', true);
-                    return;
-                }
-
-                if (pass.length < 4) {
-                    showToast('❌ Пароль должен быть минимум 4 символа.', true);
-                    return;
-                }
-
-                if (users[login]) {
-                    showToast('❌ Пользователь уже существует!', true);
-                    return;
-                }
-
-                users[login] = { password: pass, email: '' };
-                saveData();
-                currentUser = login;
-                updateUserDisplay();
-                showToast(`✅ Пользователь "${login}" зарегистрирован!`);
-                authLoginInput.value = '';
-                authPassword.value = '';
-            });
-
-            authLogoutBtn.addEventListener('click', function() {
-                currentUser = null;
-                saveData();
-                updateUserDisplay();
-                showToast('👋 Вы вышли из аккаунта');
-            });
-
-            // ---- Онлайн ----
-            function renderOnlinePlayers() {
-                onlineList.innerHTML = '';
-                if (!onlinePlayers || onlinePlayers.length === 0) {
-                    onlineList.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem;">Нет игроков онлайн</div>';
-                    return;
-                }
-                onlinePlayers.forEach(player => {
-                    const div = document.createElement('div');
-                    div.className = 'online-player';
-                    const isAdmin = admins.includes(player);
-                    div.innerHTML = `
-                            <span class="dot"></span>
-                            ${player}
-                            ${isAdmin ? '<span class="admin-badge">Админ</span>' : ''}
-                            ${player === 'nowSat' ? ' 👑' : ''}
-                        `;
-                    onlineList.appendChild(div);
-                });
-            }
-
-            // ---- Отзывы ----
-            function renderReviews() {
-                reviewList.innerHTML = '';
-                if (!reviews || reviews.length === 0) {
-                    reviewList.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem; text-align: center;">Пока нет отзывов</div>';
-                    return;
-                }
-                const sortedReviews = [...reviews].reverse();
-                sortedReviews.forEach(review => {
-                    const div = document.createElement('div');
-                    div.className = 'review-item';
-                    div.innerHTML = `
-                            <span class="review-user">${review.user || 'Гость'}</span>
-                            <span class="review-text">${review.text || ''}</span>
-                            <span class="review-time">${review.time || ''}</span>
-                        `;
-                    reviewList.appendChild(div);
-                });
-            }
-
-            reviewSubmitBtn.addEventListener('click', function() {
-                const text = reviewInput.value.trim();
-                if (!text) { showToast('❌ Введите отзыв.', true); return; }
-                if (!currentUser) { showToast('❌ Авторизуйтесь.', true); return; }
-                const now = new Date();
-                const time = now.toLocaleString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit',
-                    minute: '2-digit' });
-                reviews.push({ user: currentUser, text: text, time: time });
-                saveData();
-                renderReviews();
-                reviewInput.value = '';
-                showToast('✅ Отзыв добавлен!');
-            });
-
-            // ---- Конфиги ----
-            function renderConfigs() {
-                configsList.innerHTML = '';
-                if (!configs || configs.length === 0) {
-                    configsList.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem;">Нет конфигов</div>';
-                    return;
-                }
-                configs.forEach(cfg => {
-                    const div = document.createElement('div');
-                    div.className = 'config-item';
-                    div.innerHTML = `<i class="fas fa-file-code"></i> ${cfg.name} (${cfg.author})`;
-                    div.addEventListener('click', function() {
-                        showToast(`📥 Скачивание конфига "${cfg.name}" от ${cfg.author}`);
-                    });
-                    configsList.appendChild(div);
-                });
-            }
-
-            // ---- Рендер читов ----
-            function renderCheats() {
-                const version = versionFilter.value;
-                const category = categoryFilter.value;
-                const search = searchFilter.value.toLowerCase();
-
-                let filtered = cheatFiles.filter(cheat => {
-                    if (version !== 'all' && cheat.version !== version) return false;
-                    if (category !== 'all' && cheat.category !== category) return false;
-                    if (search && !cheat.name.toLowerCase().includes(search) && !cheat.desc.toLowerCase().includes(
-                        search)) return false;
-                    return true;
-                });
-
-                grid.innerHTML = '';
-                if (filtered.length === 0) {
-                    grid.innerHTML = `
-                            <div class="empty-library">
-                                <i class="fas fa-box-open"></i>
-                                <p>Библиотека пуста. Администратор может добавить читы через панель управления.</p>
-                                <p style="font-size:0.8rem; margin-top:0.5rem; color:#6f8aa5;">
-                                    <i class="fas fa-sync-alt"></i> Нажмите «Обновить», чтобы загрузить новые файлы
-                                </p>
-                            </div>
-                        `;
-                    cheatCountLabel.textContent = '0 файлов';
-                    return;
-                }
-
-                filtered.forEach((cheat) => {
-                    const card = document.createElement('div');
-                    card.className = 'cheat-card';
-                    const iconMap = { client: 'fa-cubes', xray: 'fa-eye', macro: 'fa-mouse', resourcepack: 'fa-palette' };
-                    const icon = iconMap[cheat.category] || 'fa-file-archive';
-                    const categoryNames = { client: 'Клиент', xray: 'X-Ray', macro: 'Макросы',
-                    resourcepack: 'Ресурс-пак' };
-
-                    let tagsHtml = '';
-                    if (cheat.tags) {
-                        cheat.tags.forEach(t => {
-                            let cls = 'tag-safe';
-                            if (t === 'risky') cls = 'tag-risky';
-                            else if (t === 'danger') cls = 'tag-danger';
-                            else if (t === 'update') cls = 'tag-update';
-                            else if (t === 'pirate') cls = 'tag-pirate';
-                            tagsHtml += `<span class="tag ${cls}">${t}</span>`;
-                        });
-                    }
-
-                    const fileSize = cheat.fileSize ? `${cheat.fileSize} МБ` : '';
-
-                    card.innerHTML = `
-                            <div class="cheat-top">
-                                <div class="cheat-icon"><i class="fas ${icon}"></i></div>
-                                <span class="version-tag">${cheat.version || '1.20.4'}</span>
-                            </div>
-                            <h3>${cheat.name}</h3>
-                            <span class="category-tag">${categoryNames[cheat.category] || cheat.category}</span>
-                            <p>${cheat.desc || 'Описание отсутствует'}</p>
-                            <div class="cheat-tags">${tagsHtml}</div>
-                            ${fileSize ? `<div class="file-size"><i class="fas fa-hdd"></i> ${fileSize}</div>` : ''}
-                            <button class="btn-load load-cheat-btn" data-id="${cheat.id}">
-                                <i class="fas fa-arrow-circle-down"></i> Скачать и распаковать
-                            </button>
-                            ${cheat.virusLink ? `<div class="virus-link"><a href="${cheat.virusLink}" target="_blank"><i class="fas fa-shield-alt"></i> Проверить на VirusTotal</a></div>` : ''}
-                        `;
-                    grid.appendChild(card);
-                });
-
-                document.querySelectorAll('.load-cheat-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        if (!currentUser) {
-                            showToast('❌ Авторизуйтесь для скачивания!', true);
-                            return;
-                        }
-                        const id = parseInt(this.getAttribute('data-id'));
-                        const cheat = cheatFiles.find(c => c.id === id);
-                        if (!cheat) { showToast('❌ Чит не найден.', true); return; }
-                        if (cheat.fileObject) {
-                            const url = URL.createObjectURL(cheat.fileObject);
-                            const a = document.createElement('a');
-                            a.href = url;
-                            a.download = cheat.fileName || cheat.name + '.zip';
-                            document.body.appendChild(a);
-                            a.click();
-                            document.body.removeChild(a);
-                            URL.revokeObjectURL(url);
-                            showToast(`📦 Скачивание и распаковка "${cheat.fileName || cheat.name + '.zip'}" начата!`);
-                            setTimeout(() => {
-                                showToast(`✅ Файл "${cheat.fileName || cheat.name + '.zip'}" успешно распакован!`);
-                            }, 2000);
-                        } else {
-                            const fakeZip = new Blob(['Демо-версия чита ' + cheat.name], { type: 'application/zip' });
-                            const url = URL.createObjectURL(fakeZip);
-                            const a = document.createElement('a');
-                            a.href = url;
-                            a.download = cheat.fileName || cheat.name + '.zip';
-                            document.body.appendChild(a);
-                            a.click();
-                            document.body.removeChild(a);
-                            URL.revokeObjectURL(url);
-                            showToast(`📦 Демо-версия "${cheat.name}" скачана и распакована!`);
-                        }
-                    });
-                });
-
-                cheatCountLabel.textContent = `${filtered.length} файлов`;
-            }
-
-            // ---- Синхронизация ----
-            function syncLibrary() {
-                showToast('🔄 Обновление библиотеки...', false, true);
-                loadData();
-                renderCheats();
-                renderFileList();
-                renderReviews();
-                renderConfigs();
-                renderOnlinePlayers();
-                updateAdminList();
-                setTimeout(() => {
-                    showToast(`✅ Библиотека обновлена! Загружено ${cheatFiles.length} файлов.`);
-                }, 500);
-            }
-
-            syncLibraryBtn.addEventListener('click', function() {
-                syncLibrary();
-            });
-
-            // ---- Фильтры ----
-            versionFilter.addEventListener('change', renderCheats);
-            categoryFilter.addEventListener('change', renderCheats);
-            searchFilter.addEventListener('input', renderCheats);
-            resetFiltersBtn.addEventListener('click', function() {
-                versionFilter.value = 'all';
-                categoryFilter.value = 'all';
-                searchFilter.value = '';
-                renderCheats();
-            });
-
-            // ---- Инструкции ----
-            document.querySelectorAll('.instruction-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    const type = this.getAttribute('data-instr');
-                    const texts = {
-                        fabric: '1. Скачайте Fabric Installer\n2. Выберите версию Minecraft\n3. Установите Fabric\n4. Поместите чит в папку mods',
-                        forge: '1. Скачайте Forge для нужной версии\n2. Установите Forge\n3. Поместите чит в папку mods',
-                        dll: '1. Скачайте DLL-файл\n2. Запустите лаунчер\n3. Используйте инжектор для внедрения',
-                        launcher: '1. Скачайте клиент\n2. Распакуйте архив\n3. Запустите .exe файл'
-                    };
-                    showToast(`📖 ${texts[type] || 'Инструкция будет добавлена'}`);
-                });
-            });
-
-            // ---- Админ-панель ----
-            adminToggleBtn.addEventListener('click', function() {
-                const isActive = adminPanel.classList.toggle('active');
-                this.innerHTML = isActive ?
-                    '<i class="fas fa-shield-alt"></i> Скрыть админку' :
-                    '<i class="fas fa-shield-alt"></i> Админ-панель';
-                if (!isActive) {
-                    isAdminLoggedIn = false;
-                    adminContent.style.display = 'none';
-                    document.getElementById('adminLoginArea').style.display = 'flex';
-                    adminLoginStatus.innerHTML = '<i class="fas fa-info-circle"></i> Введите мастер-пароль';
-                    adminPasswordInput.value = '';
-                }
-            });
-
-            adminLoginBtn.addEventListener('click', function() {
-                if (adminPasswordInput.value.trim() === MASTER_PASSWORD) {
-                    isAdminLoggedIn = true;
-                    adminContent.style.display = 'block';
-                    document.getElementById('adminLoginArea').style.display = 'none';
-                    adminLoginStatus.innerHTML = '<i class="fas fa-check-circle"></i> Вы вошли как администратор';
-                    showToast('✅ Доступ к админ-панели получен!');
-                } else {
-                    showToast('❌ Неверный мастер-пароль!', true);
-                }
-            });
-
-            grantAdminBtn.addEventListener('click', function() {
-                if (!isAdminLoggedIn) { showToast('❌ Войдите в админку.', true); return; }
-                const nick = adminNickInput.value.trim();
-                if (!nick) { showToast('❌ Введите ник.', true); return; }
-                if (!users[nick]) { showToast(`❌ ${nick} не зарегистрирован.`, true); return; }
-                if (admins.includes(nick)) { showToast(`ℹ️ ${nick} уже админ.`); return; }
-                admins.push(nick);
-                saveData();
-                updateAdminList();
-                renderOnlinePlayers();
-                adminNickInput.value = '';
-                showToast(`✅ ${nick} стал администратором.`);
-            });
-
-            revokeAdminBtn.addEventListener('click', function() {
-                if (!isAdminLoggedIn) { showToast('❌ Войдите в админку.', true); return; }
-                const nick = adminNickInput.value.trim();
-                if (!nick) { showToast('❌ Введите ник.', true); return; }
-                if (nick === 'nowSat') { showToast('❌ Нельзя убрать nowSat.', true); return; }
-                const idx = admins.indexOf(nick);
-                if (idx === -1) { showToast(`❌ ${nick} не админ.`, true); return; }
-                admins.splice(idx, 1);
-                saveData();
-                updateAdminList();
-                renderOnlinePlayers();
-                adminNickInput.value = '';
-                showToast(`⛔ ${nick} лишён прав.`);
-            });
-
-            function updateAdminList() {
-                adminListDisplay.textContent = admins.join(', ') || 'нет';
-            }
-
-            // ---- Добавление чита ----
-            cheatDropArea.addEventListener('click', function() {
-                if (!isAdminLoggedIn) { showToast('❌ Войдите в админку.', true); return; }
-                cheatFileInput.click();
-            });
-
-            cheatFileInput.addEventListener('change', function() {
-                if (this.files && this.files.length > 0) {
-                    const file = this.files[0];
-                    if (file.type === 'application/zip' || file.name.endsWith('.zip')) {
-                        selectedCheatFile = file;
-                        const sizeMB = (file.size / 1024 / 1024).toFixed(2);
-                        selectedCheatName.textContent = `📄 ${file.name} (${sizeMB} МБ)`;
-                        showToast(`✅ Выбран ZIP: ${file.name}`);
-                    } else {
-                        showToast('❌ Выберите ZIP-файл.', true);
-                        selectedCheatFile = null;
-                        selectedCheatName.textContent = 'Файл не выбран';
-                        this.value = '';
-                    }
-                }
-            });
-
-            addCheatBtn.addEventListener('click', function() {
-                if (!isAdminLoggedIn) { showToast('❌ Войдите в админку.', true); return; }
-                const name = cheatNameInput.value.trim();
-                if (!name) { showToast('❌ Введите название.', true); return; }
-                const version = cheatVersionInput.value.trim() || '1.20.4';
-                const category = cheatCategoryInput.value;
-                const tags = cheatTagInput.value.trim() ? cheatTagInput.value.trim().split(',').map(t => t.trim()) :
-                ['safe'];
-                const desc = cheatDescInput.value.trim() || 'Описание отсутствует';
-                const virusLink = cheatVirusInput.value.trim() || '';
-
-                if (!selectedCheatFile) {
-                    showToast('❌ Выберите ZIP-файл.', true);
-                    return;
-                }
-
-                const fileSizeGB = selectedCheatFile.size / (1024 * 1024 * 1024);
-                if (fileSizeGB > 5) {
-                    showToast(`❌ Файл ${fileSizeGB.toFixed(2)} ГБ > 5 ГБ!`, true);
-                    return;
-                }
-
-                const fileSizeMB = (selectedCheatFile.size / 1024 / 1024).toFixed(2);
-
-                cheatFiles.push({
-                    id: nextCheatId++,
-                    name: name,
-                    version: version,
-                    category: category,
-                    desc: desc,
-                    tags: tags,
-                    virusLink: virusLink,
-                    fileName: selectedCheatFile.name,
-                    fileSize: fileSizeMB,
-                    fileObject: selectedCheatFile
-                });
-
-                saveData();
-                renderCheats();
-                renderFileList();
-
-                cheatNameInput.value = '';
-                cheatVersionInput.value = '';
-                cheatTagInput.value = '';
-                cheatDescInput.value = '';
-                cheatVirusInput.value = '';
-                selectedCheatFile = null;
-                selectedCheatName.textContent = 'Файл не выбран';
-                cheatFileInput.value = '';
-
-                showToast(`✅ Чит "${name}" добавлен!`);
-                setTimeout(() => {
-                    syncLibrary();
-                }, 300);
-            });
-
-            // ---- Файлы в админке ----
-            function renderFileList() {
-                const fileListEl = document.getElementById('fileList');
-                if (!fileListEl) return;
-                fileListEl.innerHTML = '';
-                if (!cheatFiles || cheatFiles.length === 0) {
-                    fileListEl.innerHTML = '<div style="color: #6f8aa5; padding: 0.5rem;">Нет файлов</div>';
-                    return;
-                }
-                cheatFiles.forEach((file) => {
-                    const div = document.createElement('div');
-                    div.className = 'file-item';
-                    div.style.cssText =
-                        'display:flex; justify-content:space-between; padding:0.3rem 0; border-bottom:1px solid #1d2b36;';
-                    div.innerHTML = `
-                            <span>${file.name} (${file.version}) ${file.fileSize ? file.fileSize + ' МБ' : ''}</span>
-                            <button class="del-btn" data-id="${file.id}" style="background:none; border:none; color:#b06a7a; cursor:pointer;">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        `;
-                    fileListEl.appendChild(div);
-                });
-                document.querySelectorAll('.file-item .del-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        if (!isAdminLoggedIn) { showToast('❌ Войдите в админку.', true); return; }
-                        const id = parseInt(this.getAttribute('data-id'));
-                        const idx = cheatFiles.findIndex(c => c.id === id);
-                        if (idx !== -1) {
-                            cheatFiles.splice(idx, 1);
-                            saveData();
-                            renderCheats();
-                            renderFileList();
-                            showToast('🗑️ Файл удалён.');
-                            setTimeout(() => {
-                                syncLibrary();
-                            }, 300);
-                        }
-                    });
-                });
-            }
-
-            // ---- Сайт ----
-            function openSite() {
-                window.open(SITE_URL, '_blank');
-                showToast(`🌐 Открываем сайт: ${SITE_URL}`);
-            }
-
-            openSiteBtn.addEventListener('click', function(e) { e.preventDefault();
-                openSite(); });
-            copySiteBtn.addEventListener('click', function(e) {
+            resetBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                navigator.clipboard.writeText(SITE_URL).then(() => {
-                    showToast('📋 Ссылка скопирована!');
-                }).catch(() => {
-                    const textarea = document.createElement('textarea');
-                    textarea.value = SITE_URL;
-                    document.body.appendChild(textarea);
-                    textarea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textarea);
-                    showToast('📋 Ссылка скопирована!');
-                });
+                resetAllCodes();
             });
 
-            // ---- Остальные ссылки ----
-            document.querySelectorAll('#discordLink, #youtubeLink, #supportLink').forEach(link => {
-                link.addEventListener('click', function(e) {
+            // отправить жалобу (имитация, но кидает в ТГ владельца)
+            reportBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const text = reportText.value.trim();
+                if (text === '') {
+                    reportStatus.innerHTML = '<i class="fas fa-exclamation-circle" style="color:#f08a8a;"></i> напишите текст жалобы';
+                    return;
+                }
+                // Сообщение для владельца (имитация отправки) + ссылка
+                const ownerLink = 'https://t.me/meowlik_bober';
+                // В реальном проекте тут был бы бот, но мы перекидываем в Telegram
+                reportStatus.innerHTML = `<i class="fas fa-paper-plane" style="color:#8bc34a;"></i> жалоба отправлена! <a href="${ownerLink}" target="_blank" style="color:#f3b37e;">напишите владельцу</a>`;
+                // Дополнительно открываем чат с владельцем (переход)
+                window.open(ownerLink, '_blank');
+                reportText.value = '';
+                // но чтобы не спамить, через 4 секунды очищаем статус
+                setTimeout(() => {
+                    if (reportStatus.innerHTML.includes('жалоба отправлена')) {
+                        reportStatus.innerHTML = '';
+                    }
+                }, 8000);
+            });
+
+            // нажатие Enter в поле промокода
+            promoInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
                     e.preventDefault();
-                    showToast(`🔗 Переход на ${this.innerText.trim()}`);
-                });
-            });
-
-            document.getElementById('userBadge').addEventListener('click', function() {
-                if (currentUser) {
-                    showToast(`🆔 ${currentUser}${admins.includes(currentUser) ? ' (админ)' : ''}`);
-                } else {
-                    showToast('👤 Вы не авторизованы.');
+                    addBtn.click();
                 }
             });
 
-            // ---- Тост ----
-            function showToast(message, isError = false, isLoading = false) {
-                const toast = document.getElementById('toastMessage');
-                const textSpan = document.getElementById('toastText');
-                if (!toast || !textSpan) return;
-                textSpan.textContent = message;
-                toast.className = 'toast-message';
-                if (isError) toast.classList.add('error');
-                if (isLoading) toast.classList.add('loading');
-                toast.style.display = 'block';
-                clearTimeout(toast._hideTimer);
-                toast._hideTimer = setTimeout(() => {
-                    toast.style.display = 'none';
-                    toast.className = 'toast-message';
-                }, 4500);
+            // --- Стартовые промокоды для примера ---
+            function initDemoCodes() {
+                const demo = [
+                    { code: 'CAT300', date: new Date(Date.now() - 3600000 * 2).toISOString() },
+                    { code: 'LAVAN2026', date: new Date(Date.now() - 3600000 * 24).toISOString() },
+                    { code: 'MEOWLIK', date: new Date(Date.now() - 3600000 * 48).toISOString() }
+                ];
+                promoCodes = demo;
+                renderPromoCodes();
+                adminMessage.innerHTML = '<i class="fas fa-check-circle" style="color:#8bc34a;"></i> демо-промокоды загружены';
             }
 
-            // ---- Инициализация ----
-            updateUserDisplay();
-            updateAdminList();
-            renderCheats();
-            renderReviews();
-            renderConfigs();
-            renderOnlinePlayers();
-            renderFileList();
+            // если хотим стартовые промокоды, раскомментить:
+            initDemoCodes();
 
-            setTimeout(() => {
-                syncLibrary();
-            }, 500);
-
-            setInterval(() => {
-                syncLibrary();
-            }, 30000);
-
-            console.log(`✅ Mrsoftuk_SAT загружен. Админы: ${admins.join(', ')}`);
-            console.log(`📁 Читов: ${cheatFiles.length}, отзывов: ${reviews.length}, конфигов: ${configs.length}`);
-            console.log(`👤 Пользователей: ${Object.keys(users).length}`);
-            console.log(`🔑 Логин: nowSat, Пароль: nowsat2024`);
-            console.log(`🐍 Игра Змейка добавлена!`);
+            console.log('CatLavan RP site ready. Пароль админа: cat123');
         })();
     </script>
-
 </body>
 </html>
