@@ -3,720 +3,441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CatLavan RP · Промокоды</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(145deg, #0b0e14 0%, #1a1f2b 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .glass-card {
-            max-width: 1000px;
-            width: 100%;
-            background: rgba(20, 25, 36, 0.75);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 215, 150, 0.15);
-            border-radius: 48px;
-            padding: 30px 35px 40px;
-            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 215, 150, 0.05);
-            transition: all 0.2s ease;
-        }
-
-        /* шапка */
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-            border-bottom: 1px solid rgba(255, 215, 150, 0.1);
-            padding-bottom: 20px;
-            margin-bottom: 28px;
-        }
-
-        .logo h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #f9d976, #f39c6d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            font-size: 0.9rem;
-            color: #aab3c9;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 4px 14px;
-            border-radius: 40px;
-            border: 1px solid #2d3548;
-            margin-left: 8px;
-            -webkit-text-fill-color: #b7c0d6;
-        }
-
-        .tg-link {
-            background: #1f2a3a;
-            padding: 8px 18px;
-            border-radius: 60px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid #3d475e;
-            transition: 0.2s;
-            text-decoration: none;
-            color: #d1d9ed;
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-
-        .tg-link i {
-            color: #3fa3e0;
-            font-size: 1.4rem;
-        }
-
-        .tg-link:hover {
-            background: #2a354a;
-            border-color: #f3b37e;
-            color: white;
-        }
-
-        .owner-tag {
-            margin-top: 6px;
-            font-size: 0.8rem;
-            color: #8691aa;
-            background: #161d29;
-            padding: 4px 14px;
-            border-radius: 40px;
-            display: inline-block;
-            border: 1px solid #2b3447;
-        }
-
-        .owner-tag i {
-            color: #f3b37e;
-            margin-right: 6px;
-        }
-
-        /* Донат-баннер */
-        .donate-banner {
-            margin: 12px 0 18px 0;
-            background: linear-gradient(135deg, rgba(243, 179, 126, 0.12), rgba(243, 179, 126, 0.03));
-            border: 1px solid rgba(243, 179, 126, 0.2);
-            border-radius: 60px;
-            padding: 12px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px 20px;
-            backdrop-filter: blur(6px);
-        }
-
-        .donate-banner i {
-            color: #f3b37e;
-            font-size: 1.2rem;
-        }
-
-        .donate-banner span {
-            color: #d1d9ed;
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 0.3px;
-        }
-
-        .donate-banner .highlight {
-            color: #fad9b0;
-            font-weight: 700;
-            background: rgba(243, 179, 126, 0.15);
-            padding: 4px 16px;
-            border-radius: 40px;
-            border: 1px solid rgba(243, 179, 126, 0.15);
-        }
-
-        .donate-banner a {
-            color: #f3b37e;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.2s;
-            border-bottom: 1px dashed rgba(243, 179, 126, 0.3);
-        }
-
-        .donate-banner a:hover {
-            color: #fad9b0;
-            border-bottom-color: #fad9b0;
-        }
-
-        /* сетка: две колонки */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1.3fr 0.9fr;
-            gap: 30px;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 760px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .glass-card {
-                padding: 20px;
-            }
-            .donate-banner {
-                padding: 10px 16px;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* блок промокодов */
-        .promo-section {
-            background: rgba(12, 16, 24, 0.5);
-            border-radius: 28px;
-            padding: 22px 20px 18px;
-            border: 1px solid rgba(255, 215, 150, 0.08);
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #e8edf5;
-            letter-spacing: 0.3px;
-            margin-bottom: 16px;
-        }
-
-        .section-title i {
-            color: #f3b37e;
-            font-size: 1.3rem;
-        }
-
-        .promo-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            max-height: 340px;
-            overflow-y: auto;
-            padding-right: 4px;
-        }
-
-        .promo-list::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .promo-list::-webkit-scrollbar-track {
-            background: #1f2636;
-            border-radius: 10px;
-        }
-
-        .promo-list::-webkit-scrollbar-thumb {
-            background: #f3b37e;
-            border-radius: 10px;
-        }
-
-        .promo-item {
-            background: #141b28;
-            padding: 14px 18px;
-            border-radius: 20px;
-            border-left: 4px solid #f3b37e;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #d3dcee;
-            font-weight: 500;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            transition: 0.1s ease;
-            word-break: break-word;
-        }
-
-        .promo-item .code {
-            background: #232d3f;
-            padding: 6px 14px;
-            border-radius: 40px;
-            font-family: 'Courier New', monospace;
-            font-weight: 600;
-            color: #fad9b0;
-            letter-spacing: 0.5px;
-            font-size: 0.9rem;
-        }
-
-        .promo-item .date {
-            font-size: 0.7rem;
-            color: #7e8aa8;
-            background: #1d2537;
-            padding: 3px 12px;
-            border-radius: 40px;
-        }
-
-        .empty-promo {
-            color: #66708a;
-            text-align: center;
-            padding: 30px 0;
-            font-style: italic;
-            background: #10161f;
-            border-radius: 30px;
-        }
-
-        /* админ панель */
-        .admin-panel {
-            background: rgba(12, 16, 24, 0.5);
-            border-radius: 28px;
-            padding: 22px 20px 18px;
-            border: 1px solid rgba(255, 215, 150, 0.08);
-        }
-
-        .admin-panel .section-title i {
-            color: #6c8cff;
-        }
-
-        .admin-form {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 4px;
-        }
-
-        .admin-form input {
-            background: #1a2232;
-            border: 1px solid #2b354b;
-            border-radius: 40px;
-            padding: 12px 18px;
-            color: #eff3fc;
-            font-size: 0.95rem;
-            outline: none;
-            transition: 0.2s;
-        }
-
-        .admin-form input:focus {
-            border-color: #f3b37e;
-            background: #1f283c;
-            box-shadow: 0 0 0 3px rgba(243, 179, 126, 0.15);
-        }
-
-        .admin-form input::placeholder {
-            color: #5d6b87;
-            font-weight: 300;
-        }
-
-        .admin-form .password-row {
-            display: flex;
-            gap: 8px;
-        }
-
-        .admin-form .password-row input {
-            flex: 1;
-        }
-
-        .btn {
-            background: #2f3b55;
-            border: none;
-            border-radius: 60px;
-            padding: 12px 20px;
-            font-weight: 600;
-            color: #eef3fc;
-            cursor: pointer;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.95rem;
-            border: 1px solid #3e4b67;
-        }
-
-        .btn-primary {
-            background: #c67e4e;
-            border-color: #d6935f;
-            color: #0e131e;
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(198, 126, 78, 0.25);
-        }
-
-        .btn-primary:hover {
-            background: #d68f5a;
-            transform: scale(0.97);
-            border-color: #e6a873;
-        }
-
-        .btn-secondary {
-            background: #2a3449;
-            border-color: #3d4a64;
-        }
-
-        .btn-secondary:hover {
-            background: #36435e;
-        }
-
-        .admin-status {
-            font-size: 0.75rem;
-            color: #96a2c0;
-            margin-top: 6px;
-            padding: 6px 12px;
-            background: #101624;
-            border-radius: 30px;
-            text-align: center;
-        }
-
-        /* форма жалобы (для игроков) */
-        .report-section {
-            margin-top: 28px;
-            border-top: 1px solid rgba(255, 215, 150, 0.08);
-            padding-top: 24px;
-        }
-
-        .report-section .section-title i {
-            color: #f08a8a;
-        }
-
-        .report-form {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 12px;
-            background: #0f1622;
-            padding: 12px 16px 16px;
-            border-radius: 40px;
-            border: 1px solid #273040;
-        }
-
-        .report-form textarea {
-            flex: 2 1 200px;
-            background: #1a2232;
-            border: 1px solid #2f3a52;
-            border-radius: 30px;
-            padding: 10px 16px;
-            color: #e3eaf5;
-            resize: vertical;
-            min-height: 48px;
-            font-size: 0.9rem;
-            outline: none;
-            transition: 0.2s;
-        }
-
-        .report-form textarea:focus {
-            border-color: #f3b37e;
-            box-shadow: 0 0 0 3px rgba(243, 179, 126, 0.1);
-        }
-
-        .report-form textarea::placeholder {
-            color: #55607d;
-        }
-
-        .report-form .btn {
-            flex: 0 0 auto;
-            background: #c24f4f;
-            border-color: #b34a4a;
-            color: white;
-            padding: 10px 24px;
-        }
-
-        .report-form .btn:hover {
-            background: #d45a5a;
-        }
-
-        .report-hint {
-            width: 100%;
-            font-size: 0.75rem;
-            color: #96a2c0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            justify-content: flex-end;
-            margin-top: 2px;
-        }
-
-        .report-hint i {
-            color: #d98c8c;
-        }
-
-        .footer-note {
-            margin-top: 24px;
-            font-size: 0.8rem;
-            color: #596582;
-            text-align: center;
-            border-top: 1px solid #202837;
-            padding-top: 20px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px 25px;
-        }
-
-        .footer-note a {
-            color: #b7c4e0;
-            text-decoration: none;
-            border-bottom: 1px dashed #38445e;
-        }
-
-        .footer-note a:hover {
-            color: #f3b37e;
-            border-bottom-color: #f3b37e;
-        }
-
-        /* скрываем пароль */
-        .hidden-pass {
-            -webkit-text-security: disc;
-        }
-    </style>
+    <meta name="description" content="ShirokaSMP — донат магазин Minecraft сервера. Привилегии, киты, булава, незерки.">
+    <title>ShirokaSMP — Донат магазин</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="glass-card">
 
-        <!-- Header -->
-        <div class="header">
-            <div class="logo">
-                <h1><i class="fas fa-paw" style="color: #f3b37e; margin-right: 6px;"></i>CatLavan RP</h1>
-                <span><i class="far fa-gem"></i> промокоды</span>
-            </div>
-            <a href="https://t.me/catlavanrpp" target="_blank" class="tg-link">
-                <i class="fab fa-telegram-plane"></i> 
-                <span>канал</span>
-                <i class="fas fa-arrow-right" style="font-size: 0.8rem; opacity: 0.7;"></i>
+    <!-- Фоновые эффекты -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-grid"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="#home" class="brand">
+                <div class="brand-icon">⛏️</div>
+                <div class="brand-text">
+                    <span class="brand-name">ShirokaSMP</span>
+                    <span class="brand-ip">ShirokaSMP.aternos.me</span>
+                </div>
             </a>
-        </div>
 
-        <!-- Владелец -->
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <div class="owner-tag">
-                <i class="fas fa-crown"></i> владелец <a href="https://t.me/meowlik_bober" target="_blank" style="color: #f3b37e; text-decoration: none; font-weight: 600;">@meowlik_bober</a>
-            </div>
-            <div style="font-size: 0.75rem; color: #5c6a86;">
-                <i class="fas fa-shield-alt"></i> админ-панель
-            </div>
-        </div>
+            <nav class="nav" id="nav">
+                <a href="#home" class="nav-link active">Главная</a>
+                <a href="#donates" class="nav-link">Донаты</a>
+                <a href="#kits" class="nav-link">Киты</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contact" class="nav-link">Контакты</a>
+            </nav>
 
-        <!-- Донат-баннер -->
-        <div class="donate-banner">
-            <i class="fas fa-gem"></i>
-            <span>Добро пожаловать! Для покупки доната пишите сюда:</span>
-            <a href="https://t.me/meowlik_bober" target="_blank" class="highlight">
-                <i class="fab fa-telegram-plane"></i> @meowlik_bober
-            </a>
-            <i class="fas fa-arrow-right" style="color: #f3b37e; opacity: 0.6; font-size: 0.9rem;"></i>
-        </div>
-
-        <!-- Основная сетка -->
-        <div class="grid-2">
-            <!-- Левая колонка: промокоды -->
-            <div class="promo-section">
-                <div class="section-title">
-                    <i class="fas fa-ticket-alt"></i> Активные промокоды
+            <div class="header-actions">
+                <div class="online-pill">
+                    <span class="online-dot"></span>
+                    <span id="online">—</span>
                 </div>
-                <div id="promoContainer" class="promo-list">
-                    <!-- Список будет рендериться через JS -->
-                    <div class="empty-promo"><i class="fas fa-hourglass-half"></i>  пока нет промокодов</div>
-                </div>
+                <button class="burger" id="burger" aria-label="Меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container hero-inner">
+            <div class="hero-badge">
+                <span class="pulse"></span> Сервер онлайн • 1.16.5 – 1.21
+            </div>
+            <h1 class="hero-title">
+                Прокачай свою игру на <span class="gradient-text">ShirokaSMP</span>
+            </h1>
+            <p class="hero-subtitle">
+                Поддержи сервер и получи мощные привилегии, киты с булавой и незеркой,
+                эксклюзивные возможности и уникальные плюшки.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#donates" class="btn btn-primary">
+                    <span>Смотреть донаты</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#kits" class="btn btn-ghost">
+                    <span>🎁 Киты</span>
+                </a>
             </div>
 
-            <!-- Правая колонка: админ-панель -->
-            <div class="admin-panel">
-                <div class="section-title">
-                    <i class="fas fa-lock"></i> Админ-панель
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value" id="stat-online">—</div>
+                    <div class="stat-label">Игроков онлайн</div>
                 </div>
-                <div class="admin-form">
-                    <input type="password" id="adminPassword" placeholder="пароль" value="cat123" class="hidden-pass">
-                    <div class="password-row">
-                        <input type="text" id="promoInput" placeholder="Новый промокод (например, CAT300)">
-                        <button class="btn btn-primary" id="addPromoBtn"><i class="fas fa-plus"></i> добавить</button>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Работа сервера</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <div class="stat-value">1000+</div>
+                    <div class="stat-label">Игроков всего</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Донаты -->
+    <section class="section" id="donates">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-tag">💰 Привилегии</span>
+                <h2 class="section-title">Донат ранги</h2>
+                <p class="section-subtitle">Выбери подходящий уровень и получи максимум возможностей</p>
+            </div>
+
+            <div class="grid grid-4">
+                <!-- VIP -->
+                <article class="card rank-card" data-rank="vip">
+                    <div class="rank-top">
+                        <div class="rank-icon" style="--c:#60a5fa">💎</div>
+                        <h3 class="rank-name">VIP</h3>
                     </div>
-                    <button class="btn btn-secondary" id="resetPromoBtn" style="width: 100%;"><i class="fas fa-undo-alt"></i> сбросить все (только админ)</button>
-                    <div id="adminMessage" class="admin-status"><i class="fas fa-info-circle"></i> введите пароль и промокод</div>
-                </div>
+                    <div class="rank-price">
+                        <span class="price-value">99</span>
+                        <span class="price-cur">₽</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li class="yes">Префикс <b>[VIP]</b></li>
+                        <li class="yes">/fly в спавне</li>
+                        <li class="yes">3 дома</li>
+                        <li class="yes">Цветной чат</li>
+                        <li class="yes">Команда /hat</li>
+                        <li class="no">Киты</li>
+                        <li class="no">/ec</li>
+                    </ul>
+                    <button class="btn btn-buy" onclick="buy('VIP', 99)">
+                        Купить VIP
+                    </button>
+                </article>
+
+                <!-- PREMIUM -->
+                <article class="card rank-card popular" data-rank="premium">
+                    <div class="ribbon">Популярный</div>
+                    <div class="rank-top">
+                        <div class="rank-icon" style="--c:#f59e0b">⭐</div>
+                        <h3 class="rank-name">PREMIUM</h3>
+                    </div>
+                    <div class="rank-price">
+                        <span class="price-value">299</span>
+                        <span class="price-cur">₽</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li class="yes">Префикс <b>[PREMIUM]</b></li>
+                        <li class="yes">/fly везде</li>
+                        <li class="yes">10 домов</li>
+                        <li class="yes">Цветной чат</li>
+                        <li class="yes">/hat, /ec, /nick</li>
+                        <li class="yes">Кит Premium (24ч)</li>
+                        <li class="no">/god, /heal</li>
+                    </ul>
+                    <button class="btn btn-buy" onclick="buy('PREMIUM', 299)">
+                        Купить PREMIUM
+                    </button>
+                </article>
+
+                <!-- LEGEND -->
+                <article class="card rank-card" data-rank="legend">
+                    <div class="rank-top">
+                        <div class="rank-icon" style="--c:#f43f5e">🔥</div>
+                        <h3 class="rank-name">LEGEND</h3>
+                    </div>
+                    <div class="rank-price">
+                        <span class="price-value">599</span>
+                        <span class="price-cur">₽</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li class="yes">Префикс <b>[LEGEND]</b></li>
+                        <li class="yes">/fly везде</li>
+                        <li class="yes">∞ домов</li>
+                        <li class="yes">Цветной чат + смайлы</li>
+                        <li class="yes">Все команды</li>
+                        <li class="yes">Кит Legend (12ч)</li>
+                        <li class="yes">/god, /heal, /feed</li>
+                    </ul>
+                    <button class="btn btn-buy" onclick="buy('LEGEND', 599)">
+                        Купить LEGEND
+                    </button>
+                </article>
+
+                <!-- GOD -->
+                <article class="card rank-card" data-rank="god">
+                    <div class="ribbon ribbon-gold">👑 Топ</div>
+                    <div class="rank-top">
+                        <div class="rank-icon" style="--c:#a855f7">👑</div>
+                        <h3 class="rank-name">GOD</h3>
+                    </div>
+                    <div class="rank-price">
+                        <span class="price-value">1499</span>
+                        <span class="price-cur">₽</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li class="yes">Префикс <b>[GOD]</b></li>
+                        <li class="yes">Всё из LEGEND</li>
+                        <li class="yes">/creative в регионе</li>
+                        <li class="yes">Личный варп</li>
+                        <li class="yes">Кастомный префикс</li>
+                        <li class="yes">Кит GOD (6ч)</li>
+                        <li class="yes">Бета-фичи</li>
+                    </ul>
+                    <button class="btn btn-buy" onclick="buy('GOD', 1499)">
+                        Купить GOD
+                    </button>
+                </article>
             </div>
         </div>
+    </section>
 
-        <!-- Форма для игроков (жалобы) -->
-        <div class="report-section">
-            <div class="section-title">
-                <i class="fas fa-flag"></i> Пожаловаться
-                <span style="font-size: 0.7rem; font-weight: 400; color: #7d8aa8; margin-left: 8px;">
-                    <i class="fas fa-chevron-right"></i> если вы хотите пожаловаться — напишите в Telegram
-                </span>
+    <!-- Киты -->
+    <section class="section section-kits" id="kits">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-tag">🎁 Наборы</span>
+                <h2 class="section-title">Мощные киты</h2>
+                <p class="section-subtitle">Топовое оружие и броня — булава, незерка, элитры и многое другое</p>
             </div>
-            <div class="report-form">
-                <textarea id="reportText" placeholder="Опишите ситуацию... (только для отправки владельцу)"></textarea>
-                <button class="btn" id="reportBtn"><i class="fab fa-telegram-plane"></i> отправить жалобу</button>
-                <div class="report-hint">
-                    <i class="fas fa-exclamation-triangle"></i> 
-                    <span>жалоба уходит владельцу <a href="https://t.me/meowlik_bober" target="_blank" style="color: #e6b47c;">@meowlik_bober</a></span>
+
+            <div class="grid grid-3">
+                <!-- КИТ НЕЗЕРКИ -->
+                <article class="card kit-card kit-nether">
+                    <div class="kit-glow"></div>
+                    <div class="ribbon ribbon-red">🔥 ТОП</div>
+
+                    <div class="kit-head">
+                        <div class="kit-emoji">🗡️</div>
+                        <h3 class="kit-name">КИТ НЕЗЕРКИ</h3>
+                        <p class="kit-desc">Меч «Жоский Щ 4» + полный незеритовый сет</p>
+                    </div>
+
+                    <div class="kit-price">
+                        <span class="price-value">399</span>
+                        <span class="price-cur">₽</span>
+                    </div>
+
+                    <ul class="kit-items">
+                        <li><span class="item-icon">💥</span><div><b>Меч «Жоский Щ 4»</b><small>Острота IV + Разящий V + Огонь II</small></div></li>
+                        <li><span class="item-icon">⚔️</span><div><b>Незеритовый меч</b><small>Острота V + Добыча III</small></div></li>
+                        <li><span class="item-icon">🛡️</span><div><b>Незеритовый сет</b><small>Защита IV + Прочность III</small></div></li>
+                        <li><span class="item-icon">🏹</span><div><b>Лук</b><small>Сила V + Бесконечность</small></div></li>
+                        <li><span class="item-icon">🔱</span><div><b>Трезубец</b><small>Верность III + Пронзатель V</small></div></li>
+                        <li><span class="item-icon">🍎</span><div><b>64 золотых яблока</b></div></li>
+                        <li><span class="item-icon">🧪</span><div><b>Зелья силы, скорости, регенерации</b></div></li>
+                        <li><span class="item-icon">💎</span><div><b>32 алмазных блока</b></div></li>
+                    </ul>
+
+                    <button class="btn btn-buy btn-nether" onclick="buyKit('КИТ НЕЗЕРКИ', 399)">
+                        Купить кит
+                    </button>
+                </article>
+
+                <!-- КИТ БУЛАВА -->
+                <article class="card kit-card kit-mace">
+                    <div class="kit-glow"></div>
+                    <div class="ribbon ribbon-cyan">⚡ ЭПИК</div>
+
+                    <div class="kit-head">
+                        <div class="kit-emoji">🔨</div>
+                        <h3 class="kit-name">КИТ БУЛАВА</h3>
+                        <p class="kit-desc">Булава с максимальным уроном + элитры</p>
+                    </div>
+
+                    <div class="kit-price">
+                        <span class="price-value">549</span>
+                        <span class="price-cur">₽</span>
+                    </div>
+
+                    <ul class="kit-items">
+                        <li><span class="item-icon">🔨</span><div><b>БУЛАВА</b><small>Острота V</small></div></li>
+                        <li><span class="item-icon">💨</span><div><b>Булава «Порыв ветра III»</b></div></li>
+                        <li><span class="item-icon">🪶</span><div><b>Булава «Плотность V»</b><small>Максимальный урон при падении</small></div></li>
+                        <li><span class="item-icon">🛡️</span><div><b>Незеритовый сет</b><small>Защита IV + Прочность III</small></div></li>
+                        <li><span class="item-icon">🪂</span><div><b>Элитры + 64 фейерверка</b></div></li>
+                        <li><span class="item-icon">🧪</span><div><b>Зелья медленного падения</b><small>x8</small></div></li>
+                        <li><span class="item-icon">🍎</span><div><b>64 энчантед голд эппла</b></div></li>
+                        <li><span class="item-icon">💎</span><div><b>64 алмазных блока</b></div></li>
+                    </ul>
+
+                    <button class="btn btn-buy btn-mace" onclick="buyKit('КИТ БУЛАВА', 549)">
+                        Купить кит
+                    </button>
+                </article>
+
+                <!-- МЕГА КИТ -->
+                <article class="card kit-card kit-mega">
+                    <div class="kit-glow"></div>
+                    <div class="ribbon ribbon-purple">👑 МЕГА</div>
+
+                    <div class="kit-head">
+                        <div class="kit-emoji">💀</div>
+                        <h3 class="kit-name">МЕГА КИТ</h3>
+                        <p class="kit-desc">Всё сразу: булава + незерка + бонусы</p>
+                    </div>
+
+                    <div class="kit-price">
+                        <span class="price-value">899</span>
+                        <span class="price-cur">₽</span>
+                    </div>
+
+                    <ul class="kit-items">
+                        <li><span class="item-icon">🔨</span><div><b>Булава MAX</b><small>Острота V + Плотность V + Порыв III</small></div></li>
+                        <li><span class="item-icon">💥</span><div><b>Меч «Жоский Щ 4»</b><small>Острота IV + Разящий V + Огонь II</small></div></li>
+                        <li><span class="item-icon">⚔️</span><div><b>Незеритовый меч</b><small>Острота V + Добыча III</small></div></li>
+                        <li><span class="item-icon">🛡️</span><div><b>Незеритовый сет MAX</b><small>Защита IV + Починка + Прочность III</small></div></li>
+                        <li><span class="item-icon">🏹</span><div><b>Лук TOP</b><small>Сила V + Бесконечность + Починка</small></div></li>
+                        <li><span class="item-icon">🔱</span><div><b>Трезубец</b><small>Пронзатель V + Верность III</small></div></li>
+                        <li><span class="item-icon">🪂</span><div><b>Элитры + 128 фейерверков</b></div></li>
+                        <li><span class="item-icon">🍎</span><div><b>64 энчантед голд эппла</b></div></li>
+                        <li><span class="item-icon">🎁</span><div><b>Бонус: 5 ключей от кейсов</b></div></li>
+                    </ul>
+
+                    <button class="btn btn-buy btn-mega" onclick="buyKit('МЕГА КИТ', 899)">
+                        Купить МЕГА
+                    </button>
+                </article>
+            </div>
+
+            <div class="notice">
+                <span>⚠️</span>
+                <p><b>Важно:</b> киты выдаются один раз после покупки. Обмену и возврату не подлежат. Выдача командой <code>/kit</code>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-tag">❓ Помощь</span>
+                <h2 class="section-title">Частые вопросы</h2>
+            </div>
+
+            <div class="faq-list">
+                <details class="faq-item" open>
+                    <summary>Как получить донат после оплаты?</summary>
+                    <p>В течение 5 минут после оплаты привилегия автоматически выдаётся на сервере. Зайди и введи <code>/donate check</code>.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Как получить кит после покупки?</summary>
+                    <p>После оплаты зайди на сервер и введи команду <code>/kit</code> или <code>/kit claim</code>. Кит появится в инвентаре.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Какие способы оплаты?</summary>
+                    <p>СБП, банковские карты, ЮMoney, Qiwi, криптовалюта (USDT, BTC).</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Можно ли вернуть деньги?</summary>
+                    <p>Возврат возможен в течение 24 часов, если привилегия/кит не была использована.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>На сколько действует донат?</summary>
+                    <p>Привилегия — навсегда. Кит — одноразовая выдача.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-tag">📞 Связь</span>
+                <h2 class="section-title">Связаться с нами</h2>
+            </div>
+
+            <div class="grid grid-3">
+                <a href="https://discord.gg/" target="_blank" class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h4>Discord</h4>
+                    <p>Общение и поддержка</p>
+                    <span class="contact-arrow">→</span>
+                </a>
+                <a href="https://t.me/" target="_blank" class="contact-card">
+                    <div class="contact-icon">✈️</div>
+                    <h4>Telegram</h4>
+                    <p>Новости и анонсы</p>
+                    <span class="contact-arrow">→</span>
+                </a>
+                <a href="mailto:admin@shirokasmp.ru" class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h4>Email</h4>
+                    <p>admin@shirokasmp.ru</p>
+                    <span class="contact-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <div class="brand-icon">⛏️</div>
+                <div>
+                    <div class="brand-name">ShirokaSMP</div>
+                    <div class="brand-ip">ShirokaSMP.aternos.me</div>
                 </div>
             </div>
-            <div id="reportStatus" style="margin-top: 8px; font-size: 0.8rem; color: #7f8baa; text-align: right; padding-right: 8px;"></div>
+            <p class="footer-copy">© 2025 ShirokaSMP. Не связан с Mojang AB.</p>
         </div>
+    </footer>
 
-        <!-- Нижняя часть: ссылки -->
-        <div class="footer-note">
-            <span><i class="fas fa-user-tie"></i> владелец: <a href="https://t.me/meowlik_bober" target="_blank">@meowlik_bober</a></span>
-            <span><i class="fas fa-link"></i> <a href="https://t.me/catlavanrpp" target="_blank">t.me/catlavanrpp</a></span>
-            <span><i class="fas fa-shield"></i> админ-панель защищена паролем</span>
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+
+            <div class="modal-head">
+                <div class="modal-icon">🛒</div>
+                <h3>Оформление заказа</h3>
+                <p id="modal-text">Вы выбрали: VIP — 99 ₽</p>
+            </div>
+
+            <form id="paymentForm" onsubmit="submitPayment(event)" class="modal-form">
+                <label>
+                    <span>Ник в Minecraft</span>
+                    <input type="text" id="nickname" placeholder="Steve" required>
+                </label>
+                <label>
+                    <span>Email для чека</span>
+                    <input type="email" id="email" placeholder="you@mail.ru" required>
+                </label>
+                <label>
+                    <span>Способ оплаты</span>
+                    <select id="paymentMethod">
+                        <option>СБП</option>
+                        <option>Банковская карта</option>
+                        <option>ЮMoney</option>
+                        <option>Криптовалюта</option>
+                    </select>
+                </label>
+
+                <div class="modal-total">
+                    <span>Итого:</span>
+                    <b id="modal-total">99 ₽</b>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    Перейти к оплате
+                </button>
+            </form>
         </div>
     </div>
 
-    <script>
-        (function() {
-            // --- Данные ---
-            // хранилище промокодов (массив объектов { code, date })
-            let promoCodes = [];
-
-            // Пароль (по умолчанию 'cat123', можно изменить)
-            const ADMIN_PASSWORD = 'cat123';
-
-            // DOM элементы
-            const promoContainer = document.getElementById('promoContainer');
-            const promoInput = document.getElementById('promoInput');
-            const addBtn = document.getElementById('addPromoBtn');
-            const resetBtn = document.getElementById('resetPromoBtn');
-            const adminMessage = document.getElementById('adminMessage');
-            const adminPassInput = document.getElementById('adminPassword');
-            const reportText = document.getElementById('reportText');
-            const reportBtn = document.getElementById('reportBtn');
-            const reportStatus = document.getElementById('reportStatus');
-
-            // --- вспомогательные ---
-            function renderPromoCodes() {
-                if (!promoContainer) return;
-                if (promoCodes.length === 0) {
-                    promoContainer.innerHTML = `<div class="empty-promo"><i class="fas fa-hourglass-half"></i>  пока нет промокодов</div>`;
-                    return;
-                }
-                // сортировка по дате (новые сверху)
-                const sorted = [...promoCodes].sort((a, b) => new Date(b.date) - new Date(a.date));
-                let html = '';
-                sorted.forEach(item => {
-                    const dateObj = new Date(item.date);
-                    const dateStr = dateObj.toLocaleDateString('ru-RU', { day: '2-digit', month: 'short' });
-                    html += `
-                        <div class="promo-item">
-                            <span class="code">${escapeHtml(item.code)}</span>
-                            <span class="date"><i class="far fa-calendar-alt"></i> ${dateStr}</span>
-                        </div>
-                    `;
-                });
-                promoContainer.innerHTML = html;
-            }
-
-            // простой escape для XSS (безопасность)
-            function escapeHtml(text) {
-                const div = document.createElement('div');
-                div.textContent = text;
-                return div.innerHTML;
-            }
-
-            // --- операции с промокодами ---
-            function addPromoCode(code) {
-                if (!code || code.trim() === '') {
-                    adminMessage.innerHTML = '<i class="fas fa-exclamation-circle" style="color:#f08a8a;"></i> поле промокода пустое';
-                    return false;
-                }
-                // проверка пароля
-                const enteredPass = adminPassInput.value.trim();
-                if (enteredPass !== ADMIN_PASSWORD) {
-                    adminMessage.innerHTML = '<i class="fas fa-times-circle" style="color:#f08a8a;"></i> неверный пароль!';
-                    return false;
-                }
-
-                const newCode = {
-                    code: code.trim(),
-                    date: new Date().toISOString()
-                };
-                promoCodes.push(newCode);
-                renderPromoCodes();
-                adminMessage.innerHTML = `<i class="fas fa-check-circle" style="color:#8bc34a;"></i> промокод "${escapeHtml(code.trim())}" добавлен!`;
-                promoInput.value = '';
-                return true;
-            }
-
-            function resetAllCodes() {
-                const enteredPass = adminPassInput.value.trim();
-                if (enteredPass !== ADMIN_PASSWORD) {
-                    adminMessage.innerHTML = '<i class="fas fa-times-circle" style="color:#f08a8a;"></i> неверный пароль! сброс отменён';
-                    return false;
-                }
-                if (promoCodes.length === 0) {
-                    adminMessage.innerHTML = '<i class="fas fa-info-circle"></i> список уже пуст';
-                    return false;
-                }
-                promoCodes = [];
-                renderPromoCodes();
-                adminMessage.innerHTML = '<i class="fas fa-check-circle" style="color:#8bc34a;"></i> все промокоды удалены';
-                return true;
-            }
-
-            // --- обработчики ---
-            addBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const code = promoInput.value.trim();
-                addPromoCode(code);
-            });
-
-            resetBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                resetAllCodes();
-            });
-
-            // отправить жалобу (имитация, но кидает в ТГ владельца)
-            reportBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const text = reportText.value.trim();
-                if (text === '') {
-                    reportStatus.innerHTML = '<i class="fas fa-exclamation-circle" style="color:#f08a8a;"></i> напишите текст жалобы';
-                    return;
-                }
-                // Сообщение для владельца (имитация отправки) + ссылка
-                const ownerLink = 'https://t.me/meowlik_bober';
-                // В реальном проекте тут был бы бот, но мы перекидываем в Telegram
-                reportStatus.innerHTML = `<i class="fas fa-paper-plane" style="color:#8bc34a;"></i> жалоба отправлена! <a href="${ownerLink}" target="_blank" style="color:#f3b37e;">напишите владельцу</a>`;
-                // Дополнительно открываем чат с владельцем (переход)
-                window.open(ownerLink, '_blank');
-                reportText.value = '';
-                // но чтобы не спамить, через 4 секунды очищаем статус
-                setTimeout(() => {
-                    if (reportStatus.innerHTML.includes('жалоба отправлена')) {
-                        reportStatus.innerHTML = '';
-                    }
-                }, 8000);
-            });
-
-            // нажатие Enter в поле промокода
-            promoInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    addBtn.click();
-                }
-            });
-
-            // --- Стартовые промокоды для примера ---
-            function initDemoCodes() {
-                const demo = [
-                    { code: 'CAT300', date: new Date(Date.now() - 3600000 * 2).toISOString() },
-                    { code: 'LAVAN2026', date: new Date(Date.now() - 3600000 * 24).toISOString() },
-                    { code: 'MEOWLIK', date: new Date(Date.now() - 3600000 * 48).toISOString() }
-                ];
-                promoCodes = demo;
-                renderPromoCodes();
-                adminMessage.innerHTML = '<i class="fas fa-check-circle" style="color:#8bc34a;"></i> демо-промокоды загружены';
-            }
-
-            // если хотим стартовые промокоды, раскомментить:
-            initDemoCodes();
-
-            console.log('CatLavan RP site ready. Пароль админа: cat123');
-        })();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
