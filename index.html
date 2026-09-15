@@ -8,281 +8,222 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ============ RESET ============ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0f1115;--bg-2:#161a22;--surface:#1a1f2b;--surface-2:#232936;
   --border:#2a3142;--text:#e8ecf5;--muted:#8b93a7;--muted-2:#5c6478;
   --green:#4ade80;--green-2:#22c55e;--red:#ef4444;--orange:#f59e0b;
-  --purple:#c084fc;--cyan:#22d3ee;
+  --purple:#c084fc;--cyan:#22d3ee;--blue:#60a5fa;--discord:#5865F2;
   --radius:12px;--radius-sm:8px;
 }
 html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',system-ui,-apple-system,sans-serif;
-  background:var(--bg);color:var(--text);line-height:1.5;
-  min-height:100vh;-webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 .container{width:100%;max-width:1400px;margin:0 auto;padding:0 24px}
 
-/* ============ TOPBAR ============ */
+/* TOPBAR */
 .topbar{background:var(--bg-2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
-.topbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
-.topbar-left{display:flex;align-items:center;gap:20px}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.topbar-left{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-icon{width:36px;height:36px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(74,222,128,.15),rgba(34,211,238,.1));border:1px solid rgba(74,222,128,.3);border-radius:9px;font-size:18px}
 .logo-text{font-weight:800;font-size:16px;letter-spacing:-.02em}
-.topbar-greeting{font-size:13px;color:var(--muted);padding-left:20px;border-left:1px solid var(--border)}
-
 .ip-block{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.25);border-radius:8px;font-size:13px;color:var(--cyan);cursor:pointer;transition:all .15s;font-family:ui-monospace,monospace;font-weight:600}
 .ip-block:hover{background:rgba(34,211,238,.12);border-color:rgba(34,211,238,.5)}
 .ip-block.copied{background:rgba(74,222,128,.15);border-color:rgba(74,222,128,.5);color:var(--green)}
 .ip-block svg{opacity:.7}
-.ip-label{font-size:10px;color:var(--muted-2);font-family:'Inter',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-right:2px}
+.ip-label{font-size:10px;color:var(--muted-2);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.owner-block{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(245,158,11,.05));border:1px solid rgba(245,158,11,.35);border-radius:8px;font-size:13px}
+.owner-crown{font-size:15px;filter:drop-shadow(0 0 6px rgba(245,158,11,.6))}
+.owner-label{font-size:10px;color:var(--muted-2);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.owner-nick{font-weight:800;color:var(--orange)}
+.owner-status{width:7px;height:7px;border-radius:50%;background:var(--muted-2);transition:all .3s}
+.owner-status.online{background:var(--green);box-shadow:0 0 8px var(--green)}
+
+.nav-btn{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;transition:all .15s;white-space:nowrap}
+.nav-btn:hover{background:var(--surface-2);border-color:#3a4256;transform:translateY(-1px)}
+.nav-btn.kp{border-color:rgba(34,211,238,.35);color:var(--cyan)}
+.nav-btn.kp:hover{background:rgba(34,211,238,.1);border-color:rgba(34,211,238,.6)}
+.nav-btn.rules{border-color:rgba(192,132,252,.35);color:var(--purple)}
+.nav-btn.rules:hover{background:rgba(192,132,252,.1);border-color:rgba(192,132,252,.6)}
+.nav-btn.apps{border-color:rgba(88,101,242,.4);color:#a5b4fc}
+.nav-btn.apps:hover{background:rgba(88,101,242,.12);border-color:rgba(88,101,242,.7)}
+.nav-btn.ds{border-color:rgba(88,101,242,.5);color:#a5b4fc;background:rgba(88,101,242,.08)}
+.nav-btn.ds:hover{background:rgba(88,101,242,.18);border-color:rgba(88,101,242,.8)}
 
 .topbar-right{display:flex;align-items:center;gap:12px}
 .online-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2);border-radius:8px;font-size:13px;color:var(--muted)}
 .online-badge b{color:var(--text);font-weight:600}
 .online-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:pulse-dot 2s infinite}
 @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
-.icon-btn{width:38px;height:38px;display:grid;place-items:center;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--muted);transition:all .15s}
-.icon-btn:hover{background:var(--surface-2);color:var(--text)}
 
-/* ============ FILTERBAR ============ */
 .filterbar{background:var(--bg-2);border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:64px;z-index:40}
 .filterbar-inner{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
 .filter-group{display:flex;flex-direction:column;gap:5px;min-width:160px}
-.filter-group label{font-size:11px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding-left:2px}
-.filter-group select{padding:9px 30px 9px 12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:13px;cursor:pointer;transition:all .15s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b93a7' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
-.filter-group select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(74,222,128,.1)}
+.filter-group label{font-size:11px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.filter-group select{padding:9px 30px 9px 12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:13px;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b93a7' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.filter-group select:focus{outline:none;border-color:var(--green)}
 .filter-search{position:relative;flex:1;min-width:200px;max-width:320px;display:flex;align-items:center}
-.filter-search svg{position:absolute;left:12px;color:var(--muted-2);pointer-events:none}
-.filter-search input{width:100%;padding:9px 12px 9px 38px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:13px;transition:all .15s}
-.filter-search input::placeholder{color:var(--muted-2)}
-.filter-search input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(74,222,128,.1)}
+.filter-search svg{position:absolute;left:12px;color:var(--muted-2)}
+.filter-search input{width:100%;padding:9px 12px 9px 38px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:13px}
+.filter-search input:focus{outline:none;border-color:var(--green)}
 
-/* ============ PAYMENT BANNER (перед донатами) ============ */
-.payment-banner{
-  margin:24px 0 28px;
-  background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(34,211,238,.05));
-  border:1px solid rgba(74,222,128,.3);
-  border-radius:16px;
-  padding:24px 28px;
-  position:relative;
-  overflow:hidden;
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  gap:24px;
-  align-items:center;
-}
-.payment-banner::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at 0% 50%,rgba(74,222,128,.12),transparent 50%);
-  pointer-events:none;
-}
-.payment-banner-icon{
-  width:64px;height:64px;
-  display:grid;place-items:center;
-  font-size:32px;
-  background:rgba(74,222,128,.12);
-  border:1px solid rgba(74,222,128,.3);
-  border-radius:16px;
-  flex-shrink:0;
-  position:relative;
-}
-.payment-banner-info{position:relative;min-width:0}
-.payment-banner-label{
-  font-size:11px;
-  color:var(--green);
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  font-weight:700;
-  margin-bottom:8px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.payment-banner-label::before{
-  content:'';
-  width:6px;height:6px;
-  background:var(--green);
-  border-radius:50%;
-  box-shadow:0 0 8px var(--green);
-}
-.payment-banner-title{
-  font-size:17px;
-  font-weight:700;
-  letter-spacing:-.01em;
-  color:var(--text);
-  margin-bottom:10px;
-  line-height:1.35;
-}
-.payment-banner-title b{color:var(--green)}
-.payment-banner-card{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 16px;
-  background:var(--bg);
-  border:1px solid rgba(74,222,128,.35);
-  border-radius:10px;
-  font-family:ui-monospace,monospace;
-  font-size:15px;
-  font-weight:700;
-  color:var(--text);
-  letter-spacing:.05em;
-  cursor:pointer;
-  transition:all .15s;
-}
-.payment-banner-card:hover{
-  background:rgba(74,222,128,.06);
-  border-color:rgba(74,222,128,.6);
-  transform:translateY(-1px);
-}
-.payment-banner-card.copied{color:var(--green);border-color:var(--green)}
-.payment-banner-card svg{opacity:.5;flex-shrink:0}
-.payment-banner-note{
-  margin-top:12px;
-  font-size:12.5px;
-  color:var(--muted);
-  line-height:1.5;
-}
-.payment-banner-note b{color:var(--text);font-weight:600}
-.payment-banner-badge{
-  padding:10px 16px;
-  background:rgba(245,158,11,.1);
-  border:1px solid rgba(245,158,11,.3);
-  border-radius:10px;
-  color:#fbbf24;
-  font-size:12px;
-  font-weight:600;
-  text-align:center;
-  white-space:nowrap;
-  position:relative;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.payment-banner-badge b{color:var(--orange);font-weight:700}
-
-/* ============ MAIN ============ */
 main{padding:0 24px 80px}
+
+.payment-banner{margin:24px 0;background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(34,211,238,.05));border:1px solid rgba(74,222,128,.3);border-radius:16px;padding:24px 28px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center}
+.payment-banner-icon{width:64px;height:64px;display:grid;place-items:center;font-size:32px;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.3);border-radius:16px;flex-shrink:0}
+.payment-banner-label{font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:8px}
+.payment-banner-title{font-size:17px;font-weight:700;margin-bottom:10px;line-height:1.35}
+.payment-banner-title b{color:var(--green)}
+.payment-banner-card{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;background:var(--bg);border:1px solid rgba(74,222,128,.35);border-radius:10px;font-family:ui-monospace,monospace;font-size:15px;font-weight:700;color:var(--text);letter-spacing:.05em;cursor:pointer;transition:all .15s}
+.payment-banner-card:hover{background:rgba(74,222,128,.06);border-color:rgba(74,222,128,.6)}
+.payment-banner-card.copied{color:var(--green);border-color:var(--green)}
+.payment-banner-card svg{opacity:.5}
+.payment-banner-note{margin-top:12px;font-size:12.5px;color:var(--muted);line-height:1.5}
+.payment-banner-note b{color:var(--text)}
+.payment-banner-badge{padding:10px 16px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.35);border-radius:10px;color:#fca5a5;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.payment-banner-badge b{color:#fecaca;font-weight:800}
+
 .products-section{margin-top:8px}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
 .product-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:14px;transition:all .2s;position:relative;overflow:hidden}
 .product-card:hover{border-color:#3a4256;transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
 .product-card.is-kit:hover{border-color:rgba(34,211,238,.5)}
 .product-card.is-mod:hover{border-color:rgba(192,132,252,.5)}
-.product-card.is-mod::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 100% 0%,rgba(192,132,252,.08),transparent 60%);pointer-events:none}
-
+.product-card.is-house:hover{border-color:rgba(251,191,36,.5)}
 .product-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .product-icon{width:46px;height:46px;display:grid;place-items:center;font-size:24px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;flex-shrink:0}
-.product-badge{padding:4px 9px;background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.35);color:var(--purple);border-radius:6px;font-size:11px;font-weight:700;flex-shrink:0}
-
+.product-badge{padding:4px 9px;background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.35);color:var(--purple);border-radius:6px;font-size:11px;font-weight:700}
+.product-discount{padding:5px 10px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border-radius:6px;font-size:12px;font-weight:800;flex-shrink:0;box-shadow:0 4px 14px rgba(239,68,68,.4)}
 .product-info{flex:1;min-width:0}
-.product-name{font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:4px;line-height:1.3}
-.product-subtitle{font-size:12px;color:var(--muted);line-height:1.4}
-
+.product-name{font-size:15px;font-weight:700;margin-bottom:4px;line-height:1.3}
+.product-subtitle{font-size:12px;color:var(--muted)}
 .product-features{list-style:none;display:flex;flex-direction:column;gap:6px;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.product-features li{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px;line-height:1.4}
-.product-features li::before{content:'▸';color:var(--green);font-weight:700;flex-shrink:0}
+.product-features li{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.product-features li::before{content:'▸';color:var(--green);font-weight:700}
 .product-card.is-mod .product-features li::before{color:var(--purple)}
+.product-card.is-house .product-features li::before{color:var(--orange)}
 .product-features b{color:var(--text);font-weight:600}
-
 .product-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .product-row-label{font-size:11px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
 .product-qty{display:flex;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:6px;overflow:hidden;height:30px}
-.product-qty button{width:28px;height:100%;color:var(--muted);font-size:14px;transition:all .15s}
+.product-qty button{width:28px;height:100%;color:var(--muted);font-size:14px}
 .product-qty button:hover{background:var(--surface-2);color:var(--text)}
 .product-qty input{width:40px;height:100%;background:transparent;border:none;color:var(--text);text-align:center;font-size:12px;font-weight:600;-moz-appearance:textfield}
-.product-qty input::-webkit-outer-spin-button,.product-qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-
+.product-qty input::-webkit-outer-spin-button,.product-qty input::-webkit-inner-spin-button{-webkit-appearance:none}
 .product-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px}
-.product-prices{display:flex;flex-direction:column;gap:2px}
-.product-new{font-size:18px;font-weight:800;color:var(--green);letter-spacing:-.02em}
+.product-prices{display:flex;flex-direction:column;gap:1px}
+.product-old{font-size:12px;color:var(--muted-2);text-decoration:line-through}
+.product-new{font-size:18px;font-weight:800;color:var(--green);line-height:1}
 .product-card.is-mod .product-new{color:var(--purple)}
+.product-card.is-house .product-new{color:var(--orange)}
 .btn-add{padding:8px 16px;background:var(--surface-2);border:1px solid var(--border);color:var(--text);border-radius:8px;font-size:13px;font-weight:600;transition:all .15s;white-space:nowrap}
 .btn-add:hover{background:var(--green);color:#04140a;border-color:var(--green)}
 .product-card.is-mod .btn-add:hover{background:var(--purple);color:#1a0a2e;border-color:var(--purple)}
+.product-card.is-house .btn-add:hover{background:var(--orange);color:#1a0e00;border-color:var(--orange)}
 
-/* ============ MODAL ============ */
 .modal{display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;padding:20px}
 .modal.active{display:flex}
-.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
-.modal-box{position:relative;width:100%;max-width:460px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:modalIn .25s ease-out;max-height:90vh;overflow-y:auto}
+.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px)}
+.modal-box{position:relative;width:100%;max-width:460px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:modalIn .25s;max-height:90vh;overflow-y:auto}
+.modal-box.wide{max-width:640px}
 @keyframes modalIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:grid;place-items:center;color:var(--muted);font-size:14px;border-radius:8px;transition:all .15s}
+.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:grid;place-items:center;color:var(--muted);font-size:14px;border-radius:8px}
 .modal-close:hover{background:var(--surface);color:var(--text)}
 .modal-head{text-align:center;margin-bottom:22px}
-.modal-head h3{font-size:18px;font-weight:700;margin-bottom:6px}
+.modal-head h3{font-size:20px;font-weight:800;margin-bottom:6px;letter-spacing:-.02em}
 .modal-head p{color:var(--muted);font-size:13px}
+
+.info-section{display:flex;flex-direction:column;gap:16px}
+.info-highlight{padding:16px 18px;border-radius:12px;font-size:13.5px;line-height:1.6}
+.info-highlight.age{background:linear-gradient(135deg,rgba(34,211,238,.1),rgba(34,211,238,.04));border:1px solid rgba(34,211,238,.35);color:#a5f3fc}
+.info-highlight.age b{color:var(--cyan);font-weight:800;font-size:15px}
+.info-highlight.warn{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);color:#fbbf24}
+.info-highlight.warn b{color:var(--orange);font-weight:700}
+.info-highlight.ok{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.25);color:#bbf7d0}
+.info-highlight.ok b{color:var(--green);font-weight:700}
+.info-highlight.discord{background:linear-gradient(135deg,rgba(88,101,242,.12),rgba(88,101,242,.05));border:1px solid rgba(88,101,242,.4);color:#c7d2fe}
+.info-highlight.discord b{color:#a5b4fc;font-weight:800}
+
+.info-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.info-list li{display:flex;gap:12px;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:10px;font-size:13px;color:var(--muted);line-height:1.5;transition:all .15s}
+.info-list li:hover{background:var(--surface-2);border-color:#3a4256}
+.info-list li .num{width:26px;height:26px;flex-shrink:0;display:grid;place-items:center;border-radius:8px;font-size:12px;font-weight:800;background:rgba(34,211,238,.15);color:var(--cyan);font-family:ui-monospace,monospace}
+.info-list.rules li .num{background:rgba(192,132,252,.15);color:var(--purple)}
+.info-list b{color:var(--text);font-weight:600}
+.info-list .bad{color:#fca5a5;font-weight:700}
+
+.rule-short{font-family:ui-monospace,monospace;font-size:11px;color:var(--purple);background:rgba(192,132,252,.08);padding:2px 8px;border-radius:6px;display:inline-block;margin-top:4px;letter-spacing:.02em}
+
+.info-footer{padding:14px 16px;background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.25);border-radius:12px;font-size:12.5px;color:#93c5fd;line-height:1.5}
+.info-footer b{color:var(--blue);font-weight:700}
+
+.discord-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  width:100%;padding:16px 24px;margin-top:4px;
+  background:linear-gradient(135deg,#5865F2,#4752c4);
+  color:#fff;border-radius:12px;
+  font-size:15px;font-weight:700;letter-spacing:-.01em;
+  text-decoration:none;cursor:pointer;
+  box-shadow:0 8px 28px rgba(88,101,242,.45);
+  transition:all .2s;
+}
+.discord-btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(88,101,242,.6);background:linear-gradient(135deg,#6772f3,#5865F2)}
+.discord-btn svg{width:22px;height:22px;flex-shrink:0}
 
 .step{display:none}
 .step.active{display:block}
-
 #paymentForm{display:flex;flex-direction:column;gap:14px}
 #paymentForm label{display:flex;flex-direction:column;gap:6px}
 #paymentForm label span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
-#paymentForm input,#paymentForm select{padding:11px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;font-family:inherit;transition:all .15s}
-#paymentForm input:focus,#paymentForm select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(74,222,128,.12)}
-
+#paymentForm input{padding:11px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;font-family:inherit}
+#paymentForm input:focus{outline:none;border-color:var(--green)}
 .btn-primary{padding:12px 22px;background:linear-gradient(135deg,var(--green),var(--green-2));color:#04140a;border-radius:var(--radius-sm);font-size:14px;font-weight:700;transition:all .15s}
 .btn-primary:hover{box-shadow:0 8px 24px rgba(74,222,128,.4)}
 .btn-block{width:100%}
-.btn-secondary{padding:12px 22px;background:var(--surface-2);border:1px solid var(--border);color:var(--text);border-radius:var(--radius-sm);font-size:14px;font-weight:600;transition:all .15s}
-.btn-secondary:hover{background:var(--surface);border-color:#3a4256}
-
+.btn-secondary{padding:12px 22px;background:var(--surface-2);border:1px solid var(--border);color:var(--text);border-radius:var(--radius-sm);font-size:14px;font-weight:600}
 .pay-summary{padding:16px 18px;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2);border-radius:12px;margin-bottom:20px}
-.pay-summary-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px}
+.pay-summary-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px}
 .pay-summary-row span{color:var(--muted)}
 .pay-summary-row b{color:var(--text);font-weight:600}
 .pay-summary-row.total{padding-top:12px;margin-top:8px;border-top:1px dashed rgba(74,222,128,.25)}
-.pay-summary-row.total b{font-size:20px;color:var(--green);font-weight:800;letter-spacing:-.02em}
-
+.pay-summary-row.total b{font-size:20px;color:var(--green);font-weight:800}
 .card-payment{text-align:center;padding:20px 0 8px}
 .card-payment-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:10px}
-
-.card-number-display{display:inline-flex;align-items:center;gap:12px;padding:14px 20px;background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(34,211,238,.06));border:1px solid rgba(74,222,128,.3);border-radius:14px;cursor:pointer;transition:all .2s;font-family:ui-monospace,monospace;font-size:18px;font-weight:700;color:var(--text);letter-spacing:.06em;margin-bottom:14px}
-.card-number-display:hover{background:linear-gradient(135deg,rgba(74,222,128,.14),rgba(34,211,238,.1));border-color:rgba(74,222,128,.5);transform:translateY(-1px)}
+.card-number-display{display:inline-flex;align-items:center;gap:12px;padding:14px 20px;background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(34,211,238,.06));border:1px solid rgba(74,222,128,.3);border-radius:14px;cursor:pointer;font-family:ui-monospace,monospace;font-size:18px;font-weight:700;color:var(--text);letter-spacing:.06em;margin-bottom:14px}
+.card-number-display:hover{border-color:rgba(74,222,128,.5)}
 .card-number-display.copied{border-color:var(--green);color:var(--green)}
-.card-number-display svg{opacity:.5;flex-shrink:0}
-
+.card-number-display svg{opacity:.5}
 .card-bank-info{font-size:13px;color:var(--muted);margin-bottom:22px}
 .card-bank-info b{color:var(--text);font-weight:600}
-
-.pay-steps{text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:20px}
-.pay-steps h4{font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text)}
-.pay-steps ol{list-style:none;counter-reset:step;padding:0;display:flex;flex-direction:column;gap:8px}
+.pay-steps{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:20px}
+.pay-steps h4{font-size:13px;font-weight:700;margin-bottom:12px}
+.pay-steps ol{list-style:none;counter-reset:step;display:flex;flex-direction:column;gap:8px}
 .pay-steps ol li{counter-increment:step;font-size:12.5px;color:var(--muted);padding-left:30px;position:relative;line-height:1.5}
 .pay-steps ol li::before{content:counter(step);position:absolute;left:0;top:0;width:20px;height:20px;display:grid;place-items:center;background:rgba(74,222,128,.15);color:var(--green);border-radius:50%;font-size:11px;font-weight:700}
 .pay-steps ol li b{color:var(--text);font-weight:600}
-
 .pay-warning{padding:12px 14px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:10px;color:#fbbf24;font-size:12.5px;margin-bottom:16px;line-height:1.5}
 .pay-warning b{color:var(--orange);font-weight:700}
+.help-block{padding:14px 16px;background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.25);border-radius:12px;margin-bottom:16px;font-size:12.5px;color:#93c5fd;line-height:1.5;display:flex;gap:10px;align-items:flex-start}
+.help-block .help-icon{font-size:16px;flex-shrink:0}
+.help-block b{color:var(--blue);font-weight:700}
 
-/* RESPONSIVE */
 @media(max-width:1024px){
   .payment-banner{grid-template-columns:auto 1fr;gap:20px}
   .payment-banner-badge{grid-column:1/-1;justify-content:center}
 }
-@media(max-width:900px){.topbar-greeting{display:none}}
 @media(max-width:768px){
   .container{padding:0 16px}
   .topbar-inner{height:auto;padding:12px 0;flex-wrap:wrap}
-  .ip-block{font-size:12px;padding:6px 10px}
+  .topbar-left{gap:8px}
+  .ip-block,.owner-block,.nav-btn{font-size:12px;padding:6px 10px}
+  .owner-label{display:none}
   .filter-group{min-width:130px;flex:1}
   .filter-search{max-width:none;flex-basis:100%}
   main{padding:0 16px 100px}
-  .card-number-display{font-size:15px;padding:12px 16px;gap:8px}
-  .payment-banner{padding:20px;grid-template-columns:1fr;gap:16px;text-align:left}
-  .payment-banner-icon{width:52px;height:52px;font-size:26px}
-  .payment-banner-title{font-size:15px}
-  .payment-banner-card{font-size:13px;padding:9px 14px;width:100%;justify-content:center}
+  .payment-banner{padding:20px;grid-template-columns:1fr}
+  .modal-box{padding:22px 18px}
 }
 </style>
 </head>
@@ -295,20 +236,31 @@ main{padding:0 24px 80px}
         <span class="logo-icon">⛏️</span>
         <span class="logo-text">ShirokaSMP</span>
       </a>
-      <button class="ip-block" id="ip-block" onclick="copyIP()" title="Нажми, чтобы скопировать IP">
+
+      <div class="owner-block" title="Владелец сервера">
+        <span class="owner-crown">👑</span>
+        <span class="owner-label">Владелец:</span>
+        <span class="owner-nick">meowl</span>
+        <span class="owner-status" id="owner-status"></span>
+      </div>
+
+      <button class="ip-block" id="ip-block" onclick="copyIP()" title="Скопировать IP">
         <span class="ip-label">IP:</span>
         <span id="ip-text">ShirokaSMP.aternos.me:64916</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
+
+      <button class="nav-btn kp" onclick="openKP()" title="Набор КП">📋 Набор КП</button>
+      <button class="nav-btn rules" onclick="openRules()" title="Правила сервера">📜 Правила</button>
+      <a class="nav-btn ds" href="https://discord.gg/8jWt262Ax" target="_blank" rel="noopener" title="Discord сервера">
+        💬 Discord
+      </a>
     </div>
     <div class="topbar-right">
       <div class="online-badge">
         <span class="online-dot"></span>
         <span>Онлайн — <b id="online-count">0</b> / <b id="online-max">0</b></span>
       </div>
-      <button class="icon-btn" title="Профиль">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      </button>
     </div>
   </div>
 </header>
@@ -316,18 +268,12 @@ main{padding:0 24px 80px}
 <div class="filterbar">
   <div class="container filterbar-inner">
     <div class="filter-group">
-      <label>Сервер</label>
-      <select id="filter-server">
-        <option value="all">Все серверы</option>
-        <option value="smp">ShirokaSMP</option>
-      </select>
-    </div>
-    <div class="filter-group">
       <label>Категория</label>
       <select id="filter-category">
         <option value="all">Все категории</option>
         <option value="kits">Киты</option>
         <option value="ranks">Привилегии</option>
+        <option value="services">Услуги</option>
       </select>
     </div>
     <div class="filter-group">
@@ -346,45 +292,38 @@ main{padding:0 24px 80px}
 
 <main class="container">
 
-  <!-- ═══════ ПЛАТЁЖНЫЙ БАННЕР (перед донатами) ═══════ -->
   <div class="payment-banner">
     <div class="payment-banner-icon">💳</div>
     <div class="payment-banner-info">
-      <div class="payment-banner-label">Оплата переводом на карту</div>
+      <div class="payment-banner-label">🔥 Сентябрьская акция — скидка 40%!</div>
       <div class="payment-banner-title">
-        Переведи сумму на карту <b>2202 2088 7820 7514</b> и напиши на сервере <b>любому модератору или админу</b>
+        Переведи сумму на карту <b>2202 2088 7820 7514</b> и напиши на сервере владельцу <b>meowl</b>
       </div>
-      <button class="payment-banner-card" id="banner-card" onclick="copyBannerCard()" title="Нажми, чтобы скопировать">
+      <button class="payment-banner-card" id="banner-card" onclick="copyBannerCard()" title="Скопировать">
         <span id="banner-card-text">2202 2088 7820 7514</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       </button>
       <div class="payment-banner-note">
-        📩 После перевода <b>обязательно напиши в чат сервера</b> любому модератору или админу — укажи свой ник и что именно оплатил. Товар выдадут в течение 5–10 минут.
+        📩 После перевода <b>обязательно напиши в чат сервера</b> владельцу <b>meowl</b> — укажи свой ник и что оплатил.
       </div>
     </div>
     <div class="payment-banner-badge">
-      <span>⏱️</span>
-      <span>Выдача: <b>5–10 мин</b></span>
+      <span>🏷️</span>
+      <span>Скидка <b>−40%</b></span>
     </div>
   </div>
 
   <section class="products-section">
     <div class="products-grid" id="products-grid"></div>
-    <div class="empty-state" id="empty-state" style="display:none">
-      <div class="empty-icon">🔍</div>
-      <h3>Ничего не найдено</h3>
-      <p>Попробуй изменить фильтры или поиск</p>
-    </div>
   </section>
 </main>
 
-<!-- ============ МОДАЛКА ============ -->
+<!-- МОДАЛКА ОПЛАТЫ -->
 <div class="modal" id="modal">
   <div class="modal-backdrop" onclick="closeModal()"></div>
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">✕</button>
 
-    <!-- ШАГ 1: форма -->
     <div class="step active" id="step-form">
       <div class="modal-head">
         <h3 id="modal-title">Оформление заказа</h3>
@@ -392,12 +331,10 @@ main{padding:0 24px 80px}
       </div>
       <form id="paymentForm" onsubmit="goToPayment(event)">
         <label><span>Ник в Minecraft</span><input type="text" id="nickname" placeholder="Steve" required></label>
-        <label><span>Email для чека</span><input type="email" id="email" placeholder="you@mail.ru" required></label>
         <button type="submit" class="btn-primary btn-block">Перейти к оплате →</button>
       </form>
     </div>
 
-    <!-- ШАГ 2: реквизиты -->
     <div class="step" id="step-pay">
       <div class="modal-head">
         <h3>💳 Оплата переводом</h3>
@@ -412,7 +349,7 @@ main{padding:0 24px 80px}
 
       <div class="card-payment">
         <div class="card-payment-label">Номер карты для перевода</div>
-        <button class="card-number-display" id="card-display" onclick="copyCard()" title="Нажми, чтобы скопировать">
+        <button class="card-number-display" id="card-display" onclick="copyCard()">
           <span id="card-text">2202 2088 7820 7514</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         </button>
@@ -425,13 +362,21 @@ main{padding:0 24px 80px}
           <li>Открой приложение банка или СБП</li>
           <li>Переведи <b id="pay-total-2">—</b> на карту <b>2202 2088 7820 7514</b></li>
           <li>В комментарии укажи свой ник: <b id="pay-nick-2">—</b></li>
-          <li>Зайди на сервер и напиши <b>любому модератору или админу</b></li>
+          <li>Зайди на сервер и напиши владельцу <b>meowl</b></li>
           <li>Нажми «Я оплатил» ниже</li>
         </ol>
       </div>
 
+      <div class="help-block">
+        <span class="help-icon">🆘</span>
+        <div>
+          <b>Нужна помощь?</b><br>
+          Если оплата не пришла или товар не выдали — напиши владельцу <b>meowl</b> в чате сервера <b>ShirokaSMP.aternos.me:64916</b>.
+        </div>
+      </div>
+
       <div class="pay-warning">
-        ⚠️ <b>Важно:</b> обязательно укажи свой ник в комментарии и напиши модератору/админу на сервере <b>ShirokaSMP.aternos.me:64916</b> — иначе товар не выдадут.
+        ⚠️ <b>Важно:</b> обязательно укажи ник в комментарии и напиши владельцу <b>meowl</b> на сервере.
       </div>
 
       <div style="display:flex;gap:10px">
@@ -442,72 +387,160 @@ main{padding:0 24px 80px}
   </div>
 </div>
 
+<!-- МОДАЛКА: НАБОР КП -->
+<div class="modal" id="modal-kp">
+  <div class="modal-backdrop" onclick="closeKP()"></div>
+  <div class="modal-box wide">
+    <button class="modal-close" onclick="closeKP()">✕</button>
+
+    <div class="modal-head">
+      <h3>📋 Набор КП — присоединиться к команде</h3>
+      <p>Хочешь стать частью команды ShirokaSMP? Читай условия ниже</p>
+    </div>
+
+    <div class="info-section">
+      <div class="info-highlight age">
+        🎂 <b>Возраст: с 12 лет</b><br>
+        Приём в команду открыт для игроков <b>от 12 лет и старше</b>.
+      </div>
+
+      <div>
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--text)">📌 Требования:</h4>
+        <ul class="info-list">
+          <li><span class="num">1</span><div>Возраст <b>от 12 лет</b></div></li>
+          <li><span class="num">2</span><div>Играть на сервере <b>не менее 7 дней</b></div></li>
+          <li><span class="num">3</span><div>Быть <b>адекватным</b> и не нарушать правила</div></li>
+          <li><span class="num">4</span><div>Иметь <b>Discord</b> для связи</div></li>
+          <li><span class="num">5</span><div>Онлайн <b>от 2 часов в день</b></div></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--text)">🛠️ Обязанности:</h4>
+        <ul class="info-list">
+          <li><span class="num">💬</span><div>Помогать новым игрокам</div></li>
+          <li><span class="num">⚖️</span><div>Следить за порядком</div></li>
+          <li><span class="num">🚫</span><div>Фиксировать нарушения</div></li>
+          <li><span class="num">📢</span><div>Сообщать о багах</div></li>
+        </ul>
+      </div>
+
+      <div class="info-highlight ok">
+        🎁 <b>Что ты получишь:</b><br>
+        Префикс <b>[МОДЕРАТОР]</b>, доступ к админ-командам, бесплатный кит PvP каждый день.
+      </div>
+
+      <div class="info-highlight discord">
+        💬 <b>Заявки подаются в Discord</b><br>
+        Нажми кнопку ниже → попадёшь на наш Discord-сервер → перейди в канал <b>#заявки</b> и заполни форму по шаблону.
+      </div>
+
+      <a class="discord-btn" href="https://discord.gg/8jWt262Ax" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        Подать заявку в Discord
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- МОДАЛКА: ПРАВИЛА -->
+<div class="modal" id="modal-rules">
+  <div class="modal-backdrop" onclick="closeRules()"></div>
+  <div class="modal-box wide">
+    <button class="modal-close" onclick="closeRules()">✕</button>
+
+    <div class="modal-head">
+      <h3>📜 Правила сервера ShirokaSMP</h3>
+      <p>Запомни короткие цифры — 1, 2, 3… Они соответствуют правилам ниже</p>
+    </div>
+
+    <div class="info-section">
+      <div class="info-highlight warn">
+        ⚠️ <b>Важно:</b> за нарушение правил — мут, кик, бан. Владелец <b>meowl</b> вправе выдать наказание без предупреждения.
+      </div>
+
+      <ul class="info-list rules">
+        <li><span class="num">1</span><div><b>Уважение.</b> Без оскорблений, травли и унижений.<div class="rule-short">кратко: уважай всех</div></div></li>
+        <li><span class="num">2</span><div><b>Без читов.</b> X-Ray, KillAura, Fly — <span class="bad">бан навсегда</span>.<div class="rule-short">кратко: играй честно</div></div></li>
+        <li><span class="num">3</span><div><b>Без грифферства.</b> Ломать чужие постройки, воровать — <span class="bad">бан</span>.<div class="rule-short">кратко: не ломай чужое</div></div></li>
+        <li><span class="num">4</span><div><b>Без спама.</b> Флуд, капс, реклама других серверов — <span class="bad">мут</span>.<div class="rule-short">кратко: не спамь</div></div></li>
+        <li><span class="num">5</span><div><b>Честные сделки.</b> Скам и кидок — <span class="bad">бан</span>.<div class="rule-short">кратко: не обманывай</div></div></li>
+        <li><span class="num">6</span><div><b>Без багов.</b> Нашёл баг — сообщи владельцу <b>meowl</b>.<div class="rule-short">кратко: сообщи о баге</div></div></li>
+        <li><span class="num">7</span><div><b>Без рекламы.</b> Только с разрешения админов.<div class="rule-short">кратко: не рекламируй</div></div></li>
+        <li><span class="num">8</span><div><b>Не выдавай себя за админа.</b> Это <span class="bad">бан</span>.<div class="rule-short">кратко: не притворяйся админом</div></div></li>
+        <li><span class="num">9</span><div><b>Донат — добровольный.</b> Оплата не даёт права нарушать правила.<div class="rule-short">кратко: донат не отменяет правила</div></div></li>
+        <li><span class="num">10</span><div><b>Слушай админов.</b> Спорные ситуации решает владелец <b>meowl</b>.<div class="rule-short">кратко: слушай админов</div></div></li>
+      </ul>
+
+      <div class="info-footer">
+        📩 <b>Вопросы или жалоба?</b> Напиши владельцу <b>meowl</b> в чате сервера <b>ShirokaSMP.aternos.me:64916</b>.
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-/* ====== РЕКВИЗИТЫ ====== */
 const CARD_NUMBER = '2202 2088 7820 7514';
 const SERVER_IP = 'ShirokaSMP.aternos.me:64916';
+const DISCOUNT = 0.40;
+const OWNER_NICK = 'meowl';
+const DISCORD_INVITE = 'https://discord.gg/8jWt262Ax';
 
-/* ====== ТОВАРЫ ====== */
 const products = [
   {
     id:'pvp', cat:'kits',
     name:'КИТ PvP',
     sub:'Булава + Незерка + Элитры + Модер',
     price:100, icon:'⚔️', cls:'is-kit', badge:null,
-    features:[
-      '<b>Булава</b> — Плотность V',
-      '<b>Незеритовый сет</b> — Защита IV',
-      '<b>Элитры</b> + 64 фейерверка',
-      'Меч «Модер покопнуй»',
-      'Зелья силы и скорости',
-    ]
+    features:['<b>Булава</b> — Плотность V','<b>Незеритовый сет</b> — Защита IV','<b>Элитры</b> + 64 фейерверка','Меч «Модер покопнуй»','Зелья силы и скорости']
   },
   {
     id:'moderator', cat:'ranks',
     name:'ДОНАТ МОДЕРАТОР',
     sub:'Привилегия модератора сервера',
     price:200, icon:'🛡️', cls:'is-mod', badge:'MOD',
-    features:[
-      'Префикс <b>[МОДЕРАТОР]</b>',
-      'Все команды <b>/fly /god /heal</b>',
-      'Кит PvP <b>каждый день</b>',
-      'Мут и бан игроков',
-      'Доступ к <b>/vanish</b>',
-      'Приоритет в поддержке',
-    ]
+    features:['Префикс <b>[МОДЕРАТОР]</b>','Все команды <b>/fly /god /heal</b>','Кит PvP <b>каждый день</b>','Мут и бан игроков','Доступ к <b>/vanish</b>','Приоритет в поддержке']
+  },
+  {
+    id:'house', cat:'services',
+    name:'ПОСТРОЙКА ДОМА',
+    sub:'Админ построит дом под ключ',
+    price:100, icon:'🏠', cls:'is-house', badge:'NEW',
+    features:['Дом <b>под ключ</b> от админа','Средневековый / современный стиль','Внутренняя отделка','Сундуки и мебель','Территория под дом','Срок: <b>до 24 часов</b>']
   },
 ];
 
-/* ====== СОСТОЯНИЕ ====== */
 let currentCurrency = 'rub';
 const rates = { rub:1, usd:0.011 };
 const symbols = { rub:'₽', usd:'$' };
 let currentOrder = null;
 
-/* ====== РЕНДЕР ====== */
+function openKP()    { document.getElementById('modal-kp').classList.add('active'); document.body.style.overflow='hidden'; }
+function closeKP()   { document.getElementById('modal-kp').classList.remove('active'); document.body.style.overflow=''; }
+function openRules() { document.getElementById('modal-rules').classList.add('active'); document.body.style.overflow='hidden'; }
+function closeRules(){ document.getElementById('modal-rules').classList.remove('active'); document.body.style.overflow=''; }
+
+function finalPrice(base) { return Math.round(base * (1 - DISCOUNT) * 100) / 100; }
+
 function render() {
   const grid = document.getElementById('products-grid');
-  const empty = document.getElementById('empty-state');
   const cat = document.getElementById('filter-category').value;
   const q = document.getElementById('search').value.trim().toLowerCase();
   const rate = rates[currentCurrency];
   const sym = symbols[currentCurrency];
-
   const list = products.filter(p => (cat==='all'||p.cat===cat) && (!q || p.name.toLowerCase().includes(q)));
 
-  if (!list.length) { grid.innerHTML=''; empty.style.display='block'; return; }
-  empty.style.display='none';
-
   grid.innerHTML = list.map(p => {
-    const price = (p.price*rate).toFixed(rate===1?0:2);
-    const featuresHtml = p.features && p.features.length
-      ? `<ul class="product-features">${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>` : '';
+    const finalPriceStr = (finalPrice(p.price) * rate).toFixed(rate===1?0:2);
+    const oldPriceStr = (p.price * rate).toFixed(rate===1?0:2);
+    const discountPct = Math.round(DISCOUNT * 100);
+    const featuresHtml = p.features && p.features.length ? `<ul class="product-features">${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>` : '';
     const badgeHtml = p.badge ? `<div class="product-badge">${p.badge}</div>` : '';
     return `
     <article class="product-card ${p.cls}">
       <div class="product-top">
         <div class="product-icon">${p.icon}</div>
-        ${badgeHtml}
+        <div class="product-discount">−${discountPct}%</div>
       </div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
@@ -523,7 +556,10 @@ function render() {
         </div>
       </div>
       <div class="product-bottom">
-        <div class="product-prices"><span class="product-new">${price}${sym}</span></div>
+        <div class="product-prices">
+          <span class="product-old">${oldPriceStr}${sym}</span>
+          <span class="product-new">${finalPriceStr}${sym}</span>
+        </div>
         <button class="btn-add" onclick="addToCart('${p.id}')">В корзину</button>
       </div>
     </article>`;
@@ -538,23 +574,19 @@ function changeQty(id, delta) {
   el.value = v;
 }
 
-/* ====== МОДАЛКА ====== */
 function addToCart(id) {
   const p = products.find(x=>x.id===id);
-  const qtyEl = document.getElementById('qty-'+id);
-  const qty = parseInt(qtyEl.value)||1;
+  const qty = parseInt(document.getElementById('qty-'+id).value)||1;
   openOrder(p, qty);
 }
 
 function openOrder(product, qty) {
-  currentOrder = { product, qty, nick:'', email:'' };
-  const total = (product.price * qty * rates[currentCurrency]).toFixed(currentCurrency==='rub'?0:2);
+  currentOrder = { product, qty, nick:'' };
+  const total = (finalPrice(product.price) * qty * rates[currentCurrency]).toFixed(currentCurrency==='rub'?0:2);
   const sym = symbols[currentCurrency];
-
   document.getElementById('modal-title').textContent = 'Оформление заказа';
   document.getElementById('modal-subtitle').innerHTML =
-    `${product.name} × ${qty} — <b style="color:#4ade80">${total}${sym}</b>`;
-
+    `${product.name} × ${qty} — <b style="color:#4ade80">${total}${sym}</b> <span style="color:#f87171;font-size:11px">(−40%)</span>`;
   showStep('form');
   document.getElementById('modal').classList.add('active');
   document.body.style.overflow='hidden';
@@ -564,7 +596,6 @@ function showStep(name) {
   document.getElementById('step-form').classList.toggle('active', name==='form');
   document.getElementById('step-pay').classList.toggle('active', name==='pay');
 }
-
 function closeModal(){
   document.getElementById('modal').classList.remove('active');
   document.body.style.overflow='';
@@ -573,105 +604,98 @@ function closeModal(){
 function goToPayment(e) {
   e.preventDefault();
   const nick = document.getElementById('nickname').value.trim();
-  const email = document.getElementById('email').value.trim();
-
   currentOrder.nick = nick;
-  currentOrder.email = email;
-
   const { product, qty } = currentOrder;
-  const total = (product.price * qty * rates[currentCurrency]).toFixed(currentCurrency==='rub'?0:2);
+  const total = (finalPrice(product.price) * qty * rates[currentCurrency]).toFixed(currentCurrency==='rub'?0:2);
   const sym = symbols[currentCurrency];
-
   document.getElementById('pay-product').textContent = `${product.name} × ${qty}`;
   document.getElementById('pay-nick').textContent = nick;
   document.getElementById('pay-nick-2').textContent = nick;
   document.getElementById('pay-total').textContent = total + sym;
   document.getElementById('pay-total-2').textContent = total + sym;
-
   showStep('pay');
 }
-
 function backToForm() { showStep('form'); }
 
-/* ====== КОПИРОВАНИЕ КАРТЫ (в модалке) ====== */
 function copyCard() {
   navigator.clipboard.writeText(CARD_NUMBER.replace(/\s/g,'')).then(() => {
     const el = document.getElementById('card-display');
-    const textEl = document.getElementById('card-text');
-    el.classList.add('copied');
-    const orig = textEl.textContent;
-    textEl.textContent = '✓ Скопировано!';
-    setTimeout(() => { textEl.textContent = orig; el.classList.remove('copied'); }, 1500);
-  }).catch(() => { alert('Номер карты: ' + CARD_NUMBER); });
+    const t = document.getElementById('card-text');
+    const orig = t.textContent;
+    el.classList.add('copied'); t.textContent = '✓ Скопировано!';
+    setTimeout(() => { t.textContent = orig; el.classList.remove('copied'); }, 1500);
+  }).catch(() => alert('Номер карты: ' + CARD_NUMBER));
 }
-
-/* ====== КОПИРОВАНИЕ КАРТЫ (в баннере) ====== */
 function copyBannerCard() {
   navigator.clipboard.writeText(CARD_NUMBER.replace(/\s/g,'')).then(() => {
     const el = document.getElementById('banner-card');
-    const textEl = document.getElementById('banner-card-text');
-    el.classList.add('copied');
-    const orig = textEl.textContent;
-    textEl.textContent = '✓ Скопировано!';
-    setTimeout(() => { textEl.textContent = orig; el.classList.remove('copied'); }, 1500);
-  }).catch(() => { alert('Номер карты: ' + CARD_NUMBER); });
+    const t = document.getElementById('banner-card-text');
+    const orig = t.textContent;
+    el.classList.add('copied'); t.textContent = '✓ Скопировано!';
+    setTimeout(() => { t.textContent = orig; el.classList.remove('copied'); }, 1500);
+  }).catch(() => alert('Номер карты: ' + CARD_NUMBER));
+}
+function copyIP() {
+  navigator.clipboard.writeText(SERVER_IP).then(() => {
+    const b = document.getElementById('ip-block');
+    const t = document.getElementById('ip-text');
+    const orig = t.textContent;
+    b.classList.add('copied'); t.textContent = 'Скопировано!';
+    setTimeout(() => { t.textContent = orig; b.classList.remove('copied'); }, 1500);
+  }).catch(() => alert('IP: ' + SERVER_IP));
 }
 
-/* ====== ПОДТВЕРЖДЕНИЕ ====== */
 function confirmPayment() {
   const { product, qty, nick } = currentOrder;
-  const total = (product.price * qty * rates[currentCurrency]).toFixed(currentCurrency==='rub'?0:2);
+  const total = (finalPrice(product.price) * qty * rates[currentCurrency]).toFixed(currentCurrency==='rub'?0:2);
   const sym = symbols[currentCurrency];
-  const cmd = product.id === 'pvp' ? '/kit pvp' : '/donate check';
-
+  const cmd = product.id === 'pvp' ? '/kit pvp' : (product.id === 'house' ? 'напиши владельцу' : '/donate check');
   alert(
     `✅ Спасибо за оплату!\n\n` +
     `Товар: ${product.name} × ${qty}\n` +
-    `Сумма: ${total}${sym}\n` +
+    `Сумма: ${total}${sym} (со скидкой −40%)\n` +
     `Ник: ${nick}\n` +
     `Карта: ${CARD_NUMBER}\n\n` +
-    `📩 Обязательно напиши в чат сервера ${SERVER_IP}\n` +
-    `любому модератору или админу — назови свой ник и что оплатил.\n\n` +
+    `📩 Напиши в чат сервера ${SERVER_IP}\n` +
+    `владельцу ${OWNER_NICK} — назови свой ник и что оплатил.\n\n` +
     `После выдачи: ${cmd}`
   );
-
   closeModal();
   document.getElementById('paymentForm').reset();
   currentOrder = null;
 }
 
-/* ====== КОПИРОВАНИЕ IP ====== */
-function copyIP() {
-  navigator.clipboard.writeText(SERVER_IP).then(() => {
-    const block = document.getElementById('ip-block');
-    block.classList.add('copied');
-    const textEl = document.getElementById('ip-text');
-    const original = textEl.textContent;
-    textEl.textContent = 'Скопировано!';
-    setTimeout(() => { textEl.textContent = original; block.classList.remove('copied'); }, 1500);
-  }).catch(() => { alert('IP: ' + SERVER_IP); });
-}
-
-/* ====== ФИЛЬТРЫ ====== */
 document.getElementById('filter-category').addEventListener('change', render);
 document.getElementById('filter-currency').addEventListener('change', e=>{ currentCurrency = e.target.value; render(); });
 document.getElementById('search').addEventListener('input', render);
 
-/* ====== РЕАЛЬНЫЙ ОНЛАЙН ====== */
 async function updateOnline() {
-  const onlineEl = document.getElementById('online-count');
-  const maxEl = document.getElementById('online-max');
+  const o = document.getElementById('online-count');
+  const m = document.getElementById('online-max');
+  const st = document.getElementById('owner-status');
   try {
     const res = await fetch('https://api.mcsrvstat.us/3/' + SERVER_IP);
     const data = await res.json();
     if (data.online) {
-      onlineEl.textContent = data.players.online;
-      maxEl.textContent = data.players.max;
-    } else { onlineEl.textContent = '0'; maxEl.textContent = '0'; }
-  } catch (e) { onlineEl.textContent = '0'; maxEl.textContent = '0'; }
+      o.textContent = data.players.online;
+      m.textContent = data.players.max;
+      const list = (data.players.list || []).map(n => (n.name || n).toLowerCase());
+      if (list.includes(OWNER_NICK.toLowerCase())) st.classList.add('online');
+      else st.classList.remove('online');
+    } else {
+      o.textContent = '0'; m.textContent = '0';
+      st.classList.remove('online');
+    }
+  } catch (e) {
+    o.textContent = '0'; m.textContent = '0';
+    st.classList.remove('online');
+  }
 }
 
-/* ====== INIT ====== */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') { closeModal(); closeKP(); closeRules(); }
+});
+
 render();
 updateOnline();
 setInterval(updateOnline, 60000);
