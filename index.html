@@ -14,6 +14,7 @@
   --bg:#0f1115;--bg-2:#161a22;--surface:#1a1f2b;--surface-2:#232936;
   --border:#2a3142;--text:#e8ecf5;--muted:#8b93a7;--muted-2:#5c6478;
   --green:#4ade80;--green-2:#22c55e;--red:#ef4444;--orange:#f59e0b;
+  --purple:#c084fc;--cyan:#22d3ee;
   --radius:12px;--radius-sm:8px;
 }
 html{scroll-behavior:smooth}
@@ -25,7 +26,6 @@ body{
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
-code{font-family:ui-monospace,monospace;background:rgba(255,255,255,.06);padding:2px 8px;border-radius:6px;font-size:.9em;color:var(--green)}
 .container{width:100%;max-width:1400px;margin:0 auto;padding:0 24px}
 
 /* ============ TOPBAR ============ */
@@ -36,6 +36,13 @@ code{font-family:ui-monospace,monospace;background:rgba(255,255,255,.06);padding
 .logo-icon{width:36px;height:36px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(74,222,128,.15),rgba(34,211,238,.1));border:1px solid rgba(74,222,128,.3);border-radius:9px;font-size:18px}
 .logo-text{font-weight:800;font-size:16px;letter-spacing:-.02em}
 .topbar-greeting{font-size:13px;color:var(--muted);padding-left:20px;border-left:1px solid var(--border)}
+
+.ip-block{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.25);border-radius:8px;font-size:13px;color:var(--cyan);cursor:pointer;transition:all .15s;font-family:ui-monospace,monospace;font-weight:600}
+.ip-block:hover{background:rgba(34,211,238,.12);border-color:rgba(34,211,238,.5)}
+.ip-block.copied{background:rgba(74,222,128,.15);border-color:rgba(74,222,128,.5);color:var(--green)}
+.ip-block svg{opacity:.7}
+.ip-label{font-size:10px;color:var(--muted-2);font-family:'Inter',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-right:2px}
+
 .topbar-right{display:flex;align-items:center;gap:12px}
 .online-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2);border-radius:8px;font-size:13px;color:var(--muted)}
 .online-badge b{color:var(--text);font-weight:600}
@@ -57,45 +64,136 @@ code{font-family:ui-monospace,monospace;background:rgba(255,255,255,.06);padding
 .filter-search input::placeholder{color:var(--muted-2)}
 .filter-search input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(74,222,128,.1)}
 
+/* ============ PAYMENT BANNER (перед донатами) ============ */
+.payment-banner{
+  margin:24px 0 28px;
+  background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(34,211,238,.05));
+  border:1px solid rgba(74,222,128,.3);
+  border-radius:16px;
+  padding:24px 28px;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:24px;
+  align-items:center;
+}
+.payment-banner::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 0% 50%,rgba(74,222,128,.12),transparent 50%);
+  pointer-events:none;
+}
+.payment-banner-icon{
+  width:64px;height:64px;
+  display:grid;place-items:center;
+  font-size:32px;
+  background:rgba(74,222,128,.12);
+  border:1px solid rgba(74,222,128,.3);
+  border-radius:16px;
+  flex-shrink:0;
+  position:relative;
+}
+.payment-banner-info{position:relative;min-width:0}
+.payment-banner-label{
+  font-size:11px;
+  color:var(--green);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-weight:700;
+  margin-bottom:8px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.payment-banner-label::before{
+  content:'';
+  width:6px;height:6px;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 8px var(--green);
+}
+.payment-banner-title{
+  font-size:17px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  color:var(--text);
+  margin-bottom:10px;
+  line-height:1.35;
+}
+.payment-banner-title b{color:var(--green)}
+.payment-banner-card{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  background:var(--bg);
+  border:1px solid rgba(74,222,128,.35);
+  border-radius:10px;
+  font-family:ui-monospace,monospace;
+  font-size:15px;
+  font-weight:700;
+  color:var(--text);
+  letter-spacing:.05em;
+  cursor:pointer;
+  transition:all .15s;
+}
+.payment-banner-card:hover{
+  background:rgba(74,222,128,.06);
+  border-color:rgba(74,222,128,.6);
+  transform:translateY(-1px);
+}
+.payment-banner-card.copied{color:var(--green);border-color:var(--green)}
+.payment-banner-card svg{opacity:.5;flex-shrink:0}
+.payment-banner-note{
+  margin-top:12px;
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.payment-banner-note b{color:var(--text);font-weight:600}
+.payment-banner-badge{
+  padding:10px 16px;
+  background:rgba(245,158,11,.1);
+  border:1px solid rgba(245,158,11,.3);
+  border-radius:10px;
+  color:#fbbf24;
+  font-size:12px;
+  font-weight:600;
+  text-align:center;
+  white-space:nowrap;
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.payment-banner-badge b{color:var(--orange);font-weight:700}
+
 /* ============ MAIN ============ */
-main{padding:32px 24px 80px}
-
-/* HERO PRODUCT */
-.hero-product{background:linear-gradient(135deg,var(--surface) 0%,var(--bg-2) 100%);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;display:grid;grid-template-columns:1fr auto auto;gap:32px;align-items:center;margin-bottom:32px;position:relative;overflow:hidden}
-.hero-product::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 100% 0%,rgba(74,222,128,.08),transparent 50%);pointer-events:none}
-.hero-product-info h2{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
-.hero-product-info p{font-size:13px;color:var(--muted)}
-.hero-product-controls{display:flex;align-items:flex-end;gap:24px}
-.quantity-block label,.bonus-block span{display:block;font-size:11px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:6px}
-.quantity-input{display:flex;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;height:38px}
-.quantity-input button{width:36px;height:100%;display:grid;place-items:center;color:var(--muted);font-size:16px;transition:all .15s}
-.quantity-input button:hover{background:var(--surface-2);color:var(--text)}
-.quantity-input input{width:60px;height:100%;background:transparent;border:none;color:var(--text);text-align:center;font-size:14px;font-weight:600;-moz-appearance:textfield}
-.quantity-input input::-webkit-outer-spin-button,.quantity-input input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.quantity-input input:focus{outline:none}
-.bonus-value{display:inline-block;padding:8px 12px;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);border-radius:var(--radius-sm);color:var(--green);font-size:13px;font-weight:700;height:38px;line-height:22px}
-.hero-product-buy{display:flex;align-items:center;gap:20px}
-.hero-price{display:flex;align-items:baseline;gap:8px}
-.old-price{font-size:14px;color:var(--muted-2);text-decoration:line-through}
-.new-price{font-size:22px;font-weight:800;color:var(--green);letter-spacing:-.02em}
-.discount-tag{padding:3px 8px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);color:#fca5a5;border-radius:6px;font-size:11px;font-weight:700}
-.btn-cart{padding:10px 22px;background:linear-gradient(135deg,var(--green),var(--green-2));color:#04140a;border-radius:var(--radius-sm);font-size:14px;font-weight:700;transition:all .15s;white-space:nowrap}
-.btn-cart:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(74,222,128,.4)}
-
-/* PRODUCTS GRID */
+main{padding:0 24px 80px}
 .products-section{margin-top:8px}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.product-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:14px;transition:all .2s;position:relative}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.product-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:14px;transition:all .2s;position:relative;overflow:hidden}
 .product-card:hover{border-color:#3a4256;transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
 .product-card.is-kit:hover{border-color:rgba(34,211,238,.5)}
-.product-card.is-rank:hover{border-color:rgba(245,158,11,.5)}
-.product-card.is-god:hover{border-color:rgba(168,85,247,.5)}
+.product-card.is-mod:hover{border-color:rgba(192,132,252,.5)}
+.product-card.is-mod::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 100% 0%,rgba(192,132,252,.08),transparent 60%);pointer-events:none}
+
 .product-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .product-icon{width:46px;height:46px;display:grid;place-items:center;font-size:24px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;flex-shrink:0}
-.product-discount{padding:4px 9px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);color:#fca5a5;border-radius:6px;font-size:11px;font-weight:700;flex-shrink:0}
+.product-badge{padding:4px 9px;background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.35);color:var(--purple);border-radius:6px;font-size:11px;font-weight:700;flex-shrink:0}
+
 .product-info{flex:1;min-width:0}
 .product-name{font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:4px;line-height:1.3}
 .product-subtitle{font-size:12px;color:var(--muted);line-height:1.4}
+
+.product-features{list-style:none;display:flex;flex-direction:column;gap:6px;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.product-features li{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px;line-height:1.4}
+.product-features li::before{content:'▸';color:var(--green);font-weight:700;flex-shrink:0}
+.product-card.is-mod .product-features li::before{color:var(--purple)}
+.product-features b{color:var(--text);font-weight:600}
+
 .product-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .product-row-label{font-size:11px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
 .product-qty{display:flex;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:6px;overflow:hidden;height:30px}
@@ -103,77 +201,88 @@ main{padding:32px 24px 80px}
 .product-qty button:hover{background:var(--surface-2);color:var(--text)}
 .product-qty input{width:40px;height:100%;background:transparent;border:none;color:var(--text);text-align:center;font-size:12px;font-weight:600;-moz-appearance:textfield}
 .product-qty input::-webkit-outer-spin-button,.product-qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--border)}
+
+.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px}
 .product-prices{display:flex;flex-direction:column;gap:2px}
-.product-old{font-size:12px;color:var(--muted-2);text-decoration:line-through}
 .product-new{font-size:18px;font-weight:800;color:var(--green);letter-spacing:-.02em}
-.product-unit{font-size:11px;color:var(--muted-2);font-weight:500}
+.product-card.is-mod .product-new{color:var(--purple)}
 .btn-add{padding:8px 16px;background:var(--surface-2);border:1px solid var(--border);color:var(--text);border-radius:8px;font-size:13px;font-weight:600;transition:all .15s;white-space:nowrap}
 .btn-add:hover{background:var(--green);color:#04140a;border-color:var(--green)}
+.product-card.is-mod .btn-add:hover{background:var(--purple);color:#1a0a2e;border-color:var(--purple)}
 
-/* CART */
-.cart-toggle{position:fixed;bottom:24px;right:24px;width:54px;height:54px;display:grid;place-items:center;background:linear-gradient(135deg,var(--green),var(--green-2));color:#04140a;border-radius:50%;box-shadow:0 10px 30px rgba(74,222,128,.4);z-index:60;transition:all .2s}
-.cart-toggle:hover{transform:scale(1.08)}
-.cart-count{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;display:grid;place-items:center;background:var(--red);color:#fff;border-radius:10px;font-size:11px;font-weight:700;border:2px solid var(--bg)}
-.cart-panel{position:fixed;top:0;right:0;width:380px;max-width:90vw;height:100vh;background:var(--bg-2);border-left:1px solid var(--border);z-index:70;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
-.cart-panel.open{transform:translateX(0)}
-.cart-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border)}
-.cart-header h3{font-size:16px;font-weight:700}
-.cart-close{width:32px;height:32px;display:grid;place-items:center;color:var(--muted);font-size:16px;border-radius:6px;transition:all .15s}
-.cart-close:hover{background:var(--surface);color:var(--text)}
-.cart-body{flex:1;overflow-y:auto;padding:16px 24px}
-.cart-empty{text-align:center;color:var(--muted-2);font-size:13px;padding:40px 0}
-.cart-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:10px}
-.cart-item-info{flex:1;min-width:0}
-.cart-item-name{font-size:13px;font-weight:600;margin-bottom:2px}
-.cart-item-price{font-size:12px;color:var(--muted)}
-.cart-item-remove{width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:12px;transition:all .15s}
-.cart-item-remove:hover{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.4);color:#fca5a5}
-.cart-footer{padding:20px 24px;border-top:1px solid var(--border)}
-.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.cart-total span{color:var(--muted);font-size:13px}
-.cart-total b{font-size:20px;font-weight:800;color:var(--green);letter-spacing:-.02em}
-.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:65;opacity:0;pointer-events:none;transition:opacity .3s}
-.cart-overlay.open{opacity:1;pointer-events:auto}
-
-/* MODAL */
+/* ============ MODAL ============ */
 .modal{display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;padding:20px}
 .modal.active{display:flex}
 .modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
-.modal-box{position:relative;width:100%;max-width:440px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:modalIn .25s ease-out}
+.modal-box{position:relative;width:100%;max-width:460px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:modalIn .25s ease-out;max-height:90vh;overflow-y:auto}
 @keyframes modalIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;display:grid;place-items:center;color:var(--muted);font-size:14px;border-radius:8px;transition:all .15s}
 .modal-close:hover{background:var(--surface);color:var(--text)}
 .modal-head{text-align:center;margin-bottom:22px}
 .modal-head h3{font-size:18px;font-weight:700;margin-bottom:6px}
 .modal-head p{color:var(--muted);font-size:13px}
+
+.step{display:none}
+.step.active{display:block}
+
 #paymentForm{display:flex;flex-direction:column;gap:14px}
 #paymentForm label{display:flex;flex-direction:column;gap:6px}
 #paymentForm label span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
 #paymentForm input,#paymentForm select{padding:11px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;font-family:inherit;transition:all .15s}
 #paymentForm input:focus,#paymentForm select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(74,222,128,.12)}
+
 .btn-primary{padding:12px 22px;background:linear-gradient(135deg,var(--green),var(--green-2));color:#04140a;border-radius:var(--radius-sm);font-size:14px;font-weight:700;transition:all .15s}
 .btn-primary:hover{box-shadow:0 8px 24px rgba(74,222,128,.4)}
 .btn-block{width:100%}
-.empty-state{text-align:center;padding:60px 20px;color:var(--muted)}
-.empty-icon{font-size:48px;margin-bottom:16px;opacity:.5}
-.empty-state h3{font-size:16px;color:var(--text);margin-bottom:6px}
-.empty-state p{font-size:13px}
+.btn-secondary{padding:12px 22px;background:var(--surface-2);border:1px solid var(--border);color:var(--text);border-radius:var(--radius-sm);font-size:14px;font-weight:600;transition:all .15s}
+.btn-secondary:hover{background:var(--surface);border-color:#3a4256}
+
+.pay-summary{padding:16px 18px;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2);border-radius:12px;margin-bottom:20px}
+.pay-summary-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px}
+.pay-summary-row span{color:var(--muted)}
+.pay-summary-row b{color:var(--text);font-weight:600}
+.pay-summary-row.total{padding-top:12px;margin-top:8px;border-top:1px dashed rgba(74,222,128,.25)}
+.pay-summary-row.total b{font-size:20px;color:var(--green);font-weight:800;letter-spacing:-.02em}
+
+.card-payment{text-align:center;padding:20px 0 8px}
+.card-payment-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:10px}
+
+.card-number-display{display:inline-flex;align-items:center;gap:12px;padding:14px 20px;background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(34,211,238,.06));border:1px solid rgba(74,222,128,.3);border-radius:14px;cursor:pointer;transition:all .2s;font-family:ui-monospace,monospace;font-size:18px;font-weight:700;color:var(--text);letter-spacing:.06em;margin-bottom:14px}
+.card-number-display:hover{background:linear-gradient(135deg,rgba(74,222,128,.14),rgba(34,211,238,.1));border-color:rgba(74,222,128,.5);transform:translateY(-1px)}
+.card-number-display.copied{border-color:var(--green);color:var(--green)}
+.card-number-display svg{opacity:.5;flex-shrink:0}
+
+.card-bank-info{font-size:13px;color:var(--muted);margin-bottom:22px}
+.card-bank-info b{color:var(--text);font-weight:600}
+
+.pay-steps{text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:20px}
+.pay-steps h4{font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text)}
+.pay-steps ol{list-style:none;counter-reset:step;padding:0;display:flex;flex-direction:column;gap:8px}
+.pay-steps ol li{counter-increment:step;font-size:12.5px;color:var(--muted);padding-left:30px;position:relative;line-height:1.5}
+.pay-steps ol li::before{content:counter(step);position:absolute;left:0;top:0;width:20px;height:20px;display:grid;place-items:center;background:rgba(74,222,128,.15);color:var(--green);border-radius:50%;font-size:11px;font-weight:700}
+.pay-steps ol li b{color:var(--text);font-weight:600}
+
+.pay-warning{padding:12px 14px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:10px;color:#fbbf24;font-size:12.5px;margin-bottom:16px;line-height:1.5}
+.pay-warning b{color:var(--orange);font-weight:700}
 
 /* RESPONSIVE */
 @media(max-width:1024px){
-  .hero-product{grid-template-columns:1fr;gap:20px}
-  .hero-product-controls{justify-content:flex-start}
-  .hero-product-buy{justify-content:space-between}
+  .payment-banner{grid-template-columns:auto 1fr;gap:20px}
+  .payment-banner-badge{grid-column:1/-1;justify-content:center}
 }
+@media(max-width:900px){.topbar-greeting{display:none}}
 @media(max-width:768px){
   .container{padding:0 16px}
-  .topbar-greeting{display:none}
+  .topbar-inner{height:auto;padding:12px 0;flex-wrap:wrap}
+  .ip-block{font-size:12px;padding:6px 10px}
   .filter-group{min-width:130px;flex:1}
   .filter-search{max-width:none;flex-basis:100%}
-  main{padding:20px 16px 100px}
-  .hero-product{padding:20px}
-  .hero-product-controls{flex-wrap:wrap;gap:16px}
+  main{padding:0 16px 100px}
+  .card-number-display{font-size:15px;padding:12px 16px;gap:8px}
+  .payment-banner{padding:20px;grid-template-columns:1fr;gap:16px;text-align:left}
+  .payment-banner-icon{width:52px;height:52px;font-size:26px}
+  .payment-banner-title{font-size:15px}
+  .payment-banner-card{font-size:13px;padding:9px 14px;width:100%;justify-content:center}
 }
 </style>
 </head>
@@ -186,12 +295,16 @@ main{padding:32px 24px 80px}
         <span class="logo-icon">⛏️</span>
         <span class="logo-text">ShirokaSMP</span>
       </a>
-      <span class="topbar-greeting">Рады видеть вас снова!</span>
+      <button class="ip-block" id="ip-block" onclick="copyIP()" title="Нажми, чтобы скопировать IP">
+        <span class="ip-label">IP:</span>
+        <span id="ip-text">ShirokaSMP.aternos.me:64916</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
     </div>
     <div class="topbar-right">
       <div class="online-badge">
         <span class="online-dot"></span>
-        <span>Онлайн — <b id="online-count">0</b> / <b>100</b></span>
+        <span>Онлайн — <b id="online-count">0</b> / <b id="online-max">0</b></span>
       </div>
       <button class="icon-btn" title="Профиль">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -213,8 +326,8 @@ main{padding:32px 24px 80px}
       <label>Категория</label>
       <select id="filter-category">
         <option value="all">Все категории</option>
-        <option value="ranks">Донат-привилегии</option>
         <option value="kits">Киты</option>
+        <option value="ranks">Привилегии</option>
       </select>
     </div>
     <div class="filter-group">
@@ -232,34 +345,28 @@ main{padding:32px 24px 80px}
 </div>
 
 <main class="container">
-  <section class="hero-product">
-    <div class="hero-product-info">
-      <h2>Классический ShirokaSMP</h2>
-      <p>Начни с базовой привилегии — поддержи сервер и получи плюшки</p>
-    </div>
-    <div class="hero-product-controls">
-      <div class="quantity-block">
-        <label>Количество</label>
-        <div class="quantity-input">
-          <button type="button" onclick="changeQty('hero',-1)">−</button>
-          <input type="number" id="hero-qty" value="1" min="1" max="100">
-          <button type="button" onclick="changeQty('hero',1)">+</button>
-        </div>
+
+  <!-- ═══════ ПЛАТЁЖНЫЙ БАННЕР (перед донатами) ═══════ -->
+  <div class="payment-banner">
+    <div class="payment-banner-icon">💳</div>
+    <div class="payment-banner-info">
+      <div class="payment-banner-label">Оплата переводом на карту</div>
+      <div class="payment-banner-title">
+        Переведи сумму на карту <b>2202 2088 7820 7514</b> и напиши на сервере <b>любому модератору или админу</b>
       </div>
-      <div class="bonus-block">
-        <span>Бонус</span>
-        <b class="bonus-value">+1%</b>
+      <button class="payment-banner-card" id="banner-card" onclick="copyBannerCard()" title="Нажми, чтобы скопировать">
+        <span id="banner-card-text">2202 2088 7820 7514</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+      <div class="payment-banner-note">
+        📩 После перевода <b>обязательно напиши в чат сервера</b> любому модератору или админу — укажи свой ник и что именно оплатил. Товар выдадут в течение 5–10 минут.
       </div>
     </div>
-    <div class="hero-product-buy">
-      <div class="hero-price">
-        <span class="old-price">1₽</span>
-        <span class="new-price">0.75₽</span>
-        <span class="discount-tag">-25%</span>
-      </div>
-      <button class="btn-cart" onclick="addHero()">В корзину</button>
+    <div class="payment-banner-badge">
+      <span>⏱️</span>
+      <span>Выдача: <b>5–10 мин</b></span>
     </div>
-  </section>
+  </div>
 
   <section class="products-section">
     <div class="products-grid" id="products-grid"></div>
@@ -271,68 +378,111 @@ main{padding:32px 24px 80px}
   </section>
 </main>
 
-<button class="cart-toggle" id="cart-toggle" onclick="toggleCart()">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-  <span class="cart-count" id="cart-count">0</span>
-</button>
-
-<aside class="cart-panel" id="cart-panel">
-  <div class="cart-header">
-    <h3>Корзина</h3>
-    <button class="cart-close" onclick="toggleCart()">✕</button>
-  </div>
-  <div class="cart-body" id="cart-body">
-    <p class="cart-empty">Корзина пуста</p>
-  </div>
-  <div class="cart-footer">
-    <div class="cart-total">
-      <span>Итого:</span>
-      <b id="cart-total">0 ₽</b>
-    </div>
-    <button class="btn-primary btn-block" onclick="checkout()">Оформить заказ</button>
-  </div>
-</aside>
-<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
-
+<!-- ============ МОДАЛКА ============ -->
 <div class="modal" id="modal">
   <div class="modal-backdrop" onclick="closeModal()"></div>
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-head">
-      <h3>Оформление заказа</h3>
-      <p>Введи данные для получения доната</p>
+
+    <!-- ШАГ 1: форма -->
+    <div class="step active" id="step-form">
+      <div class="modal-head">
+        <h3 id="modal-title">Оформление заказа</h3>
+        <p id="modal-subtitle">Введи данные для получения товара</p>
+      </div>
+      <form id="paymentForm" onsubmit="goToPayment(event)">
+        <label><span>Ник в Minecraft</span><input type="text" id="nickname" placeholder="Steve" required></label>
+        <label><span>Email для чека</span><input type="email" id="email" placeholder="you@mail.ru" required></label>
+        <button type="submit" class="btn-primary btn-block">Перейти к оплате →</button>
+      </form>
     </div>
-    <form id="paymentForm" onsubmit="submitPayment(event)">
-      <label><span>Ник в Minecraft</span><input type="text" id="nickname" placeholder="Steve" required></label>
-      <label><span>Email для чека</span><input type="email" id="email" placeholder="you@mail.ru" required></label>
-      <label><span>Способ оплаты</span>
-        <select id="paymentMethod">
-          <option>СБП</option><option>Банковская карта</option><option>ЮMoney</option><option>Криптовалюта</option>
-        </select>
-      </label>
-      <button type="submit" class="btn-primary btn-block">Перейти к оплате</button>
-    </form>
+
+    <!-- ШАГ 2: реквизиты -->
+    <div class="step" id="step-pay">
+      <div class="modal-head">
+        <h3>💳 Оплата переводом</h3>
+        <p>Переведи указанную сумму на карту</p>
+      </div>
+
+      <div class="pay-summary">
+        <div class="pay-summary-row"><span>Товар</span><b id="pay-product">—</b></div>
+        <div class="pay-summary-row"><span>Ник</span><b id="pay-nick">—</b></div>
+        <div class="pay-summary-row total"><span>К оплате</span><b id="pay-total">—</b></div>
+      </div>
+
+      <div class="card-payment">
+        <div class="card-payment-label">Номер карты для перевода</div>
+        <button class="card-number-display" id="card-display" onclick="copyCard()" title="Нажми, чтобы скопировать">
+          <span id="card-text">2202 2088 7820 7514</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+        <div class="card-bank-info">Получатель: <b>ShirokaSMP</b> · Банк: <b>Сбербанк</b></div>
+      </div>
+
+      <div class="pay-steps">
+        <h4>📋 Как оплатить:</h4>
+        <ol>
+          <li>Открой приложение банка или СБП</li>
+          <li>Переведи <b id="pay-total-2">—</b> на карту <b>2202 2088 7820 7514</b></li>
+          <li>В комментарии укажи свой ник: <b id="pay-nick-2">—</b></li>
+          <li>Зайди на сервер и напиши <b>любому модератору или админу</b></li>
+          <li>Нажми «Я оплатил» ниже</li>
+        </ol>
+      </div>
+
+      <div class="pay-warning">
+        ⚠️ <b>Важно:</b> обязательно укажи свой ник в комментарии и напиши модератору/админу на сервере <b>ShirokaSMP.aternos.me:64916</b> — иначе товар не выдадут.
+      </div>
+
+      <div style="display:flex;gap:10px">
+        <button class="btn-secondary" style="flex:1" onclick="backToForm()">← Назад</button>
+        <button class="btn-primary" style="flex:2" onclick="confirmPayment()">✅ Я оплатил</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
+/* ====== РЕКВИЗИТЫ ====== */
+const CARD_NUMBER = '2202 2088 7820 7514';
+const SERVER_IP = 'ShirokaSMP.aternos.me:64916';
+
 /* ====== ТОВАРЫ ====== */
 const products = [
-  {id:'vip',     cat:'ranks', name:'VIP',            sub:'Префикс, /fly в спавне, 3 дома', price:99,  old:132,  icon:'💎', cls:''},
-  {id:'premium', cat:'ranks', name:'PREMIUM',        sub:'/fly везде, 10 домов, кит 24ч', price:299, old:399,  icon:'⭐', cls:'is-rank'},
-  {id:'legend',  cat:'ranks', name:'LEGEND',         sub:'∞ домов, /god, кит 12ч',        price:599, old:799,  icon:'🔥', cls:'is-rank'},
-  {id:'god',     cat:'ranks', name:'GOD',            sub:'/creative, кастом префикс',      price:1499,old:1999, icon:'👑', cls:'is-god'},
-  {id:'nether',  cat:'kits',  name:'КИТ НЕЗЕРКИ',    sub:'Меч «Жоский Щ 4» + сет',         price:399, old:532,  icon:'🗡️', cls:'is-kit'},
-  {id:'mace',    cat:'kits',  name:'КИТ БУЛАВА',     sub:'Булава + Плотность V + элитры',  price:549, old:732,  icon:'🔨', cls:'is-kit'},
-  {id:'mega',    cat:'kits',  name:'МЕГА КИТ',       sub:'Булава + незерка + бонусы',      price:899, old:1199, icon:'💀', cls:'is-kit'},
-  {id:'case1',   cat:'kits',  name:'КЕЙС «ОГОНЬ»',   sub:'5 случайных предметов',          price:149, old:199,  icon:'🎁', cls:'is-kit'},
-  {id:'case2',   cat:'kits',  name:'КЕЙС «ЛЕГЕНДА»', sub:'Топ-лут: булава/незерка',        price:299, old:399,  icon:'🎰', cls:'is-kit'},
+  {
+    id:'pvp', cat:'kits',
+    name:'КИТ PvP',
+    sub:'Булава + Незерка + Элитры + Модер',
+    price:100, icon:'⚔️', cls:'is-kit', badge:null,
+    features:[
+      '<b>Булава</b> — Плотность V',
+      '<b>Незеритовый сет</b> — Защита IV',
+      '<b>Элитры</b> + 64 фейерверка',
+      'Меч «Модер покопнуй»',
+      'Зелья силы и скорости',
+    ]
+  },
+  {
+    id:'moderator', cat:'ranks',
+    name:'ДОНАТ МОДЕРАТОР',
+    sub:'Привилегия модератора сервера',
+    price:200, icon:'🛡️', cls:'is-mod', badge:'MOD',
+    features:[
+      'Префикс <b>[МОДЕРАТОР]</b>',
+      'Все команды <b>/fly /god /heal</b>',
+      'Кит PvP <b>каждый день</b>',
+      'Мут и бан игроков',
+      'Доступ к <b>/vanish</b>',
+      'Приоритет в поддержке',
+    ]
+  },
 ];
 
-let cart = [];
+/* ====== СОСТОЯНИЕ ====== */
 let currentCurrency = 'rub';
 const rates = { rub:1, usd:0.011 };
 const symbols = { rub:'₽', usd:'$' };
+let currentOrder = null;
 
 /* ====== РЕНДЕР ====== */
 function render() {
@@ -350,17 +500,20 @@ function render() {
 
   grid.innerHTML = list.map(p => {
     const price = (p.price*rate).toFixed(rate===1?0:2);
-    const old = (p.old*rate).toFixed(rate===1?0:2);
+    const featuresHtml = p.features && p.features.length
+      ? `<ul class="product-features">${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>` : '';
+    const badgeHtml = p.badge ? `<div class="product-badge">${p.badge}</div>` : '';
     return `
     <article class="product-card ${p.cls}">
       <div class="product-top">
         <div class="product-icon">${p.icon}</div>
-        <div class="product-discount">-25%</div>
+        ${badgeHtml}
       </div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
         <div class="product-subtitle">${p.sub}</div>
       </div>
+      ${featuresHtml}
       <div class="product-row">
         <span class="product-row-label">Количество</span>
         <div class="product-qty">
@@ -370,90 +523,46 @@ function render() {
         </div>
       </div>
       <div class="product-bottom">
-        <div class="product-prices">
-          <span class="product-old">${old}${sym}</span>
-          <span class="product-new">${price}${sym}</span>
-        </div>
+        <div class="product-prices"><span class="product-new">${price}${sym}</span></div>
         <button class="btn-add" onclick="addToCart('${p.id}')">В корзину</button>
       </div>
     </article>`;
   }).join('');
 }
 
-/* ====== КОЛИЧЕСТВО ====== */
 function changeQty(id, delta) {
-  const el = document.getElementById(id==='hero' ? 'hero-qty' : 'qty-'+id);
+  const el = document.getElementById('qty-'+id);
   if (!el) return;
   let v = parseInt(el.value)||1;
   v = Math.max(1, Math.min(99, v+delta));
   el.value = v;
 }
 
-/* ====== КОРЗИНА ====== */
+/* ====== МОДАЛКА ====== */
 function addToCart(id) {
   const p = products.find(x=>x.id===id);
   const qtyEl = document.getElementById('qty-'+id);
   const qty = parseInt(qtyEl.value)||1;
-  const existing = cart.find(x=>x.id===id);
-  if (existing) existing.qty += qty;
-  else cart.push({...p, qty});
-  updateCart();
-  openCart();
+  openOrder(p, qty);
 }
 
-function addHero() {
-  const qty = parseInt(document.getElementById('hero-qty').value)||1;
-  const hero = {id:'classic', name:'Классический ShirokaSMP', price:0.75, icon:'🎯', qty};
-  const ex = cart.find(x=>x.id==='classic');
-  if (ex) ex.qty += qty; else cart.push(hero);
-  updateCart();
-  openCart();
-}
-
-function removeFromCart(id) {
-  cart = cart.filter(x=>x.id!==id);
-  updateCart();
-}
-
-function updateCart() {
-  const body = document.getElementById('cart-body');
-  const count = document.getElementById('cart-count');
-  const total = document.getElementById('cart-total');
-  const rate = rates[currentCurrency];
+function openOrder(product, qty) {
+  currentOrder = { product, qty, nick:'', email:'' };
+  const total = (product.price * qty * rates[currentCurrency]).toFixed(currentCurrency==='rub'?0:2);
   const sym = symbols[currentCurrency];
 
-  const totalQty = cart.reduce((s,x)=>s+x.qty,0);
-  count.textContent = totalQty;
+  document.getElementById('modal-title').textContent = 'Оформление заказа';
+  document.getElementById('modal-subtitle').innerHTML =
+    `${product.name} × ${qty} — <b style="color:#4ade80">${total}${sym}</b>`;
 
-  if (!cart.length) {
-    body.innerHTML = '<p class="cart-empty">Корзина пуста</p>';
-    total.textContent = '0'+sym;
-    return;
-  }
-
-  body.innerHTML = cart.map(x=>`
-    <div class="cart-item">
-      <div class="cart-item-info">
-        <div class="cart-item-name">${x.icon||''} ${x.name} × ${x.qty}</div>
-        <div class="cart-item-price">${(x.price*rate*x.qty).toFixed(rate===1?0:2)}${sym}</div>
-      </div>
-      <button class="cart-item-remove" onclick="removeFromCart('${x.id}')">✕</button>
-    </div>`).join('');
-
-  const sum = cart.reduce((s,x)=>s+x.price*x.qty,0)*rate;
-  total.textContent = sum.toFixed(rate===1?0:2)+sym;
-}
-
-/* ====== UI ====== */
-function toggleCart(){ document.getElementById('cart-panel').classList.toggle('open'); document.getElementById('cart-overlay').classList.toggle('open'); }
-function openCart(){ document.getElementById('cart-panel').classList.add('open'); document.getElementById('cart-overlay').classList.add('open'); }
-function closeCart(){ document.getElementById('cart-panel').classList.remove('open'); document.getElementById('cart-overlay').classList.remove('open'); }
-
-function checkout(){
-  if (!cart.length) { alert('Корзина пуста!'); return; }
-  closeCart();
+  showStep('form');
   document.getElementById('modal').classList.add('active');
   document.body.style.overflow='hidden';
+}
+
+function showStep(name) {
+  document.getElementById('step-form').classList.toggle('active', name==='form');
+  document.getElementById('step-pay').classList.toggle('active', name==='pay');
 }
 
 function closeModal(){
@@ -461,31 +570,111 @@ function closeModal(){
   document.body.style.overflow='';
 }
 
-function submitPayment(e){
+function goToPayment(e) {
   e.preventDefault();
   const nick = document.getElementById('nickname').value.trim();
   const email = document.getElementById('email').value.trim();
-  const method = document.getElementById('paymentMethod').value;
-  const items = cart.map(x=>`${x.name} × ${x.qty}`).join('\n');
-  alert(`✅ Заявка принята!\n\nНик: ${nick}\nEmail: ${email}\nОплата: ${method}\n\nТовары:\n${items}\n\nИтого: ${document.getElementById('cart-total').textContent}`);
-  cart = [];
-  updateCart();
-  closeModal();
-  document.getElementById('paymentForm').reset();
+
+  currentOrder.nick = nick;
+  currentOrder.email = email;
+
+  const { product, qty } = currentOrder;
+  const total = (product.price * qty * rates[currentCurrency]).toFixed(currentCurrency==='rub'?0:2);
+  const sym = symbols[currentCurrency];
+
+  document.getElementById('pay-product').textContent = `${product.name} × ${qty}`;
+  document.getElementById('pay-nick').textContent = nick;
+  document.getElementById('pay-nick-2').textContent = nick;
+  document.getElementById('pay-total').textContent = total + sym;
+  document.getElementById('pay-total-2').textContent = total + sym;
+
+  showStep('pay');
 }
 
-/* ====== ИВЕНТЫ ====== */
+function backToForm() { showStep('form'); }
+
+/* ====== КОПИРОВАНИЕ КАРТЫ (в модалке) ====== */
+function copyCard() {
+  navigator.clipboard.writeText(CARD_NUMBER.replace(/\s/g,'')).then(() => {
+    const el = document.getElementById('card-display');
+    const textEl = document.getElementById('card-text');
+    el.classList.add('copied');
+    const orig = textEl.textContent;
+    textEl.textContent = '✓ Скопировано!';
+    setTimeout(() => { textEl.textContent = orig; el.classList.remove('copied'); }, 1500);
+  }).catch(() => { alert('Номер карты: ' + CARD_NUMBER); });
+}
+
+/* ====== КОПИРОВАНИЕ КАРТЫ (в баннере) ====== */
+function copyBannerCard() {
+  navigator.clipboard.writeText(CARD_NUMBER.replace(/\s/g,'')).then(() => {
+    const el = document.getElementById('banner-card');
+    const textEl = document.getElementById('banner-card-text');
+    el.classList.add('copied');
+    const orig = textEl.textContent;
+    textEl.textContent = '✓ Скопировано!';
+    setTimeout(() => { textEl.textContent = orig; el.classList.remove('copied'); }, 1500);
+  }).catch(() => { alert('Номер карты: ' + CARD_NUMBER); });
+}
+
+/* ====== ПОДТВЕРЖДЕНИЕ ====== */
+function confirmPayment() {
+  const { product, qty, nick } = currentOrder;
+  const total = (product.price * qty * rates[currentCurrency]).toFixed(currentCurrency==='rub'?0:2);
+  const sym = symbols[currentCurrency];
+  const cmd = product.id === 'pvp' ? '/kit pvp' : '/donate check';
+
+  alert(
+    `✅ Спасибо за оплату!\n\n` +
+    `Товар: ${product.name} × ${qty}\n` +
+    `Сумма: ${total}${sym}\n` +
+    `Ник: ${nick}\n` +
+    `Карта: ${CARD_NUMBER}\n\n` +
+    `📩 Обязательно напиши в чат сервера ${SERVER_IP}\n` +
+    `любому модератору или админу — назови свой ник и что оплатил.\n\n` +
+    `После выдачи: ${cmd}`
+  );
+
+  closeModal();
+  document.getElementById('paymentForm').reset();
+  currentOrder = null;
+}
+
+/* ====== КОПИРОВАНИЕ IP ====== */
+function copyIP() {
+  navigator.clipboard.writeText(SERVER_IP).then(() => {
+    const block = document.getElementById('ip-block');
+    block.classList.add('copied');
+    const textEl = document.getElementById('ip-text');
+    const original = textEl.textContent;
+    textEl.textContent = 'Скопировано!';
+    setTimeout(() => { textEl.textContent = original; block.classList.remove('copied'); }, 1500);
+  }).catch(() => { alert('IP: ' + SERVER_IP); });
+}
+
+/* ====== ФИЛЬТРЫ ====== */
 document.getElementById('filter-category').addEventListener('change', render);
-document.getElementById('filter-currency').addEventListener('change', e=>{ currentCurrency = e.target.value; render(); updateCart(); });
+document.getElementById('filter-currency').addEventListener('change', e=>{ currentCurrency = e.target.value; render(); });
 document.getElementById('search').addEventListener('input', render);
 
-/* ====== ОНЛАЙН (имитация) ====== */
-function updateOnline(){ document.getElementById('online-count').textContent = Math.floor(Math.random()*20)+5; }
-updateOnline(); setInterval(updateOnline, 30000);
+/* ====== РЕАЛЬНЫЙ ОНЛАЙН ====== */
+async function updateOnline() {
+  const onlineEl = document.getElementById('online-count');
+  const maxEl = document.getElementById('online-max');
+  try {
+    const res = await fetch('https://api.mcsrvstat.us/3/' + SERVER_IP);
+    const data = await res.json();
+    if (data.online) {
+      onlineEl.textContent = data.players.online;
+      maxEl.textContent = data.players.max;
+    } else { onlineEl.textContent = '0'; maxEl.textContent = '0'; }
+  } catch (e) { onlineEl.textContent = '0'; maxEl.textContent = '0'; }
+}
 
 /* ====== INIT ====== */
 render();
-updateCart();
+updateOnline();
+setInterval(updateOnline, 60000);
 </script>
 </body>
 </html>
