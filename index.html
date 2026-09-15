@@ -3,411 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ShirokaSMP — донат магазин Minecraft сервера. Привилегии, киты, булава, незерки.">
-    <title>ShirokaSMP — Донат магазин</title>
+    <title>ShirokaSMP — Магазин</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Фоновые эффекты -->
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="bg-grid"></div>
+    <!-- ===== ВЕРХНЯЯ ПАНЕЛЬ (как на ToolRise) ===== -->
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <div class="topbar-left">
+                <a href="#" class="logo">
+                    <span class="logo-icon">⛏️</span>
+                    <span class="logo-text">ShirokaSMP</span>
+                </a>
+                <span class="topbar-greeting">Рады видеть вас снова!</span>
+            </div>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container header-inner">
-            <a href="#home" class="brand">
-                <div class="brand-icon">⛏️</div>
-                <div class="brand-text">
-                    <span class="brand-name">ShirokaSMP</span>
-                    <span class="brand-ip">ShirokaSMP.aternos.me</span>
-                </div>
-            </a>
-
-            <nav class="nav" id="nav">
-                <a href="#home" class="nav-link active">Главная</a>
-                <a href="#donates" class="nav-link">Донаты</a>
-                <a href="#kits" class="nav-link">Киты</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-                <a href="#contact" class="nav-link">Контакты</a>
-            </nav>
-
-            <div class="header-actions">
-                <div class="online-pill">
+            <div class="topbar-right">
+                <div class="online-badge">
                     <span class="online-dot"></span>
-                    <span id="online">—</span>
+                    <span>Онлайн — <b id="online-count">0</b> / <b>100</b></span>
                 </div>
-                <button class="burger" id="burger" aria-label="Меню">
-                    <span></span><span></span><span></span>
+                <button class="icon-btn" title="Профиль">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="container hero-inner">
-            <div class="hero-badge">
-                <span class="pulse"></span> Сервер онлайн • 1.16.5 – 1.21
-            </div>
-            <h1 class="hero-title">
-                Прокачай свою игру на <span class="gradient-text">ShirokaSMP</span>
-            </h1>
-            <p class="hero-subtitle">
-                Поддержи сервер и получи мощные привилегии, киты с булавой и незеркой,
-                эксклюзивные возможности и уникальные плюшки.
-            </p>
-
-            <div class="hero-actions">
-                <a href="#donates" class="btn btn-primary">
-                    <span>Смотреть донаты</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <a href="#kits" class="btn btn-ghost">
-                    <span>🎁 Киты</span>
-                </a>
+    <!-- ===== ПАНЕЛЬ ФИЛЬТРОВ ===== -->
+    <div class="filterbar">
+        <div class="container filterbar-inner">
+            <div class="filter-group">
+                <label>Сервер</label>
+                <select id="filter-server">
+                    <option value="all">Все серверы</option>
+                    <option value="smp">ShirokaSMP</option>
+                </select>
             </div>
 
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-value" id="stat-online">—</div>
-                    <div class="stat-label">Игроков онлайн</div>
+            <div class="filter-group">
+                <label>Категория</label>
+                <select id="filter-category">
+                    <option value="all">Все категории</option>
+                    <option value="ranks">Донат-привилегии</option>
+                    <option value="kits">Киты</option>
+                    <option value="cases">Кейсы</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Валюта</label>
+                <select id="filter-currency">
+                    <option value="rub">РУБЛИ</option>
+                    <option value="usd">ДОЛЛАРЫ</option>
+                    <option value="eur">ЕВРО</option>
+                </select>
+            </div>
+
+            <div class="filter-search">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" id="search" placeholder="Поиск товара...">
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
+    <main class="container">
+
+        <!-- Баннер "Классический" товар (как на ToolRise) -->
+        <section class="hero-product">
+            <div class="hero-product-info">
+                <h2>Классический ShirokaSMP</h2>
+                <p>Начни с базовой привилегии — поддержи сервер и получи плюшки</p>
+            </div>
+            <div class="hero-product-controls">
+                <div class="quantity-block">
+                    <label>Количество</label>
+                    <div class="quantity-input">
+                        <button type="button" onclick="changeQty('hero', -1)">−</button>
+                        <input type="number" id="hero-qty" value="1" min="1" max="100">
+                        <button type="button" onclick="changeQty('hero', 1)">+</button>
+                    </div>
                 </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <div class="stat-value">24/7</div>
-                    <div class="stat-label">Работа сервера</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <div class="stat-value">1000+</div>
-                    <div class="stat-label">Игроков всего</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Донаты -->
-    <section class="section" id="donates">
-        <div class="container">
-            <div class="section-head">
-                <span class="section-tag">💰 Привилегии</span>
-                <h2 class="section-title">Донат ранги</h2>
-                <p class="section-subtitle">Выбери подходящий уровень и получи максимум возможностей</p>
-            </div>
-
-            <div class="grid grid-4">
-                <!-- VIP -->
-                <article class="card rank-card" data-rank="vip">
-                    <div class="rank-top">
-                        <div class="rank-icon" style="--c:#60a5fa">💎</div>
-                        <h3 class="rank-name">VIP</h3>
-                    </div>
-                    <div class="rank-price">
-                        <span class="price-value">99</span>
-                        <span class="price-cur">₽</span>
-                    </div>
-                    <ul class="feature-list">
-                        <li class="yes">Префикс <b>[VIP]</b></li>
-                        <li class="yes">/fly в спавне</li>
-                        <li class="yes">3 дома</li>
-                        <li class="yes">Цветной чат</li>
-                        <li class="yes">Команда /hat</li>
-                        <li class="no">Киты</li>
-                        <li class="no">/ec</li>
-                    </ul>
-                    <button class="btn btn-buy" onclick="buy('VIP', 99)">
-                        Купить VIP
-                    </button>
-                </article>
-
-                <!-- PREMIUM -->
-                <article class="card rank-card popular" data-rank="premium">
-                    <div class="ribbon">Популярный</div>
-                    <div class="rank-top">
-                        <div class="rank-icon" style="--c:#f59e0b">⭐</div>
-                        <h3 class="rank-name">PREMIUM</h3>
-                    </div>
-                    <div class="rank-price">
-                        <span class="price-value">299</span>
-                        <span class="price-cur">₽</span>
-                    </div>
-                    <ul class="feature-list">
-                        <li class="yes">Префикс <b>[PREMIUM]</b></li>
-                        <li class="yes">/fly везде</li>
-                        <li class="yes">10 домов</li>
-                        <li class="yes">Цветной чат</li>
-                        <li class="yes">/hat, /ec, /nick</li>
-                        <li class="yes">Кит Premium (24ч)</li>
-                        <li class="no">/god, /heal</li>
-                    </ul>
-                    <button class="btn btn-buy" onclick="buy('PREMIUM', 299)">
-                        Купить PREMIUM
-                    </button>
-                </article>
-
-                <!-- LEGEND -->
-                <article class="card rank-card" data-rank="legend">
-                    <div class="rank-top">
-                        <div class="rank-icon" style="--c:#f43f5e">🔥</div>
-                        <h3 class="rank-name">LEGEND</h3>
-                    </div>
-                    <div class="rank-price">
-                        <span class="price-value">599</span>
-                        <span class="price-cur">₽</span>
-                    </div>
-                    <ul class="feature-list">
-                        <li class="yes">Префикс <b>[LEGEND]</b></li>
-                        <li class="yes">/fly везде</li>
-                        <li class="yes">∞ домов</li>
-                        <li class="yes">Цветной чат + смайлы</li>
-                        <li class="yes">Все команды</li>
-                        <li class="yes">Кит Legend (12ч)</li>
-                        <li class="yes">/god, /heal, /feed</li>
-                    </ul>
-                    <button class="btn btn-buy" onclick="buy('LEGEND', 599)">
-                        Купить LEGEND
-                    </button>
-                </article>
-
-                <!-- GOD -->
-                <article class="card rank-card" data-rank="god">
-                    <div class="ribbon ribbon-gold">👑 Топ</div>
-                    <div class="rank-top">
-                        <div class="rank-icon" style="--c:#a855f7">👑</div>
-                        <h3 class="rank-name">GOD</h3>
-                    </div>
-                    <div class="rank-price">
-                        <span class="price-value">1499</span>
-                        <span class="price-cur">₽</span>
-                    </div>
-                    <ul class="feature-list">
-                        <li class="yes">Префикс <b>[GOD]</b></li>
-                        <li class="yes">Всё из LEGEND</li>
-                        <li class="yes">/creative в регионе</li>
-                        <li class="yes">Личный варп</li>
-                        <li class="yes">Кастомный префикс</li>
-                        <li class="yes">Кит GOD (6ч)</li>
-                        <li class="yes">Бета-фичи</li>
-                    </ul>
-                    <button class="btn btn-buy" onclick="buy('GOD', 1499)">
-                        Купить GOD
-                    </button>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Киты -->
-    <section class="section section-kits" id="kits">
-        <div class="container">
-            <div class="section-head">
-                <span class="section-tag">🎁 Наборы</span>
-                <h2 class="section-title">Мощные киты</h2>
-                <p class="section-subtitle">Топовое оружие и броня — булава, незерка, элитры и многое другое</p>
-            </div>
-
-            <div class="grid grid-3">
-                <!-- КИТ НЕЗЕРКИ -->
-                <article class="card kit-card kit-nether">
-                    <div class="kit-glow"></div>
-                    <div class="ribbon ribbon-red">🔥 ТОП</div>
-
-                    <div class="kit-head">
-                        <div class="kit-emoji">🗡️</div>
-                        <h3 class="kit-name">КИТ НЕЗЕРКИ</h3>
-                        <p class="kit-desc">Меч «Жоский Щ 4» + полный незеритовый сет</p>
-                    </div>
-
-                    <div class="kit-price">
-                        <span class="price-value">399</span>
-                        <span class="price-cur">₽</span>
-                    </div>
-
-                    <ul class="kit-items">
-                        <li><span class="item-icon">💥</span><div><b>Меч «Жоский Щ 4»</b><small>Острота IV + Разящий V + Огонь II</small></div></li>
-                        <li><span class="item-icon">⚔️</span><div><b>Незеритовый меч</b><small>Острота V + Добыча III</small></div></li>
-                        <li><span class="item-icon">🛡️</span><div><b>Незеритовый сет</b><small>Защита IV + Прочность III</small></div></li>
-                        <li><span class="item-icon">🏹</span><div><b>Лук</b><small>Сила V + Бесконечность</small></div></li>
-                        <li><span class="item-icon">🔱</span><div><b>Трезубец</b><small>Верность III + Пронзатель V</small></div></li>
-                        <li><span class="item-icon">🍎</span><div><b>64 золотых яблока</b></div></li>
-                        <li><span class="item-icon">🧪</span><div><b>Зелья силы, скорости, регенерации</b></div></li>
-                        <li><span class="item-icon">💎</span><div><b>32 алмазных блока</b></div></li>
-                    </ul>
-
-                    <button class="btn btn-buy btn-nether" onclick="buyKit('КИТ НЕЗЕРКИ', 399)">
-                        Купить кит
-                    </button>
-                </article>
-
-                <!-- КИТ БУЛАВА -->
-                <article class="card kit-card kit-mace">
-                    <div class="kit-glow"></div>
-                    <div class="ribbon ribbon-cyan">⚡ ЭПИК</div>
-
-                    <div class="kit-head">
-                        <div class="kit-emoji">🔨</div>
-                        <h3 class="kit-name">КИТ БУЛАВА</h3>
-                        <p class="kit-desc">Булава с максимальным уроном + элитры</p>
-                    </div>
-
-                    <div class="kit-price">
-                        <span class="price-value">549</span>
-                        <span class="price-cur">₽</span>
-                    </div>
-
-                    <ul class="kit-items">
-                        <li><span class="item-icon">🔨</span><div><b>БУЛАВА</b><small>Острота V</small></div></li>
-                        <li><span class="item-icon">💨</span><div><b>Булава «Порыв ветра III»</b></div></li>
-                        <li><span class="item-icon">🪶</span><div><b>Булава «Плотность V»</b><small>Максимальный урон при падении</small></div></li>
-                        <li><span class="item-icon">🛡️</span><div><b>Незеритовый сет</b><small>Защита IV + Прочность III</small></div></li>
-                        <li><span class="item-icon">🪂</span><div><b>Элитры + 64 фейерверка</b></div></li>
-                        <li><span class="item-icon">🧪</span><div><b>Зелья медленного падения</b><small>x8</small></div></li>
-                        <li><span class="item-icon">🍎</span><div><b>64 энчантед голд эппла</b></div></li>
-                        <li><span class="item-icon">💎</span><div><b>64 алмазных блока</b></div></li>
-                    </ul>
-
-                    <button class="btn btn-buy btn-mace" onclick="buyKit('КИТ БУЛАВА', 549)">
-                        Купить кит
-                    </button>
-                </article>
-
-                <!-- МЕГА КИТ -->
-                <article class="card kit-card kit-mega">
-                    <div class="kit-glow"></div>
-                    <div class="ribbon ribbon-purple">👑 МЕГА</div>
-
-                    <div class="kit-head">
-                        <div class="kit-emoji">💀</div>
-                        <h3 class="kit-name">МЕГА КИТ</h3>
-                        <p class="kit-desc">Всё сразу: булава + незерка + бонусы</p>
-                    </div>
-
-                    <div class="kit-price">
-                        <span class="price-value">899</span>
-                        <span class="price-cur">₽</span>
-                    </div>
-
-                    <ul class="kit-items">
-                        <li><span class="item-icon">🔨</span><div><b>Булава MAX</b><small>Острота V + Плотность V + Порыв III</small></div></li>
-                        <li><span class="item-icon">💥</span><div><b>Меч «Жоский Щ 4»</b><small>Острота IV + Разящий V + Огонь II</small></div></li>
-                        <li><span class="item-icon">⚔️</span><div><b>Незеритовый меч</b><small>Острота V + Добыча III</small></div></li>
-                        <li><span class="item-icon">🛡️</span><div><b>Незеритовый сет MAX</b><small>Защита IV + Починка + Прочность III</small></div></li>
-                        <li><span class="item-icon">🏹</span><div><b>Лук TOP</b><small>Сила V + Бесконечность + Починка</small></div></li>
-                        <li><span class="item-icon">🔱</span><div><b>Трезубец</b><small>Пронзатель V + Верность III</small></div></li>
-                        <li><span class="item-icon">🪂</span><div><b>Элитры + 128 фейерверков</b></div></li>
-                        <li><span class="item-icon">🍎</span><div><b>64 энчантед голд эппла</b></div></li>
-                        <li><span class="item-icon">🎁</span><div><b>Бонус: 5 ключей от кейсов</b></div></li>
-                    </ul>
-
-                    <button class="btn btn-buy btn-mega" onclick="buyKit('МЕГА КИТ', 899)">
-                        Купить МЕГА
-                    </button>
-                </article>
-            </div>
-
-            <div class="notice">
-                <span>⚠️</span>
-                <p><b>Важно:</b> киты выдаются один раз после покупки. Обмену и возврату не подлежат. Выдача командой <code>/kit</code>.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" id="faq">
-        <div class="container">
-            <div class="section-head">
-                <span class="section-tag">❓ Помощь</span>
-                <h2 class="section-title">Частые вопросы</h2>
-            </div>
-
-            <div class="faq-list">
-                <details class="faq-item" open>
-                    <summary>Как получить донат после оплаты?</summary>
-                    <p>В течение 5 минут после оплаты привилегия автоматически выдаётся на сервере. Зайди и введи <code>/donate check</code>.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Как получить кит после покупки?</summary>
-                    <p>После оплаты зайди на сервер и введи команду <code>/kit</code> или <code>/kit claim</code>. Кит появится в инвентаре.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Какие способы оплаты?</summary>
-                    <p>СБП, банковские карты, ЮMoney, Qiwi, криптовалюта (USDT, BTC).</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Можно ли вернуть деньги?</summary>
-                    <p>Возврат возможен в течение 24 часов, если привилегия/кит не была использована.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>На сколько действует донат?</summary>
-                    <p>Привилегия — навсегда. Кит — одноразовая выдача.</p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Контакты -->
-    <section class="section" id="contact">
-        <div class="container">
-            <div class="section-head">
-                <span class="section-tag">📞 Связь</span>
-                <h2 class="section-title">Связаться с нами</h2>
-            </div>
-
-            <div class="grid grid-3">
-                <a href="https://discord.gg/" target="_blank" class="contact-card">
-                    <div class="contact-icon">💬</div>
-                    <h4>Discord</h4>
-                    <p>Общение и поддержка</p>
-                    <span class="contact-arrow">→</span>
-                </a>
-                <a href="https://t.me/" target="_blank" class="contact-card">
-                    <div class="contact-icon">✈️</div>
-                    <h4>Telegram</h4>
-                    <p>Новости и анонсы</p>
-                    <span class="contact-arrow">→</span>
-                </a>
-                <a href="mailto:admin@shirokasmp.ru" class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <h4>Email</h4>
-                    <p>admin@shirokasmp.ru</p>
-                    <span class="contact-arrow">→</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-inner">
-            <div class="footer-brand">
-                <div class="brand-icon">⛏️</div>
-                <div>
-                    <div class="brand-name">ShirokaSMP</div>
-                    <div class="brand-ip">ShirokaSMP.aternos.me</div>
+                <div class="bonus-block">
+                    <span>Бонус</span>
+                    <b class="bonus-value">+1%</b>
                 </div>
             </div>
-            <p class="footer-copy">© 2025 ShirokaSMP. Не связан с Mojang AB.</p>
-        </div>
-    </footer>
+            <div class="hero-product-buy">
+                <div class="hero-price">
+                    <span class="old-price">1₽</span>
+                    <span class="new-price">0.75₽</span>
+                    <span class="discount-tag">-25%</span>
+                </div>
+                <button class="btn-cart">В корзину</button>
+            </div>
+        </section>
 
-    <!-- Modal -->
+        <!-- Сетка товаров -->
+        <section class="products-section">
+            <div class="products-grid" id="products-grid">
+                <!-- Сюда рендерится JS -->
+            </div>
+
+            <!-- Пусто -->
+            <div class="empty-state" id="empty-state" style="display:none">
+                <div class="empty-icon">🔍</div>
+                <h3>Ничего не найдено</h3>
+                <p>Попробуй изменить фильтры или поиск</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== КОРЗИНА (правый сайдбар) ===== -->
+    <button class="cart-toggle" id="cart-toggle">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count" id="cart-count">0</span>
+    </button>
+
+    <aside class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <h3>Корзина</h3>
+            <button onclick="toggleCart()" class="cart-close">✕</button>
+        </div>
+        <div class="cart-body" id="cart-body">
+            <p class="cart-empty">Корзина пуста</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Итого:</span>
+                <b id="cart-total">0 ₽</b>
+            </div>
+            <button class="btn-primary btn-block" onclick="checkout()">Оформить заказ</button>
+        </div>
+    </aside>
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+
+    <!-- ===== МОДАЛКА ОПЛАТЫ ===== -->
     <div class="modal" id="modal">
         <div class="modal-backdrop" onclick="closeModal()"></div>
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">✕</button>
-
             <div class="modal-head">
-                <div class="modal-icon">🛒</div>
                 <h3>Оформление заказа</h3>
-                <p id="modal-text">Вы выбрали: VIP — 99 ₽</p>
+                <p>Введи данные для получения доната</p>
             </div>
-
-            <form id="paymentForm" onsubmit="submitPayment(event)" class="modal-form">
+            <form id="paymentForm" onsubmit="submitPayment(event)">
                 <label>
                     <span>Ник в Minecraft</span>
                     <input type="text" id="nickname" placeholder="Steve" required>
@@ -425,15 +170,7 @@
                         <option>Криптовалюта</option>
                     </select>
                 </label>
-
-                <div class="modal-total">
-                    <span>Итого:</span>
-                    <b id="modal-total">99 ₽</b>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-block">
-                    Перейти к оплате
-                </button>
+                <button type="submit" class="btn-primary btn-block">Перейти к оплате</button>
             </form>
         </div>
     </div>
